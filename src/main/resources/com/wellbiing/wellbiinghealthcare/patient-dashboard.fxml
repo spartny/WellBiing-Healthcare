@@ -131,6 +131,7 @@
                     <font>
                         <Font name="System Bold" size="40.0" />
                     </font></Text>
+<<<<<<< HEAD
             <Pane layoutY="90.0" prefHeight="690.0" prefWidth="420.0" style="-fx-background-color: white;">
                <children>
                       <Button id="LabTest" fx:id="LabTest" alignment="TOP_LEFT" layoutX="150.0" layoutY="130.0" mnemonicParsing="false" onAction="#labtest" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #ffff;" text="Lab Test" textFill="#075d5d">
@@ -191,6 +192,7 @@
                   </Button>
                </children>
             </Pane>
+=======
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="1289.0" layoutY="391.0" stroke="BLACK" strokeType="INSIDE" width="480.0" />
                 <Text layoutX="1443.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Height">
                     <font>
@@ -344,6 +346,7 @@
                   <Font name="System Bold" size="35.0" />
                </font>
             </Text>
+>>>>>>> 4a5775d73b3b9685293a2d697648e6fa8db12fb1
 
             </children>
         </Pane>
