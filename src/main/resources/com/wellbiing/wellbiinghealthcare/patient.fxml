@@ -4,22 +4,25 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wellbiing.wellbiinghealthcare.HelloController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wellbiing.wellbiinghealthcare.PatientController">
     <children>
         <Pane prefHeight="780.0" prefWidth="1535.0">
             <children>
+            <AnchorPane fx:id="Medication" disable="true" layoutX="500.0" layoutY="200.0" opacity="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: Green;" />
+            <Pane fx:id="labTestPane" disable="true" layoutX="450.0" layoutY="200.0" opacity="0.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: red;" />
             <ImageView fitHeight="1707.0" fitWidth="1535.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@assets/bg.png" />
                </image>
             </ImageView>
-            <Pane layoutX="447.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+            <Pane fx:id="overviewPane" layoutX="447.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
                       <Text fill="#075d5d" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Checkup" textAlignment="CENTER" wrappingWidth="274.8287353515626">
                           <font>
@@ -94,7 +97,7 @@
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
                   </Text>
-                      <Text fill="#075d5d" layoutX="244.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blood GRoup" textAlignment="CENTER" wrappingWidth="250.00000000000006">
+                      <Text fill="#075d5d" layoutX="244.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Group" textAlignment="CENTER" wrappingWidth="250.00000000000006">
                           <font>
                               <Font name="System Bold" size="26.0" />
                           </font>
@@ -139,7 +142,7 @@
                         <Font name="Leelawadee UI Bold" size="36.0" />
                     </font></Text>
             <Pane layoutY="90.0" prefHeight="690.0" prefWidth="420.0" style="-fx-background-color: white;">
-                      <Button id="LabTest" fx:id="LabTest" alignment="TOP_LEFT" layoutX="150.0" layoutY="130.0" mnemonicParsing="false" onAction="#labtest" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #ffff;" text="Lab Test" textFill="#075d5d">
+                      <Button id="LabTest" fx:id="labTest" alignment="TOP_LEFT" layoutX="150.0" layoutY="130.0" mnemonicParsing="false" onAction="#LabTest" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #ffff;" text="Lab Test" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
@@ -190,7 +193,7 @@
                           </font>
                       </Button>
                   <Separator layoutX="-3.0" layoutY="519.0" prefHeight="1.0" prefWidth="426.0" style="-fx-background-color: grey;" />
-                  <Button id="LabTest" fx:id="LabTest1" alignment="TOP_LEFT" layoutX="115.0" layoutY="38.0" mnemonicParsing="false" onAction="#labtest" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #ffff;" text="Home" textFill="#075d5d">
+                  <Button id="LabTest" fx:id="home" alignment="TOP_LEFT" layoutX="150.0" layoutY="38.0" mnemonicParsing="false" onAction="#HomeOpen" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #ffff;" text="Home" textFill="#075d5d">
                      <font>
                         <Font name="Leelawadee UI Bold" size="26.0" />
                      </font>
