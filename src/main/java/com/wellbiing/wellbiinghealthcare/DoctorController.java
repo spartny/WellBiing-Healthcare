@@ -39,7 +39,7 @@ public class DoctorController {
     @FXML
     void ButtonHoverEnd(MouseEvent event) {
         Button b = (Button)event.getSource();
-        b.setStyle("-fx-background-color: #ffff");
+        b.setStyle("-fx-background-color: #ffffff");
     }
 
     @FXML

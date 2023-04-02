@@ -35,7 +35,7 @@
                   <Font name="Leelawadee UI Bold" size="30.0" />
                </font>
             </Label>
-            <Button id="loginButton" fx:id="loginButton" layoutX="185.0" layoutY="441.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="160.0" style="-fx-background-radius: 50;" text="Login">
+            <Button id="loginButton" fx:id="loginButton" layoutX="185.0" layoutY="441.0" mnemonicParsing="false" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="50.0" prefWidth="160.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Login">
                <font>
                   <Font name="Leelawadee UI Bold" size="28.0" />
                </font>

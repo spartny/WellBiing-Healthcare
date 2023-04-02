@@ -10,7 +10,7 @@ import java.io.IOException;
 public class WellBiingApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(WellBiingApplication.class.getResource("patient.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(WellBiingApplication.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1366, 768);
         stage.setTitle("WellBiing Healthcare Management ");
         stage.setScene(scene);
@@ -19,7 +19,6 @@ public class WellBiingApplication extends Application {
 //        stage.setMinHeight(1080);
 //        stage.setMinWidth(1920);
         stage.setMaximized(true);
-        stage.setFullScreen(true);
         stage.show();
     }
 
