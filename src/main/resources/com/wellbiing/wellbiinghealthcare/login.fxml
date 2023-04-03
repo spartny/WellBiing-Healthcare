@@ -35,13 +35,24 @@
                   <Font name="Leelawadee UI Bold" size="30.0" />
                </font>
             </Label>
-            <Button id="loginButton" fx:id="loginButton" layoutX="185.0" layoutY="441.0" mnemonicParsing="false" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="50.0" prefWidth="160.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Login">
+            <Button id="login" fx:id="login" layoutX="185.0" layoutY="441.0" mnemonicParsing="false" onAction="#onLoginButtonClick" onMouseDragEntered="#ButtonHoverStart" onMouseDragExited="#ButtonHoverEnd" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="50.0" prefWidth="160.0" style="-fx-background-radius: 50; -fx-background-color: white;" text="Login">
                <font>
                   <Font name="Leelawadee UI Bold" size="28.0" />
                </font>
             </Button>
-            <PasswordField id="passwordfield" fx:id="passwordfield" layoutX="190.0" layoutY="310.0" prefHeight="40.0" prefWidth="300.0" style="-fx-background-radius: 20;" />
-            <TextField id="textfieldUsername" fx:id="textfieldUsername" layoutX="190.0" layoutY="236.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" style="-fx-background-radius: 20;" />
+            <PasswordField id="password" fx:id="password" layoutX="190.0" layoutY="310.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-background-radius: 20;">
+               <font>
+                  <Font name="Leelawadee UI" size="20.0" />
+               </font></PasswordField>
+            <TextField id="username" fx:id="username" layoutX="190.0" layoutY="236.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Username" style="-fx-background-radius: 20;">
+               <font>
+                  <Font name="Leelawadee UI" size="20.0" />
+               </font></TextField>
+            <Label id="invalid" fx:id="invalid" layoutX="236.0" layoutY="184.0" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font name="Leelawadee UI" size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Label layoutX="995.0" layoutY="212.0" prefHeight="382.0" prefWidth="441.0" text="Store Electronic Medical &#10;Records in an&#10;Efficient, Secure, and&#10;Robust Management&#10;System" textAlignment="RIGHT" textFill="WHITE">
