@@ -45,7 +45,10 @@ public class DoctorController {
     @FXML
     void ButtonHoverStart(MouseEvent event) {
         Button b = (Button)event.getSource();
+        b.setStyle("-fx-font-size: 30");
         b.setStyle("-fx-background-color: #a4adb7");
+//        b.setStyle("fx-background-image: url('assets\\home.png')");
+
 
     }
 
