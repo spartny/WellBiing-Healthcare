@@ -15,71 +15,11 @@
     <children>
         <Pane prefHeight="780.0" prefWidth="1535.0">
             <children>
-            <AnchorPane fx:id="Medication" disable="true" layoutX="500.0" layoutY="200.0" opacity="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: Green;" />
-            <Pane fx:id="labTestPane" disable="true" layoutX="450.0" layoutY="200.0" opacity="0.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: red;" />
             <ImageView fitHeight="1707.0" fitWidth="1535.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@assets/bg.png" />
                </image>
             </ImageView>
-            <Pane fx:id="overviewPane" layoutX="447.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
-               <children>
-                      <Text fill="#075d5d" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Checkup" textAlignment="CENTER" wrappingWidth="274.8287353515626">
-                          <font>
-                              <Font name="Leelawadee UI Bold" size="25.0" />
-                          </font>
-                      </Text>
-                      <Text fill="#075d5d" layoutX="260.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Treatment" textAlignment="CENTER" wrappingWidth="290.07159423828125">
-                          <font>
-                              <Font name="Leelawadee UI Bold" size="26.0" />
-                          </font>
-                      </Text>
-                      <Text fill="#075d5d" layoutX="278.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing Medication" textAlignment="CENTER" wrappingWidth="290.07159423828136">
-                          <font>
-                              <Font name="Leelawadee UI Bold" size="26.0" />
-                          </font>
-                      </Text>
-                      <Text layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="274.8287353515626">
-                     <font>
-                        <Font name="Leelawadee UI" size="30.0" />
-                     </font></Text>
-                      <Text fill="#075d5d" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allergies" textAlignment="CENTER" wrappingWidth="550.0">
-                          <font>
-                              <Font name="Leelawadee UI Bold" size="26.0" />
-                          </font>
-                      </Text>
-                      <Text fill="#075d5d" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Date" textAlignment="CENTER" wrappingWidth="281.765625">
-                          <font>
-                              <Font name="Leelawadee UI Bold" size="26.0" />
-                          </font>
-                      </Text>
-                  <Text layoutX="260.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="290.07159423828136">
-                     <font>
-                        <Font name="Leelawadee UI" size="30.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="260.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="290.07159423828125">
-                     <font>
-                        <Font name="Leelawadee UI" size="30.0" />
-                     </font>
-                  </Text>
-                  <Text layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="550.0">
-                     <font>
-                        <Font name="Leelawadee UI" size="30.0" />
-                     </font>
-                  </Text>
-                  <Text layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Overview" textAlignment="CENTER" wrappingWidth="550.0">
-                     <font>
-                        <Font name="Leelawadee UI Bold" size="40.0" />
-                     </font>
-                  </Text>
-                  <Text layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="274.8287353515626">
-                     <font>
-                        <Font name="Leelawadee UI" size="30.0" />
-                     </font>
-                  </Text>
-               </children>
-            </Pane>
             <Pane layoutX="1022.0" layoutY="112.0" prefHeight="641.0" prefWidth="491.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
                       <Text layoutX="168.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ANUJ JAIN">
@@ -142,22 +82,27 @@
                         <Font name="Leelawadee UI Bold" size="36.0" />
                     </font></Text>
             <Pane layoutY="90.0" prefHeight="690.0" prefWidth="420.0" style="-fx-background-color: white;">
-                      <Button id="LabTest" fx:id="labTest" alignment="TOP_LEFT" layoutX="150.0" layoutY="130.0" mnemonicParsing="false" onAction="#LabTest" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #ffff;" text="Lab Test" textFill="#075d5d">
+                      <Button fx:id="medication" alignment="TOP_CENTER" layoutY="225.0" mnemonicParsing="false" onAction="#MedicationOpen" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Medication" textFill="#075d5d">
+                          <font>
+                              <Font name="Leelawadee UI" size="26.0" />
+                          </font>
+                      </Button>
+                      <Button id="LabTest" fx:id="labTest" alignment="TOP_CENTER" layoutY="130.0" mnemonicParsing="false" onAction="#LabTest" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff;" text="Lab Test" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
                       </Button>
-                      <Button alignment="TOP_LEFT" layoutX="150.0" layoutY="330.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #ffff;" text="Operations" textFill="#075d5d">
+                      <Button alignment="TOP_CENTER" layoutY="330.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff;" text="Operations" textFill="#075d5d">
                           <font>
                               <Font name="System Bold" size="26.0" />
                           </font>
                       </Button>
-                      <Button alignment="TOP_LEFT" layoutX="150.0" layoutY="520.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Profile" textFill="#075d5d">
+                      <Button alignment="TOP_CENTER" layoutY="520.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Profile" textFill="#075d5d">
                           <font>
                               <Font size="26.0" />
                           </font>
                       </Button>
-                      <Button alignment="TOP_LEFT" layoutX="150.0" layoutY="607.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Log Out" textFill="#075d5d">
+                      <Button alignment="TOP_CENTER" layoutY="607.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Log Out" textFill="#075d5d">
                           <font>
                               <Font size="26.0" />
                           </font>
@@ -182,18 +127,13 @@
                         <Image url="@assets/sign-out.png" />
                      </image>
                   </ImageView>
-                      <Button alignment="TOP_LEFT" layoutX="150.0" layoutY="230.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Medication" textFill="#075d5d">
-                          <font>
-                              <Font name="Leelawadee UI" size="26.0" />
-                          </font>
-                      </Button>
-                      <Button alignment="TOP_LEFT" layoutX="150.0" layoutY="430.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #ffff;" text="Treatments" textFill="#075d5d">
+                      <Button alignment="TOP_CENTER" layoutY="430.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff;" text="Treatments" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
                       </Button>
                   <Separator layoutX="-3.0" layoutY="519.0" prefHeight="1.0" prefWidth="426.0" style="-fx-background-color: grey;" />
-                  <Button id="LabTest" fx:id="home" alignment="TOP_LEFT" layoutX="150.0" layoutY="38.0" mnemonicParsing="false" onAction="#HomeOpen" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #ffff;" text="Home" textFill="#075d5d">
+                  <Button id="LabTest" fx:id="home" alignment="TOP_CENTER" layoutY="27.0" mnemonicParsing="false" onAction="#HomeOpen" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff;" text="Home" textAlignment="RIGHT" textFill="#075d5d">
                      <font>
                         <Font name="Leelawadee UI Bold" size="26.0" />
                      </font>
@@ -209,6 +149,81 @@
                   </image>
                </ImageView>
             </Pane>
+            <Pane fx:id="overviewPane" disable="true" layoutX="447.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+               <children>
+                      <Text fill="#075d5d" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Checkup" textAlignment="CENTER" wrappingWidth="274.8287353515626">
+                          <font>
+                              <Font name="Leelawadee UI Bold" size="25.0" />
+                          </font>
+                      </Text>
+                      <Text fill="#075d5d" layoutX="260.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Treatment" textAlignment="CENTER" wrappingWidth="290.07159423828125">
+                          <font>
+                              <Font name="Leelawadee UI Bold" size="26.0" />
+                          </font>
+                      </Text>
+                      <Text fill="#075d5d" layoutX="278.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing Medication" textAlignment="CENTER" wrappingWidth="290.07159423828136">
+                          <font>
+                              <Font name="Leelawadee UI Bold" size="26.0" />
+                          </font>
+                      </Text>
+                      <Text layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="274.8287353515626">
+                     <font>
+                        <Font name="Leelawadee UI" size="30.0" />
+                     </font>
+                  </Text>
+                      <Text fill="#075d5d" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allergies" textAlignment="CENTER" wrappingWidth="550.0">
+                          <font>
+                              <Font name="Leelawadee UI Bold" size="26.0" />
+                          </font>
+                      </Text>
+                      <Text fill="#075d5d" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Date" textAlignment="CENTER" wrappingWidth="281.765625">
+                          <font>
+                              <Font name="Leelawadee UI Bold" size="26.0" />
+                          </font>
+                      </Text>
+                  <Text layoutX="260.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="290.07159423828136">
+                     <font>
+                        <Font name="Leelawadee UI" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="260.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="290.07159423828125">
+                     <font>
+                        <Font name="Leelawadee UI" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="550.0">
+                     <font>
+                        <Font name="Leelawadee UI" size="30.0" />
+                     </font>
+                  </Text>
+                  <Text layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Overview" textAlignment="CENTER" wrappingWidth="550.0">
+                     <font>
+                        <Font name="Leelawadee UI Bold" size="40.0" />
+                     </font>
+                  </Text>
+                  <Text layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="274.8287353515626">
+                     <font>
+                        <Font name="Leelawadee UI" size="30.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="labTestPane" disable="true" layoutX="447.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+               <children>
+                  <Text layoutX="200.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lab Test">
+                     <font>
+                        <Font name="Leelawadee UI Bold" size="26.0" />
+                     </font>
+                  </Text>
+               </children></Pane>
+            <AnchorPane fx:id="Medication" disable="true" layoutX="447.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: White; -fx-background-radius: 50;">
+               <children>
+                  <Text layoutX="229.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medication">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Text>
+               </children></AnchorPane>
             </children>
 
         </Pane>
