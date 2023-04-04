@@ -13,8 +13,11 @@ import java.io.IOException;
 public class LoginController {
     @FXML
     private Button login;
+    @FXML
     private TextField username;
+    @FXML
     private PasswordField password;
+    @FXML
     private Label invalid;
 
     @FXML
@@ -37,6 +40,8 @@ public class LoginController {
         checkCredentials();
     }
     private void checkCredentials() throws IOException {
+        username.toString();
+
         if ((username.getText().isEmpty()) && (password.getText().isEmpty())){
             invalid.setText("Invalid Credentials");
         }
