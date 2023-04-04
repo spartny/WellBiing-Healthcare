@@ -40,13 +40,18 @@ public class LoginController {
         checkCredentials();
     }
     private void checkCredentials() throws IOException {
-        username.toString();
+
+        Username = username.getText();
+        Password = password.getText();
 
         if ((username.getText().isEmpty()) && (password.getText().isEmpty())){
-            invalid.setText("Invalid Credentials");
+            invalid.setText("Enter Credentials");
         }
-//        Username = username.getText().toString();
-//        Password = password.getText().toString();
+
+        LoginJDBC db = new LoginJDBC();
+
+        db.showRecords();
+        db.checkPassword(Username, Password);
         WellBiingApplication w = new WellBiingApplication();
 
 
