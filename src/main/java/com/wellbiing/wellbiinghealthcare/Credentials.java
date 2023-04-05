@@ -1,11 +1,8 @@
 package com.wellbiing.wellbiinghealthcare;
 import org.mindrot.jbcrypt.BCrypt;
 public class Credentials {
-    public String password;
-
     String createHash(String password){
-        String hash = BCrypt.hashpw(password, BCrypt.gensalt(12));
-        return hash;
+        return BCrypt.hashpw(password, BCrypt.gensalt(12));
     }
     Boolean checkHash(String candidate, String hashed) {
         if (BCrypt.checkpw(candidate, hashed)) {

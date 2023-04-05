@@ -48,9 +48,14 @@
                <font>
                   <Font name="Leelawadee UI" size="20.0" />
                </font></TextField>
-            <Label id="invalid" fx:id="invalid" layoutX="236.0" layoutY="184.0" textAlignment="CENTER" textFill="RED">
+            <Label id="invalid" fx:id="invalid" accessibleText="invalid" alignment="CENTER" layoutX="-1.0" layoutY="184.0" prefHeight="27.0" prefWidth="523.0" textAlignment="CENTER" textFill="#c74b4b">
                <font>
-                  <Font name="Leelawadee UI" size="18.0" />
+                  <Font name="Leelawadee UI Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label id="valid" fx:id="valid" accessibleText="invalid" alignment="CENTER" layoutY="184.0" prefHeight="27.0" prefWidth="523.0" textAlignment="CENTER" textFill="#17d74d">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="20.0" />
                </font>
             </Label>
          </children>

@@ -16,7 +16,7 @@ public class LoginJDBC {
             ResultSet rs=ps.executeQuery();
             while(rs.next())
                 System.out.println(rs.getInt(1)+" "
-                        +rs.getString(2)+" "+rs.getBlob(3).toString());
+                        +rs.getString(2)+" "+rs.getString(3));
             con.close();
         }
         catch(Exception e){
@@ -24,7 +24,8 @@ public class LoginJDBC {
         }
 
     }
-    public void checkPassword(String username, String candidate){
+    public boolean checkPassword(String username, String candidate){
+        boolean result = false;
         try
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -35,19 +36,22 @@ public class LoginJDBC {
             ps.setString(1, username);
             ResultSet rs=ps.executeQuery();
 
-            System.out.println(rs.toString());
+            String hash = null;
+            String Candidate;
+
+            if (rs.next()) {
+                hash = rs.getString(1);
+            }
 
             Credentials c = new Credentials();
-            //return (c.checkHash(candidate, rs));
+            result = c.checkHash(candidate, hash);
 
-            while(rs.next())
-                System.out.println(rs.getInt(1)+" "
-                        +rs.getString(2)+" "+rs.getBlob(3).toString());
             con.close();
         }
         catch(Exception e){
             e.printStackTrace();
         }
+        return result;
     }
 
 

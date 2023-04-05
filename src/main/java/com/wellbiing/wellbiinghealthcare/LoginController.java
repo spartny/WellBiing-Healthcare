@@ -19,6 +19,8 @@ public class LoginController {
     private PasswordField password;
     @FXML
     private Label invalid;
+    @FXML
+    private Label valid;
 
     @FXML
     void ButtonHoverEnd(MouseEvent event) {
@@ -33,27 +35,44 @@ public class LoginController {
         b.setStyle("-fx-background-color: #a4adb7");
         b.setStyle(("-fx-background-radius: 50px"));
     }
-    private String Username;
-    private String Password;
+
     @FXML
     void onLoginButtonClick(ActionEvent event) throws IOException {
         checkCredentials();
     }
     private void checkCredentials() throws IOException {
+        String Username;
+        String Password;
 
         Username = username.getText();
         Password = password.getText();
 
         if ((username.getText().isEmpty()) && (password.getText().isEmpty())){
+            valid.setText("");
             invalid.setText("Enter Credentials");
         }
+        else if ((!Username.isEmpty()) && (!Password.isEmpty())) {
+            LoginJDBC db = new LoginJDBC();
+            WellBiingApplication w = new WellBiingApplication();
+            if (db.checkPassword(Username, Password)) {
+                invalid.setText("");
+                valid.setText("Login Successful!");
 
-        LoginJDBC db = new LoginJDBC();
+                if(Username.equals("Doctor")) {
+                    w.changeScene("doctor.fxml");
+                }
+                else {
+                    w.changeScene("patient.fxml");
+                }
+            }
+            else {
+                valid.setText("");
+                invalid.setText("Invalid Credentials!");
+            }
 
-        db.showRecords();
-        db.checkPassword(Username, Password);
-        WellBiingApplication w = new WellBiingApplication();
 
+
+        }
 
     }
 }
