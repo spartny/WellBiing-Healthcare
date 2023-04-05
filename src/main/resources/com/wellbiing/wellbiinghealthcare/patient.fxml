@@ -286,31 +286,31 @@
             </AnchorPane>
             <Pane fx:id="operationPane" disable="true" layoutX="447.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
-                  <Pane disable="true" layoutY="21.943359375" style="-fx-background-color: white; -fx-background-radius: 50;">
+                  <Pane layoutY="-2.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                      <children>
-                        <ScrollPane layoutY="253.056640625" prefHeight="318.0" prefWidth="550.0">
+                        <ScrollPane layoutY="275.0" prefHeight="318.0" prefWidth="550.0">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="535.0" />
+                              <AnchorPane layoutY="275.0" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="535.0" />
                            </content>
                         </ScrollPane>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Operation Record" textAlignment="CENTER" wrappingWidth="550.0">
+                        <Text layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Operation Record" textAlignment="CENTER" wrappingWidth="550.0">
                            <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                            </font>
                         </Text>
-                        <Text fill="#075d5d" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recent Operation" textAlignment="CENTER" wrappingWidth="550.0">
+                        <Text fill="#075d5d" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recent Operation" textAlignment="CENTER" wrappingWidth="550.0">
                            <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                            </font>
                         </Text>
-                        <TableView layoutY="107.056640625" prefHeight="100.0" prefWidth="550.0">
+                        <TableView layoutY="129.0" prefHeight="100.0" prefWidth="550.0">
                            <columns>
                               <TableColumn prefWidth="75.0" text="C1" />
                               <TableColumn prefWidth="75.0" text="C2" />
                            </columns>
                         </TableView>
-                        <Separator layoutX="11.0" layoutY="218.056640625" prefHeight="3.0" prefWidth="525.0" />
-                        <Text fill="#075d5d" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Past Records" textAlignment="CENTER" wrappingWidth="550.0">
+                        <Separator layoutX="11.0" layoutY="240.0" prefHeight="3.0" prefWidth="525.0" />
+                        <Text fill="#075d5d" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Past Records" textAlignment="CENTER" wrappingWidth="550.0">
                            <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                            </font>
@@ -321,31 +321,31 @@
             </Pane>
             <Pane fx:id="treatmentPane" disable="true" layoutX="447.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
-                  <Pane layoutY="21.943359375" style="-fx-background-color: white; -fx-background-radius: 50;">
+                  <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                      <children>
-                        <ScrollPane layoutY="253.056640625" prefHeight="318.0" prefWidth="550.0">
+                        <ScrollPane layoutY="275.0" prefHeight="318.0" prefWidth="550.0">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="535.0" />
+                              <AnchorPane layoutY="275.0" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="535.0" />
                            </content>
                         </ScrollPane>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Treatment Record" textAlignment="CENTER" wrappingWidth="550.0">
+                        <Text layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Treatment Record" textAlignment="CENTER" wrappingWidth="550.0">
                            <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                            </font>
                         </Text>
-                        <Text fill="#075d5d" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recent Treatment" textAlignment="CENTER" wrappingWidth="550.0">
+                        <Text fill="#075d5d" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recent Treatment" textAlignment="CENTER" wrappingWidth="550.0">
                            <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                            </font>
                         </Text>
-                        <TableView layoutY="107.056640625" prefHeight="100.0" prefWidth="550.0">
+                        <TableView layoutY="129.0" prefHeight="100.0" prefWidth="550.0">
                            <columns>
                               <TableColumn prefWidth="75.0" text="C1" />
                               <TableColumn prefWidth="75.0" text="C2" />
                            </columns>
                         </TableView>
-                        <Separator layoutX="11.0" layoutY="218.056640625" prefHeight="3.0" prefWidth="525.0" />
-                        <Text fill="#075d5d" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Past Records" textAlignment="CENTER" wrappingWidth="550.0">
+                        <Separator layoutX="11.0" layoutY="240.0" prefHeight="3.0" prefWidth="525.0" />
+                        <Text fill="#075d5d" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Past Records" textAlignment="CENTER" wrappingWidth="550.0">
                            <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                            </font>
