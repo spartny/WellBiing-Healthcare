@@ -1,7 +1,7 @@
 module com.wellbiing.wellbiinghealthcare {
     requires javafx.controls;
     requires javafx.fxml;
-    requires jbcrypt;
+//    requires jbcrypt;
     requires java.sql;
 
 

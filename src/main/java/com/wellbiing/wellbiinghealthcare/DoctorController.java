@@ -3,9 +3,14 @@ package com.wellbiing.wellbiinghealthcare;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
+import java.util.ArrayList;
 
 public class DoctorController {
 
@@ -16,10 +21,43 @@ public class DoctorController {
     private Button homeButton;
 
     @FXML
+    private AnchorPane homePane;
+
+    @FXML
+    private ComboBox<ArrayList<String>> labTestSelect;
+
+    @FXML
     private Button newPatientButton;
 
     @FXML
+    private AnchorPane newPatientPane;
+
+    @FXML
+    private TextField patientAddressField;
+
+    @FXML
+    private TextField patientContactField;
+
+    @FXML
+    private DatePicker patientDOBField;
+
+    @FXML
     private Button patientEntryButton;
+
+    @FXML
+    private Button patientEntryConfirm;
+
+    @FXML
+    private AnchorPane patientEntryPane;
+
+    @FXML
+    private TextField patientIdField;
+
+    @FXML
+    private TextField patientNameField;
+
+    @FXML
+    private TextField patientPasswordField;
 
     @FXML
     private Button signoutButton;
@@ -28,13 +66,11 @@ public class DoctorController {
     private Button updPatientButton;
 
     @FXML
-    private AnchorPane homePane;
+    private Button updPatientButton1;
 
     @FXML
-    private AnchorPane newPatientPane;
+    private Button newPatientConfirm;
 
-    @FXML
-    private AnchorPane patientEntryPane;
 
     @FXML
     void ButtonHoverEnd(MouseEvent event) {
