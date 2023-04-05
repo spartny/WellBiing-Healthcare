@@ -44,39 +44,37 @@ public class DoctorController {
 
     @FXML
     void ButtonHoverStart(MouseEvent event) {
-        Button b = (Button)event.getSource();
+        Button b = (Button) event.getSource();
         b.setStyle("-fx-font-size: 30");
         b.setStyle("-fx-background-color: #a4adb7");
 //        b.setStyle("fx-background-image: url('assets\\home.png')");
-
-
     }
 
     public void closeAndDisablePanes(){
-        homePane.setStyle("-fx-opacity : 0.0");
+        homePane.setOpacity(0);
         homePane.setDisable(true);
-        newPatientPane.setStyle("-fx-opacity: 0.0");
+        newPatientPane.setOpacity(0);
         newPatientPane.setDisable(true);
-        patientEntryPane.setStyle("-fx-opacity : 0.0");
+        patientEntryPane.setOpacity(0);
         homePane.setDisable(true);
     }
 
     public void HomeOpen(ActionEvent actionEvent) {
         closeAndDisablePanes();
         homePane.setDisable(false);
-        homePane.setStyle("-fx-opacity: 1.0");
+        homePane.setOpacity(1);
     }
 
     public void NewPatientOpen(ActionEvent actionEvent) {
         closeAndDisablePanes();
         newPatientPane.setDisable(false);
-        newPatientPane.setStyle("-fx-opacity: 1.0");
+        newPatientPane.setOpacity(1);
     }
 
     public void PatientEntryOpen(ActionEvent actionEvent) {
         closeAndDisablePanes();
         patientEntryPane.setDisable(false);
-        patientEntryPane.setStyle("-fx-opacity: 1.0");
+        patientEntryPane.setOpacity(10);
     }
 }
 
