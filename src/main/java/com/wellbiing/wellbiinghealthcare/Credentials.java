@@ -1,18 +1,18 @@
 package com.wellbiing.wellbiinghealthcare;
-import org.mindrot.jbcrypt.BCrypt;
-public class Credentials {
-    String createHash(String password){
-        return BCrypt.hashpw(password, BCrypt.gensalt(12));
-    }
-    Boolean checkHash(String candidate, String hashed) {
-        if (BCrypt.checkpw(candidate, hashed)) {
-            System.out.println("It matches");
-            return true;
-        } else {
-            System.out.println("It does not match");
-            return false;
-        }
-    }
+//import org.mindrot.jbcrypt.BCrypt;
+    public class Credentials {
+//    String createHash(String password){
+//        return BCrypt.hashpw(password, BCrypt.gensalt(12));
+//    }
+//    Boolean checkHash(String candidate, String hashed) {
+//        if (BCrypt.checkpw(candidate, hashed)) {
+//            System.out.println("It matches");
+//            return true;
+//        } else {
+//            System.out.println("It does not match");
+//            return false;
+//        }
+//    }
 
 //    public static void main(String[] args) {
 //        String password = "pass123";

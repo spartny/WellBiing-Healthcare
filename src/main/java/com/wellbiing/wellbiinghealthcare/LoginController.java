@@ -21,6 +21,7 @@ public class LoginController {
     private Label invalid;
     @FXML
     private Label valid;
+    String Username;
 
     @FXML
     void ButtonHoverEnd(MouseEvent event) {
@@ -41,7 +42,7 @@ public class LoginController {
         checkCredentials();
     }
     private void checkCredentials() throws IOException {
-        String Username;
+
         String Password;
 
         Username = username.getText();

@@ -44,7 +44,7 @@ public class LoginJDBC {
             }
 
             Credentials c = new Credentials();
-            result = c.checkHash(candidate, hash);
+//            result = c.checkHash(candidate, hash);
 
             con.close();
         }

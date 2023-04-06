@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
@@ -25,11 +26,6 @@
             </ImageView>
             <Pane layoutX="1030.0" layoutY="115.0" prefHeight="641.0" prefWidth="491.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
-                      <Text layoutX="168.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ANUJ JAIN">
-                          <font>
-                              <Font name="System Bold" size="30.0" />
-                          </font>
-                  </Text>
                       <Text fill="#075d5d" layoutX="247.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Weight" textAlignment="CENTER" wrappingWidth="243.16552734375">
                           <font>
                               <Font name="Leelawadee UI" size="26.0" />
@@ -55,28 +51,33 @@
                               <Image url="@assets/user.png" />
                           </image>
                       </ImageView>
-                  <Text layoutX="241.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="250.0">
-                     <font>
-                        <Font name="Leelawadee UI" size="30.0" />
-                     </font>
-                  </Text>
                   <Separator layoutX="242.0" layoutY="279.0" orientation="VERTICAL" prefHeight="293.0" prefWidth="7.0" />
                   <Separator layoutX="80.0" layoutY="415.0" prefHeight="13.0" prefWidth="369.0" />
-                  <Text layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="250.0">
+                  <Label fx:id="username" alignment="CENTER" layoutY="169.0" prefHeight="48.0" prefWidth="491.0">
                      <font>
-                        <Font name="Leelawadee UI" size="30.0" />
+                        <Font name="System Bold" size="26.0" />
                      </font>
-                  </Text>
-                  <Text layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="250.0">
+                  </Label>
+                  <Label fx:id="age" layoutY="345.0" prefHeight="48.0" prefWidth="243.0">
                      <font>
-                        <Font name="Leelawadee UI" size="30.0" />
+                        <Font size="30.0" />
                      </font>
-                  </Text>
-                  <Text layoutX="241.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="250.0">
+                  </Label>
+                  <Label fx:id="height" layoutY="495.0" prefHeight="48.0" prefWidth="243.0">
                      <font>
-                        <Font name="Leelawadee UI" size="30.0" />
+                        <Font size="30.0" />
                      </font>
-                  </Text>
+                  </Label>
+                  <Label fx:id="bloodGroup" layoutX="245.0" layoutY="345.0" prefHeight="48.0" prefWidth="243.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="weight" layoutX="245.0" layoutY="495.0" prefHeight="48.0" prefWidth="243.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#075d5d85" height="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #075d5d;" width="1535.0" />
@@ -161,56 +162,46 @@
                                     <Font name="Leelawadee UI Bold" size="25.0" />
                                 </font>
                             </Text>
+                        <Label fx:id="checkup" alignment="CENTER" layoutY="135.0" prefHeight="40.0" prefWidth="265.0" text="Label">
+                           <font>
+                              <Font name="Leelawadee UI" size="26.0" />
+                           </font>
+                        </Label>
                             <Text fill="#075d5d" layoutX="260.0" layoutY="115.107421875" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Treatment" textAlignment="CENTER" wrappingWidth="290.07159423828125">
                                 <font>
                                     <Font name="Leelawadee UI Bold" size="26.0" />
                                 </font>
                             </Text>
-                            <Text fill="#075d5d" layoutX="278.0" layoutY="265.107421875" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing Medication" textAlignment="CENTER" wrappingWidth="290.07159423828136">
+                            <Text fill="#075d5d" layoutX="278.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ongoing Medication" textAlignment="CENTER" wrappingWidth="290.07159423828136">
                                 <font>
                                     <Font name="Leelawadee UI Bold" size="26.0" />
                                 </font>
                             </Text>
-                            <Text layoutY="160.791015625" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="274.8287353515626">
-                           <font>
-                              <Font name="Leelawadee UI" size="30.0" />
-                           </font>
-                        </Text>
-                            <Text fill="#075d5d" layoutY="415.107421875" strokeType="OUTSIDE" strokeWidth="0.0" text="Allergies" textAlignment="CENTER" wrappingWidth="550.0">
+                            <Text fill="#075d5d" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allergies" textAlignment="CENTER" wrappingWidth="265.0">
                                 <font>
                                     <Font name="Leelawadee UI Bold" size="26.0" />
                                 </font>
                             </Text>
-                            <Text fill="#075d5d" layoutY="265.107421875" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Date" textAlignment="CENTER" wrappingWidth="281.765625">
-                                <font>
-                                    <Font name="Leelawadee UI Bold" size="26.0" />
-                                </font>
-                            </Text>
-                        <Text layoutX="260.0" layoutY="158.791015625" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="290.07159423828136">
-                           <font>
-                              <Font name="Leelawadee UI" size="30.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="260.0" layoutY="310.791015625" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="290.07159423828125">
-                           <font>
-                              <Font name="Leelawadee UI" size="30.0" />
-                           </font>
-                        </Text>
-                        <Text layoutY="460.791015625" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="550.0">
-                           <font>
-                              <Font name="Leelawadee UI" size="30.0" />
-                           </font>
-                        </Text>
                         <Text layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Overview" textAlignment="CENTER" wrappingWidth="550.0">
                            <font>
                               <Font name="Leelawadee UI Bold" size="40.0" />
                            </font>
                         </Text>
-                        <Text layoutY="310.791015625" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="274.8287353515626">
+                        <Label fx:id="treatment" alignment="CENTER" layoutX="270.0" layoutY="145.0" prefHeight="40.0" prefWidth="265.0" text="Label">
                            <font>
-                              <Font name="Leelawadee UI" size="30.0" />
+                              <Font name="Leelawadee UI" size="26.0" />
                            </font>
-                        </Text>
+                        </Label>
+                        <Label fx:id="medication" alignment="CENTER" layoutX="270.0" layoutY="285.0" prefHeight="40.0" prefWidth="265.0" text="Label">
+                           <font>
+                              <Font name="Leelawadee UI" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="alleregies" alignment="CENTER" layoutY="285.0" prefHeight="40.0" prefWidth="265.0" text="Label">
+                           <font>
+                              <Font name="Leelawadee UI" size="26.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                </children>
