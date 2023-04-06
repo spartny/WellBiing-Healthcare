@@ -2,11 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -68,7 +70,7 @@
       </Text>
       <AnchorPane id="newPatientPane" fx:id="newPatientPane" disable="true" layoutX="421.0" layoutY="77.0" minHeight="0.0" minWidth="0.0" opacity="0.0" prefHeight="700.0" prefWidth="1100.0">
          <children>
-            <AnchorPane layoutX="30.0" layoutY="150.0" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
+            <AnchorPane layoutX="30.0" layoutY="150.0" prefHeight="457.0" prefWidth="400.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
                <children>
                   <Text layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Patient Info" textAlignment="CENTER" wrappingWidth="393.87005615234375">
                      <font>
@@ -99,6 +101,26 @@
                         <Font name="Leelawadee UI" size="19.0" />
                      </font>
                   </Text>
+                  <Text layoutX="10.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number" textAlignment="CENTER" wrappingWidth="199.469970703125">
+                     <font>
+                        <Font name="Leelawadee UI" size="19.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="patientContactField" layoutX="220.0" layoutY="260.0" promptText="Enter Address" />
+                  <Text layoutX="10.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth" textAlignment="CENTER" wrappingWidth="199.469970703125">
+                     <font>
+                        <Font name="Leelawadee UI" size="19.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="10.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth" textAlignment="CENTER" wrappingWidth="199.469970703125">
+                     <font>
+                        <Font name="Leelawadee UI" size="19.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="newPatientConfirmButton" layoutX="135.0" layoutY="397.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="131.0" text="Button" />
+                  <DatePicker editable="false" layoutX="220.0" layoutY="300.0" prefHeight="25.0" prefWidth="150.0" promptText="DOB" />
+                  <RadioButton layoutX="280.0" layoutY="340.0" mnemonicParsing="false" text="Female" />
+                  <RadioButton layoutX="220.0" layoutY="340.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="58.0" text="Male" />
                </children>
             </AnchorPane>
          </children>
@@ -122,28 +144,31 @@
                      <font>
                         <Font name="Leelawadee UI" size="18.0" />
                      </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="patientEntryGroup" />
+                     </toggleGroup>
                   </RadioButton>
-                  <RadioButton layoutX="130.0" layoutY="150.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="105.0" text="Lab Test ">
+                  <RadioButton layoutX="130.0" layoutY="150.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="105.0" text="Lab Test " toggleGroup="$patientEntryGroup">
                      <font>
                         <Font name="Leelawadee UI" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton layoutX="240.0" layoutY="150.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" text="Medication">
+                  <RadioButton layoutX="240.0" layoutY="150.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" text="Medication" toggleGroup="$patientEntryGroup">
                      <font>
                         <Font name="Leelawadee UI" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton layoutX="10.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="121.0" text="Treatment">
+                  <RadioButton layoutX="10.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="121.0" text="Treatment" toggleGroup="$patientEntryGroup">
                      <font>
                         <Font name="Leelawadee UI" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton layoutX="130.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Operation">
+                  <RadioButton layoutX="130.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Operation" toggleGroup="$patientEntryGroup">
                      <font>
                         <Font name="Leelawadee UI" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton layoutX="250.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" text="Allergies">
+                  <RadioButton layoutX="250.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" text="Allergies" toggleGroup="$patientEntryGroup">
                      <font>
                         <Font name="Leelawadee UI" size="18.0" />
                      </font>
