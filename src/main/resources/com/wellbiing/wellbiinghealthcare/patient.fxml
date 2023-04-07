@@ -21,7 +21,7 @@
             <children>
             <ImageView fitHeight="1707.0" fitWidth="1535.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@assets/bg.png" />
+                  <Image url="@assets/new_bg.png" />
                </image>
             </ImageView>
             <Pane layoutX="1030.0" layoutY="115.0" prefHeight="641.0" prefWidth="491.0" style="-fx-background-color: white; -fx-background-radius: 50;">
@@ -85,69 +85,69 @@
                     <font>
                         <Font name="Leelawadee UI Bold" size="36.0" />
                     </font></Text>
-            <Pane layoutY="90.0" prefHeight="690.0" prefWidth="420.0" style="-fx-background-color: white;">
-                      <Button fx:id="medicationButton" alignment="TOP_CENTER" layoutY="225.0" mnemonicParsing="false" onAction="#MedicationOpen" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Medication" textFill="#075d5d">
+            <Pane layoutY="90.0" prefHeight="690.0" prefWidth="330.0" style="-fx-background-color: white;">
+                      <Button fx:id="medication" alignment="TOP_CENTER" layoutY="225.0" mnemonicParsing="false" onAction="#MedicationOpen" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Medication" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI" size="26.0" />
                           </font>
                       </Button>
-                      <Button id="LabTest" fx:id="labTest" alignment="TOP_CENTER" layoutY="130.0" mnemonicParsing="false" onAction="#LabTest" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff;" text="Lab Test" textFill="#075d5d">
+                      <Button id="LabTest" fx:id="labTest" alignment="TOP_CENTER" layoutY="130.0" mnemonicParsing="false" onAction="#LabTest" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Lab Test" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
                       </Button>
-                      <Button fx:id="operation" alignment="TOP_CENTER" layoutY="330.0" mnemonicParsing="false" onAction="#OperationOpen" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff;" text="Operations" textFill="#075d5d">
+                      <Button fx:id="operation" alignment="TOP_CENTER" layoutY="330.0" mnemonicParsing="false" onAction="#OperationOpen" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Operations" textFill="#075d5d">
                           <font>
                               <Font name="System Bold" size="26.0" />
                           </font>
                       </Button>
-                      <Button alignment="TOP_CENTER" layoutY="520.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Profile" textFill="#075d5d">
+                      <Button alignment="TOP_CENTER" layoutY="539.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Profile" textFill="#075d5d">
                           <font>
                               <Font size="26.0" />
                           </font>
                       </Button>
-                      <Button alignment="TOP_CENTER" layoutY="607.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Log Out" textFill="#075d5d">
+                      <Button alignment="TOP_CENTER" layoutY="610.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Log Out" textFill="#075d5d">
                           <font>
                               <Font size="26.0" />
                           </font>
                       </Button>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="70.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="29.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/lab-tests.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="70.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="27.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/medication.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="70.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="27.0" layoutY="539.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/profile.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="70.0" layoutY="615.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="29.0" layoutY="610.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/sign-out.png" />
                      </image>
                   </ImageView>
-                      <Button fx:id="treatments" alignment="TOP_CENTER" layoutY="430.0" mnemonicParsing="false" onAction="#TreatmentOpen" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff;" text="Treatments" textFill="#075d5d">
+                      <Button fx:id="treatments" alignment="TOP_CENTER" layoutY="430.0" mnemonicParsing="false" onAction="#TreatmentOpen" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Treatments" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
                       </Button>
-                  <Separator layoutX="-3.0" layoutY="519.0" prefHeight="1.0" prefWidth="426.0" style="-fx-background-color: grey;" />
-                  <Button id="LabTest" fx:id="home" alignment="TOP_CENTER" layoutY="27.0" mnemonicParsing="false" onAction="#HomeOpen" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff;" text="Home" textAlignment="RIGHT" textFill="#075d5d">
+                  <Separator layoutX="15.0" layoutY="519.0" prefHeight="1.0" prefWidth="300.0" style="-fx-background-color: grey;" />
+                  <Button id="LabTest" fx:id="home" alignment="TOP_CENTER" layoutY="27.0" mnemonicParsing="false" onAction="#HomeOpen" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Home" textAlignment="RIGHT" textFill="#075d5d">
                      <font>
                         <Font name="Leelawadee UI Bold" size="26.0" />
                      </font>
                   </Button>
-               <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="70.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="29.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@assets/operation.png" />
                   </image>
                </ImageView>
-               <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="70.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="27.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@assets/home.png" />
                   </image>
