@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DoctorController {
@@ -148,10 +149,8 @@ public class DoctorController {
     @FXML
     private RadioButton vitalsRadio;
 
-
-
-
-
+    @FXML
+    private TextField patientEntryIdField;
 
     @FXML
     void ButtonHoverEnd(MouseEvent event) {
@@ -269,9 +268,33 @@ public class DoctorController {
             allergiesEntryPane.setOpacity(1);
         }
 
-
-
-
     }
+
+    public void PatientEntryConfirm(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        Toggle selectedToggle = patientEntryGroup.getSelectedToggle();
+        DoctorJDBC jdbc = new DoctorJDBC();
+        String patientId = patientEntryIdField.getText();
+
+
+        if (selectedToggle == vitalsRadio){
+            jdbc.EnterVitals();
+        }
+        if (selectedToggle == labTestRadio){
+            jdbc.EnterTest();
+        }
+        if (selectedToggle == medicationRadio){
+            jdbc.EnterMedication();
+        }
+        if (selectedToggle == treatmentRadio){
+            jdbc.EnterTreatments();
+        }
+        if (selectedToggle == operationRadio){
+            jdbc.EnterOperation();
+        }
+        if (selectedToggle == allergiesRadio){
+            jdbc.EnterAllergies();
+        }
+    }
+
 }
 
