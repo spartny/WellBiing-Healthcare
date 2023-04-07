@@ -48,7 +48,7 @@ public class PatientController implements Initializable {
 
 
     String Age;
-    String Username ="Anuj";
+    String Username ="Patient1";
     String Allergies[];
     String Medication[];
 
@@ -74,6 +74,8 @@ public class PatientController implements Initializable {
         labTestPane.setDisable(false);
 
     }
+
+
 
     @FXML
     void HomeOpen(ActionEvent event){
@@ -104,64 +106,67 @@ public class PatientController implements Initializable {
         operationPane.setDisable(false);
 
     }
-    public void setAge(){
-        PatientJDBC p = new PatientJDBC();
-        Age = p.Age(Username);
-        age.setText(Age);
+    public void setAge(PatientJDBC p){
+        age.setText(p.Age);
 
     }
 
    public void setUsername(){
-        LoginController l = new LoginController();
-        Username = l.Username;
-        username.setText(Username);
+//        LoginController l = new LoginController();
+//        Username = l.Username;
 
    }
-   public  void SetHeight(){
-       PatientJDBC p = new PatientJDBC();
+   public  void SetHeight(PatientJDBC p){
+
        height.setText(p.Height);
    }
-    public  void SetWeight(){
-        PatientJDBC p = new PatientJDBC();
+    public  void SetWeight(PatientJDBC p){
+
         weight.setText(p.Weight);
     }
-    public  void SetBlood_Group(){
-        PatientJDBC p = new PatientJDBC();
+    public  void SetBlood_Group(PatientJDBC p){
+
         bloodGroup.setText(p.Blood_group);
     }
-    public void SetAllergies(){
-        PatientJDBC p = new PatientJDBC();
+    public void SetAllergies(PatientJDBC p){
+
         for(int i = 0; i< p.allergies.length; i++) {
             Allergies[i] = p.allergies[i];
         }
     }
-    public void  SetTreatment(){
-        PatientJDBC p = new PatientJDBC();
+    public void  SetTreatment(PatientJDBC p){
         treatment.setText(p.Treatment);
     }
-    public void SetCheckup(){
-        PatientJDBC p = new PatientJDBC();
+    public void SetCheckup(PatientJDBC p){
+
         checkup.setText(p.Checkup);
     }
-    public void SetMedication(){
-        PatientJDBC p = new PatientJDBC();
+    public void SetMedication(PatientJDBC p){
+
         for(int j = 0; j< p.medication.length; j++) {
            Medication[j] = p.medication[j];
         }
+    }
+    public void SetName(PatientJDBC p){
+        username.setText(p.Username);
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        PatientJDBC p = new PatientJDBC();
+        p.GetInfo(Username);
         setUsername();
-        setAge();
-        SetHeight();
-        SetWeight();
-        SetBlood_Group();
-        SetAllergies();
-        SetTreatment();
-        SetCheckup();
-        SetMedication();
+        setAge(p);
+        SetHeight(p);
+        SetWeight(p);
+        SetBlood_Group(p);
+        //SetAllergies(p);
+        SetTreatment(p);
+        SetCheckup(p);
+        //SetMedication(p);
+        SetName(p);
 
 
     }

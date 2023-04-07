@@ -58,22 +58,22 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label fx:id="age" layoutY="345.0" prefHeight="48.0" prefWidth="243.0">
+                  <Label fx:id="age" alignment="CENTER" layoutY="345.0" prefHeight="48.0" prefWidth="243.0">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="height" layoutY="495.0" prefHeight="48.0" prefWidth="243.0">
+                  <Label fx:id="height" alignment="CENTER" layoutY="495.0" prefHeight="48.0" prefWidth="243.0">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="bloodGroup" layoutX="245.0" layoutY="345.0" prefHeight="48.0" prefWidth="243.0">
+                  <Label fx:id="bloodGroup" alignment="CENTER" layoutX="245.0" layoutY="345.0" prefHeight="48.0" prefWidth="243.0">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="weight" layoutX="245.0" layoutY="495.0" prefHeight="48.0" prefWidth="243.0">
+                  <Label fx:id="weight" alignment="CENTER" layoutX="245.0" layoutY="495.0" prefHeight="48.0" prefWidth="243.0">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -86,7 +86,7 @@
                         <Font name="Leelawadee UI Bold" size="36.0" />
                     </font></Text>
             <Pane layoutY="90.0" prefHeight="690.0" prefWidth="420.0" style="-fx-background-color: white;">
-                      <Button fx:id="medication" alignment="TOP_CENTER" layoutY="225.0" mnemonicParsing="false" onAction="#MedicationOpen" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Medication" textFill="#075d5d">
+                      <Button fx:id="medicationButton" alignment="TOP_CENTER" layoutY="225.0" mnemonicParsing="false" onAction="#MedicationOpen" prefHeight="71.0" prefWidth="420.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Medication" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI" size="26.0" />
                           </font>
