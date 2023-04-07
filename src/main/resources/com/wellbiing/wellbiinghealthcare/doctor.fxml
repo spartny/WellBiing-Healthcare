@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -26,45 +28,82 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#075d5d" height="90.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="1536.0" />
       <AnchorPane layoutY="87.0" minHeight="0.0" minWidth="0.0" prefHeight="695.0" prefWidth="330.0" style="-fx-background-color: #ffff;">
          <children>
-            <ImageView fitHeight="58.0" fitWidth="84.0" layoutX="152.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/home.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="homeButton" alignment="BASELINE_LEFT" layoutX="1.0" layoutY="97.0" mnemonicParsing="false" onAction="#HomeOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-image: url('assets\home.png'); -fx-background-color: transparent; ba: ;" text="Home" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="97.0">
+            <Button fx:id="homeButton" alignment="BASELINE_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#HomeOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-image: url('assets\home.png'); -fx-background-color: transparent; ba: ;" text="Home" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="30.0">
                <font>
                   <Font name="Leelawadee UI Bold" size="26.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
             </Button>
-            <Button fx:id="newPatientButton" alignment="BASELINE_LEFT" layoutX="-1.0" layoutY="165.0" mnemonicParsing="false" onAction="#NewPatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-color: #ffff;" text="New Patient" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="165.0">
+            <Button fx:id="newPatientButton" alignment="BASELINE_LEFT" layoutY="98.0" mnemonicParsing="false" onAction="#NewPatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-color: #ffff;" text="New Patient" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="98.0">
                <font>
                   <Font name="Leelawadee UI Bold" size="26.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
             </Button>
-            <Button fx:id="patientEntryButton" alignment="BASELINE_LEFT" layoutX="-1.0" layoutY="235.0" mnemonicParsing="false" onAction="#PatientEntryOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-color: #ffff;" text="Patient Entry" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="235.0">
+            <Button fx:id="patientEntryButton" alignment="BASELINE_LEFT" layoutY="168.0" mnemonicParsing="false" onAction="#PatientEntryOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-color: #ffff;" text="Patient Entry" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="168.0">
                <font>
                   <Font name="Leelawadee UI Bold" size="26.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
             </Button>
-            <Button fx:id="delPatientButton" alignment="BASELINE_LEFT" layoutX="-1.0" layoutY="304.0" mnemonicParsing="false" onAction="#DeletePatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="162.0" style="-fx-background-color: #ffff;" text="Delete Record" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="304.0">
+            <Button fx:id="delPatientButton" alignment="BASELINE_LEFT" layoutY="237.0" mnemonicParsing="false" onAction="#DeletePatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="162.0" style="-fx-background-color: #ffff;" text="Delete Record" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="237.0">
                <font>
                   <Font name="Leelawadee UI Bold" size="26.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
             </Button>
-            <Button fx:id="logOutButton" alignment="BASELINE_LEFT" layoutX="1.0" layoutY="551.0" mnemonicParsing="false" onAction="#LogOut" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="419.0" style="-fx-background-color: #ffff;" text="Log Out" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="551.0">
+            <Button fx:id="logOutButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="551.0" mnemonicParsing="false" onAction="#LogOut" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="419.0" style="-fx-background-color: #ffff;" text="Log Out" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="551.0">
                <font>
                   <Font name="Leelawadee UI Bold" size="26.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
             </Button>
-            <Button fx:id="updPatientButton" alignment="BASELINE_LEFT" layoutY="374.0" mnemonicParsing="false" onAction="#UpdatePatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-color: #ffff;" text="Update Record" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="374.0">
+            <Button fx:id="updPatientButton" alignment="BASELINE_LEFT" layoutY="307.0" mnemonicParsing="false" onAction="#UpdatePatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-color: #ffff;" text="Update Record" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="307.0">
                <font>
                   <Font name="Leelawadee UI Bold" size="26.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
             </Button>
-            <Button fx:id="updPatientButton1" alignment="BASELINE_LEFT" layoutY="449.0" mnemonicParsing="false" onAction="#SearchPatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="329.0" style="-fx-background-color: #ffff;" text="Search" textAlignment="CENTER" textFill="#075d5d">
+            <Button fx:id="updPatientButton1" alignment="BASELINE_LEFT" layoutY="382.0" mnemonicParsing="false" onAction="#SearchPatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Search" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="382.0">
                <font>
                   <Font name="Leelawadee UI Bold" size="26.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
             </Button>
          </children>
       </AnchorPane>
@@ -264,7 +303,7 @@
          <children>
             <AnchorPane layoutX="20.0" layoutY="125.0" prefHeight="300.0" prefWidth="342.0" style="-fx-background-color: #009999; -fx-background-radius: 50;">
                <children>
-                  <TextField layoutX="178.0" layoutY="96.0" prefHeight="25.0" prefWidth="175.0" />
+                  <TextField fx:id="patientEntryIdField" layoutX="178.0" layoutY="96.0" prefHeight="25.0" prefWidth="175.0" />
                   <Text fill="WHITE" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Record Entry" textAlignment="CENTER" wrappingWidth="373.8184814453125">
                      <font>
                         <Font name="Leelawadee UI Bold" size="30.0" />
@@ -285,27 +324,27 @@
                   </RadioButton>
                   <RadioButton fx:id="labTestRadio" layoutX="130.0" layoutY="150.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="105.0" text="Lab Test " textFill="WHITE" toggleGroup="$patientEntryGroup">
                      <font>
-                        <Font name="Leelawadee UI" size="18.0" />
+                        <Font name="Leelawadee UI Bold" size="18.0" />
                      </font>
                   </RadioButton>
                   <RadioButton fx:id="medicationRadio" layoutX="240.0" layoutY="150.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" text="Medication" textFill="WHITE" toggleGroup="$patientEntryGroup">
                      <font>
-                        <Font name="Leelawadee UI" size="18.0" />
+                        <Font name="Leelawadee UI Bold" size="18.0" />
                      </font>
                   </RadioButton>
                   <RadioButton fx:id="treatmentRadio" layoutX="10.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="121.0" text="Treatment" textFill="WHITE" toggleGroup="$patientEntryGroup">
                      <font>
-                        <Font name="Leelawadee UI" size="18.0" />
+                        <Font name="Leelawadee UI Bold" size="18.0" />
                      </font>
                   </RadioButton>
                   <RadioButton fx:id="operationRadio" layoutX="130.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Operation" textFill="WHITE" toggleGroup="$patientEntryGroup">
                      <font>
-                        <Font name="Leelawadee UI" size="18.0" />
+                        <Font name="Leelawadee UI Bold" size="18.0" />
                      </font>
                   </RadioButton>
                   <RadioButton fx:id="allergiesRadio" layoutX="250.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" text="Allergies" textFill="WHITE" toggleGroup="$patientEntryGroup">
                      <font>
-                        <Font name="Leelawadee UI" size="18.0" />
+                        <Font name="Leelawadee UI Bold" size="18.0" />
                      </font>
                   </RadioButton>
                   <Button fx:id="entrySelectButton" layoutX="149.0" layoutY="250.0" mnemonicParsing="false" onAction="#SelectEntry" prefHeight="35.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="Confirm">
@@ -315,7 +354,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="vitalsEntryPane" layoutX="440.0" layoutY="130.0" opacity="0.0" prefHeight="430.0" prefWidth="564.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
+            <AnchorPane fx:id="vitalsEntryPane" layoutX="440.0" layoutY="130.0" prefHeight="430.0" prefWidth="564.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
                <children>
                   <Text layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vitals Entry" textAlignment="CENTER" wrappingWidth="564.00341796875">
                      <font>
@@ -354,26 +393,6 @@
                   <TextField layoutX="420.0" layoutY="230.0" prefHeight="26.0" prefWidth="63.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="labTestEntryPane" disable="true" layoutX="440.0" layoutY="130.0" opacity="0.0" prefHeight="430.0" prefWidth="564.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
-               <children>
-                  <Text layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lab Test Entry" textAlignment="CENTER" wrappingWidth="564.00341796875">
-                     <font>
-                        <Font name="Leelawadee UI" size="26.0" />
-                     </font>
-                  </Text>
-                  <ComboBox fx:id="labTestSelect" layoutX="270.0" layoutY="150.0" prefWidth="150.0" promptText="Select Lab Test" />
-                  <Text layoutX="170.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lab Test">
-                     <font>
-                        <Font name="Leelawadee UI" size="20.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="170.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lab Test">
-                     <font>
-                        <Font name="Leelawadee UI" size="20.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
             <AnchorPane fx:id="treatmentEntryPane" layoutX="440.0" layoutY="130.0" opacity="0.0" prefHeight="430.0" prefWidth="564.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
                <children>
                   <Text layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Treatment Entry" textAlignment="CENTER" wrappingWidth="564.00341796875">
@@ -383,13 +402,76 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="operationEntryPane" layoutX="440.0" layoutY="130.0" opacity="0.0" prefHeight="430.0" prefWidth="564.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
+            <AnchorPane fx:id="labTestEntryPane" disable="true" layoutX="440.0" layoutY="130.0" opacity="0.0" prefHeight="430.0" prefWidth="564.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
                <children>
-                  <Text layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Operation Entry" textAlignment="CENTER" wrappingWidth="564.00341796875">
+                  <Text layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lab Test Entry" textAlignment="CENTER" wrappingWidth="564.00341796875">
                      <font>
                         <Font name="Leelawadee UI" size="26.0" />
                      </font>
                   </Text>
+                  <ComboBox fx:id="testSelect" layoutX="125.0" layoutY="118.0" prefHeight="26.0" prefWidth="131.0" promptText="Select Lab Test" />
+                  <Text layoutX="31.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lab Test">
+                     <font>
+                        <Font name="Leelawadee UI" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="282.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Test Type">
+                     <font>
+                        <Font name="Leelawadee UI" size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="testTypeField" layoutX="380.0" layoutY="119.0" />
+                  <Text layoutX="25.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+                     <font>
+                        <Font name="Leelawadee UI" size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="testDescription" layoutX="139.0" layoutY="187.0" prefHeight="26.0" prefWidth="131.0" />
+                  <Text layoutX="304.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cost">
+                     <font>
+                        <Font name="Leelawadee UI" size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="testCost" layoutX="380.0" layoutY="188.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="medicationEntryPane" layoutX="440.0" layoutY="125.0" opacity="0.0" prefHeight="430.0" prefWidth="564.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
+               <children>
+                  <Text layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medication Entry" textAlignment="CENTER" wrappingWidth="564.00341796875">
+                     <font>
+                        <Font name="Leelawadee UI" size="26.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="30.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medication Code">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="medicationCodeField" layoutX="192.0" layoutY="150.0" prefHeight="26.0" prefWidth="73.0" />
+                  <Text layoutX="282.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medication Type">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="medicationTypeField" layoutX="442.0" layoutY="150.0" prefHeight="26.0" prefWidth="74.0" />
+                  <Text layoutX="55.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="medicationDescription" layoutX="191.0" layoutY="202.0" prefHeight="26.0" prefWidth="74.0" />
+                  <Text layoutX="315.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <DatePicker fx:id="medicationEndDate" layoutX="439.0" layoutY="202.0" prefHeight="26.0" prefWidth="80.0" />
+                  <Text layoutX="229.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cost">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="medicationCost" layoutX="297.0" layoutY="253.0" prefHeight="26.0" prefWidth="74.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="allergiesEntryPane" layoutX="440.0" layoutY="130.0" opacity="0.0" prefHeight="430.0" prefWidth="564.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
@@ -399,36 +481,64 @@
                         <Font name="Leelawadee UI" size="26.0" />
                      </font>
                   </Text>
+                  <Text layoutX="58.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allergy Code" wrappingWidth="121.59999999999997">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="282.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allergy Name" wrappingWidth="126.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="medicationTypeField1" layoutX="304.0" layoutY="216.0" prefHeight="26.0" prefWidth="80.0" />
+                  <Text layoutX="180.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="allergyNameField" layoutX="416.0" layoutY="127.0" prefHeight="26.0" prefWidth="74.0" />
+                  <TextField fx:id="allergyCodeFIeld" layoutX="186.0" layoutY="127.0" prefHeight="26.0" prefWidth="74.0" />
                </children>
             </AnchorPane>
-            <Button fx:id="patientEntryConfirm" layoutX="624.0" layoutY="484.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="199.0" text="Confirm" />
-            <AnchorPane fx:id="medicationEntryPane" layoutX="440.0" layoutY="125.0" prefHeight="430.0" prefWidth="564.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
+            <AnchorPane fx:id="operationEntryPane" layoutX="440.0" layoutY="130.0" opacity="0.0" prefHeight="430.0" prefWidth="564.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
                <children>
-                  <Text layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medication Entry" textAlignment="CENTER" wrappingWidth="564.00341796875">
+                  <Text layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Operation Entry" textAlignment="CENTER" wrappingWidth="564.00341796875" AnchorPane.bottomAnchor="383.874609375" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.7965820312499545" AnchorPane.topAnchor="11.943359375">
                      <font>
                         <Font name="Leelawadee UI" size="26.0" />
                      </font>
                   </Text>
-                  <Text layoutX="126.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medication Code">
+                  <TextField fx:id="operationCodeField" layoutX="300.0" layoutY="110.0" />
+                  <TextField fx:id="operationDescriptionField" layoutX="300.0" layoutY="160.0" />
+                  <Text layoutX="135.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Operation Code" textAlignment="CENTER" wrappingWidth="149.4000000000001">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Leelawadee UI" size="20.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="305.0" layoutY="90.0" prefHeight="26.0" prefWidth="112.0" />
-                  <Text layoutX="126.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medication Type">
+                  <Text layoutX="135.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" textAlignment="CENTER" wrappingWidth="149.4000000000001">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Leelawadee UI" size="20.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="305.0" layoutY="130.0" prefHeight="26.0" prefWidth="112.0" />
-                  <Text layoutX="125.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medication Code">
+                  <TextField fx:id="operationTypeField" layoutX="300.0" layoutY="210.0" />
+                  <Text layoutX="135.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" textAlignment="CENTER" wrappingWidth="149.4000000000001">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Leelawadee UI" size="20.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="304.0" layoutY="176.0" prefHeight="26.0" prefWidth="112.0" />
+                  <TextField fx:id="operationCostField" layoutX="300.0" layoutY="260.0" />
+                  <Text layoutX="135.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cost" textAlignment="CENTER" wrappingWidth="149.4000000000001">
+                     <font>
+                        <Font name="Leelawadee UI" size="20.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
+            <Button fx:id="patientEntryConfirm" layoutX="630.0" layoutY="470.0" mnemonicParsing="false" onAction="#PatientEntryConfirm" prefHeight="58.0" prefWidth="199.0" style="-fx-background-radius: 50;" text="Confirm">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
