@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -86,70 +87,96 @@
                         <Font name="Leelawadee UI Bold" size="36.0" />
                     </font></Text>
             <Pane layoutY="90.0" prefHeight="690.0" prefWidth="330.0" style="-fx-background-color: white;">
-                      <Button fx:id="medication" alignment="TOP_CENTER" layoutY="225.0" mnemonicParsing="false" onAction="#MedicationOpen" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Medication" textFill="#075d5d">
+                      <Button fx:id="medicationButton" alignment="BASELINE_LEFT" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#MedicationOpen" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Medication" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI" size="26.0" />
                           </font>
+                  <padding>
+                     <Insets left="100.0" />
+                  </padding>
                       </Button>
-                      <Button id="LabTest" fx:id="labTest" alignment="TOP_CENTER" layoutY="130.0" mnemonicParsing="false" onAction="#LabTest" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Lab Test" textFill="#075d5d">
+                      <Button id="LabTest" fx:id="labTest" alignment="BASELINE_LEFT" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#LabTest" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Lab Test" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
+                  <padding>
+                     <Insets left="100.0" />
+                  </padding>
                       </Button>
-                      <Button fx:id="operation" alignment="TOP_CENTER" layoutY="330.0" mnemonicParsing="false" onAction="#OperationOpen" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Operations" textFill="#075d5d">
-                          <font>
-                              <Font name="System Bold" size="26.0" />
-                          </font>
-                      </Button>
-                      <Button alignment="TOP_CENTER" layoutY="539.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Profile" textFill="#075d5d">
-                          <font>
-                              <Font size="26.0" />
-                          </font>
-                      </Button>
-                      <Button alignment="TOP_CENTER" layoutY="610.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Log Out" textFill="#075d5d">
-                          <font>
-                              <Font size="26.0" />
-                          </font>
-                      </Button>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="29.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@assets/lab-tests.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="27.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@assets/medication.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="27.0" layoutY="539.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@assets/profile.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="29.0" layoutY="610.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@assets/sign-out.png" />
-                     </image>
-                  </ImageView>
-                      <Button fx:id="treatments" alignment="TOP_CENTER" layoutY="430.0" mnemonicParsing="false" onAction="#TreatmentOpen" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Treatments" textFill="#075d5d">
+                      <Button fx:id="operation" alignment="BASELINE_LEFT" contentDisplay="CENTER" graphicTextGap="0.0" layoutY="240.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#OperationOpen" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Operations" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
+                  <padding>
+                     <Insets left="100.0" />
+                  </padding>
                       </Button>
-                  <Separator layoutX="15.0" layoutY="519.0" prefHeight="1.0" prefWidth="300.0" style="-fx-background-color: grey;" />
-                  <Button id="LabTest" fx:id="home" alignment="TOP_CENTER" layoutY="27.0" mnemonicParsing="false" onAction="#HomeOpen" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Home" textAlignment="RIGHT" textFill="#075d5d">
+                      <Button alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Profile" textFill="#075d5d">
+                          <font>
+                              <Font size="26.0" />
+                          </font>
+                  <padding>
+                     <Insets left="100.0" />
+                  </padding>
+                      </Button>
+                      <Button alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutY="610.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Log Out" textFill="#075d5d">
+                          <font>
+                              <Font name="Leelawadee UI" size="26.0" />
+                          </font>
+                  <padding>
+                     <Insets left="100.0" />
+                  </padding>
+                      </Button>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="30.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/round_science_black_48dp.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="30.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/round_medication_black_48dp.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="30.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/round_account_circle_black_48dp.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="30.0" layoutY="610.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/round_logout_black_48dp.png" />
+                     </image>
+                  </ImageView>
+                      <Button fx:id="treatments" alignment="BASELINE_LEFT" layoutY="310.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#TreatmentOpen" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Treatments" textFill="#075d5d">
+                          <font>
+                              <Font name="Leelawadee UI Bold" size="26.0" />
+                          </font>
+                  <padding>
+                     <Insets left="100.0" />
+                  </padding>
+                      </Button>
+                  <Separator layoutX="15.0" layoutY="510.0" prefHeight="1.0" prefWidth="300.0" style="-fx-background-color: grey;" />
+                  <Button id="LabTest" fx:id="home" alignment="BASELINE_LEFT" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#HomeOpen" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Home" textAlignment="RIGHT" textFill="#075d5d">
                      <font>
                         <Font name="Leelawadee UI Bold" size="26.0" />
                      </font>
+                  <padding>
+                     <Insets left="100.0" />
+                  </padding>
                   </Button>
-               <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="29.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="30.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@assets/operation.png" />
+                     <Image url="@assets/round_monitor_heart_black_48dp.png" />
                   </image>
                </ImageView>
-               <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="27.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="30.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@assets/home.png" />
+                     <Image url="@assets/round_home_black_48dp.png" />
+                  </image>
+               </ImageView>
+               <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="30.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@assets/round_vaccines_black_48dp.png" />
                   </image>
                </ImageView>
             </Pane>
@@ -192,7 +219,7 @@
                               <Font name="Leelawadee UI" size="26.0" />
                            </font>
                         </Label>
-                        <Label fx:id="medication" alignment="CENTER" layoutX="270.0" layoutY="285.0" prefHeight="40.0" prefWidth="265.0" text="Label">
+                        <Label fx:id="medicationbutton" alignment="CENTER" layoutX="270.0" layoutY="285.0" prefHeight="40.0" prefWidth="265.0" text="Label">
                            <font>
                               <Font name="Leelawadee UI" size="26.0" />
                            </font>
