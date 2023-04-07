@@ -13,7 +13,8 @@ public class PatientJDBC {
     String allergies[];
     String medication[];
     int id;
-
+    String Id;
+    String gender;
     public void GetInfo(String username){
         try
         {
@@ -27,6 +28,7 @@ public class PatientJDBC {
             ResultSet rs3=ps3.executeQuery();
             if (rs3.next()) {
                 id = rs3.getInt(1);
+                System.out.println(id);
             }
 
             // query for DOB
@@ -41,6 +43,7 @@ public class PatientJDBC {
             if (rs.next()) {
                 D_O_B = rs.getDate(3);
 
+                gender = rs.getString(4);
                 height = rs.getDouble(5);
                 weight = rs.getDouble(6);
                 Blood_group = rs.getString(7);
@@ -56,6 +59,7 @@ public class PatientJDBC {
             Age = Integer.toString(age);
             Height = Double.toString(height)+" "+"cm";
             Weight =Double.toString(weight)+" "+"kg";
+            Id = Integer.toString(id);
 
             // query for Treatment_type
             String query1="Select Treatment_type from treatments where  patient_ID= ?";

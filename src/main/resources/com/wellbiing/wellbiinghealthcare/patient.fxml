@@ -24,19 +24,19 @@
                   <Image url="@assets/new_bg.png" />
                </image>
             </ImageView>
-            <Pane layoutX="1030.0" layoutY="115.0" prefHeight="641.0" prefWidth="491.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+            <Pane layoutX="990.0" layoutY="115.0" prefHeight="641.0" prefWidth="491.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
-                      <Text fill="#075d5d" layoutX="247.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Weight" textAlignment="CENTER" wrappingWidth="243.16552734375">
+                      <Text fill="#075d5d" layoutX="244.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Weight" textAlignment="CENTER" wrappingWidth="243.16552734375">
                           <font>
                               <Font name="Leelawadee UI" size="26.0" />
                           </font>
                   </Text>
-                      <Text fill="#075d5d" layoutX="2.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" textAlignment="CENTER" wrappingWidth="243.16552734375">
+                      <Text fill="#075d5d" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" textAlignment="CENTER" wrappingWidth="243.16552734375">
                           <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
                   </Text>
-                      <Text fill="#075d5d" layoutX="244.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Group" textAlignment="CENTER" wrappingWidth="250.00000000000006">
+                      <Text fill="#075d5d" layoutX="244.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Group" textAlignment="CENTER" wrappingWidth="250.00000000000006">
                           <font>
                               <Font name="System Bold" size="26.0" />
                           </font>
@@ -46,34 +46,55 @@
                               <Font name="Leelawadee UI" size="26.0" />
                           </font>
                   </Text>
-                      <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="196.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                      <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="196.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                           <image>
                               <Image url="@assets/user.png" />
                           </image>
                       </ImageView>
-                  <Separator layoutX="242.0" layoutY="279.0" orientation="VERTICAL" prefHeight="293.0" prefWidth="7.0" />
-                  <Separator layoutX="80.0" layoutY="415.0" prefHeight="13.0" prefWidth="369.0" />
-                  <Label fx:id="username" alignment="CENTER" layoutY="169.0" prefHeight="48.0" prefWidth="491.0">
+                  <Separator layoutX="237.0" layoutY="208.0" orientation="VERTICAL" prefHeight="364.0" prefWidth="12.0" />
+                  <Separator layoutX="64.0" layoutY="430.0" prefHeight="13.0" prefWidth="385.0" />
+                  <Label fx:id="username" alignment="CENTER" layoutY="160.0" prefHeight="48.0" prefWidth="491.0">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label fx:id="age" alignment="CENTER" layoutY="345.0" prefHeight="48.0" prefWidth="243.0">
+                  <Label fx:id="height" alignment="CENTER" layoutY="490.0" prefHeight="48.0" prefWidth="243.0">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="height" alignment="CENTER" layoutY="495.0" prefHeight="48.0" prefWidth="243.0">
+                  <Label fx:id="bloodGroup" alignment="CENTER" layoutX="245.0" layoutY="380.0" prefHeight="48.0" prefWidth="243.0">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="bloodGroup" alignment="CENTER" layoutX="245.0" layoutY="345.0" prefHeight="48.0" prefWidth="243.0">
+                  <Label fx:id="weight" alignment="CENTER" layoutX="245.0" layoutY="490.0" prefHeight="48.0" prefWidth="243.0">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="weight" alignment="CENTER" layoutX="245.0" layoutY="495.0" prefHeight="48.0" prefWidth="243.0">
+                  <Separator layoutX="64.0" layoutY="320.0" prefHeight="13.0" prefWidth="385.0" />
+                  <Text fill="#075d5d" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" textAlignment="CENTER" wrappingWidth="243.16552734375">
+                     <font>
+                        <Font name="Leelawadee UI Bold" size="26.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#075d5d" layoutX="244.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" textAlignment="CENTER" wrappingWidth="243.16552734374977">
+                     <font>
+                        <Font name="Leelawadee UI Bold" size="26.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="age" alignment="CENTER" layoutY="380.0" prefHeight="48.0" prefWidth="243.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="idfield" alignment="CENTER" layoutY="270.0" prefHeight="48.0" prefWidth="243.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="genderfield" alignment="CENTER" layoutX="244.0" layoutY="270.0" prefHeight="48.0" prefWidth="243.0">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -86,7 +107,7 @@
                         <Font name="Leelawadee UI Bold" size="36.0" />
                     </font></Text>
             <Pane layoutY="90.0" prefHeight="690.0" prefWidth="330.0" style="-fx-background-color: white;">
-                      <Button fx:id="medication" alignment="TOP_CENTER" layoutY="225.0" mnemonicParsing="false" onAction="#MedicationOpen" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Medication" textFill="#075d5d">
+                      <Button fx:id="medicationbutton" alignment="TOP_CENTER" layoutY="225.0" mnemonicParsing="false" onAction="#MedicationOpen" prefHeight="71.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Medication" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI" size="26.0" />
                           </font>
@@ -153,7 +174,7 @@
                   </image>
                </ImageView>
             </Pane>
-            <Pane fx:id="overviewPane" layoutX="447.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+            <Pane fx:id="overviewPane" layoutX="380.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
                   <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                      <children>
@@ -206,7 +227,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="labTestPane" disable="true" layoutX="447.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+            <Pane fx:id="labTestPane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
                   <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-radius: 50; -fx-background-color: white;">
                      <children>
@@ -240,7 +261,7 @@
                      </children>
                   </Pane>
                </children></Pane>
-            <AnchorPane fx:id="medicationPane" disable="true" layoutX="447.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
+            <AnchorPane fx:id="medicationPane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
                <children>
                   <AnchorPane prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                      <children>
@@ -275,7 +296,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Pane fx:id="operationPane" disable="true" layoutX="447.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+            <Pane fx:id="operationPane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
                   <Pane layoutY="-2.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                      <children>
@@ -310,7 +331,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="treatmentPane" disable="true" layoutX="447.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+            <Pane fx:id="treatmentPane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
                   <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                      <children>

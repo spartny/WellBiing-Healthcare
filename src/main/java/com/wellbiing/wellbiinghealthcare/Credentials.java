@@ -14,15 +14,15 @@ import org.mindrot.jbcrypt.BCrypt;
         }
     }
 
-    public static void main(String[] args) {
-        String password = "pass123";
-        Credentials c = new Credentials();
-        String hash = c.createHash(password);
-        System.out.println(hash);
-
-        String candidate = "helloworld";
-        System.out.println(c.checkHash(candidate, hash));
-
-        System.out.println(c.checkHash(" yolo ", hash));
-    }
+//    public static void main(String[] args) {
+//        String password = "pass123";
+//        Credentials c = new Credentials();
+//        String hash = c.createHash(password);
+//        System.out.println(hash);
+//
+//        String candidate = "helloworld";
+//        System.out.println(c.checkHash(candidate, hash));
+//
+//        System.out.println(c.checkHash(" yolo ", hash));
+//    }
 }

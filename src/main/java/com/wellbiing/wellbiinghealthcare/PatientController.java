@@ -43,12 +43,11 @@ public class PatientController implements Initializable {
     private Label treatment;
     @FXML
     private Label checkup;
-
-
-
-
-    String Age;
-    String Username ="Patient1";
+    @FXML
+    private Label idfield;
+    @FXML
+    private Label genderfield;
+    String Username ="patient1";
     String Allergies[];
     String Medication[];
 
@@ -112,8 +111,8 @@ public class PatientController implements Initializable {
     }
 
    public void setUsername(){
-//        LoginController l = new LoginController();
-//        Username = l.Username;
+      LoginController l = new LoginController();
+      Username = l.Username;
 
    }
    public  void SetHeight(PatientJDBC p){
@@ -147,8 +146,14 @@ public class PatientController implements Initializable {
            Medication[j] = p.medication[j];
         }
     }
-    public void SetName(PatientJDBC p){
+    public void SetName(PatientJDBC p) {
         username.setText(p.Username);
+    }
+    public void SetId(PatientJDBC p) {
+        idfield.setText(p.Id);
+    }
+    public void SetGender(PatientJDBC p){
+        genderfield.setText(p.gender);
     }
 
 
@@ -156,8 +161,8 @@ public class PatientController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         PatientJDBC p = new PatientJDBC();
-        p.GetInfo(Username);
         setUsername();
+        p.GetInfo(Username);
         setAge(p);
         SetHeight(p);
         SetWeight(p);
@@ -167,6 +172,9 @@ public class PatientController implements Initializable {
         SetCheckup(p);
         //SetMedication(p);
         SetName(p);
+        SetId(p);
+        SetGender(p);
+
 
 
     }
