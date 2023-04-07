@@ -3,6 +3,8 @@ module com.wellbiing.wellbiinghealthcare {
     requires javafx.fxml;
 //    requires jbcrypt;
     requires java.sql;
+    requires mysql.connector.j;
+    requires jbcrypt;
 //    requires mysql.connector.j;
 
 
