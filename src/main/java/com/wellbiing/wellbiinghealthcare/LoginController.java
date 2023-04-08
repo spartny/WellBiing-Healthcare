@@ -60,7 +60,7 @@ public class LoginController {
                 invalid.setText("");
                 valid.setText("Login Successful!");
 
-                if(Username.equals("Doctor")) {
+                if(Username.equals("Doctor") || Username.equals("doctor")) {
                     w.changeScene("doctor.fxml");
                 }
                 else {
