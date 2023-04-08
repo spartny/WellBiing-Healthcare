@@ -1,17 +1,24 @@
 package com.wellbiing.wellbiinghealthcare;
 
 
+import com.mysql.cj.xdevapi.Column;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 public class PatientController implements Initializable {
@@ -36,21 +43,35 @@ public class PatientController implements Initializable {
     @FXML
     private Label weight;
     @FXML
-    private Label allergies;
+    private Label allergiesLabel;
     @FXML
-    private Label medication;
+    private Label medicationLabel;
     @FXML
     private Label treatment;
     @FXML
     private Label checkup;
-
-
-
-
-    String Age;
+    @FXML
+    private Label idfield;
+    @FXML
+    private Label genderfield;
     String Username ="Patient1";
-    String Allergies[];
-    String Medication[];
+    @FXML
+    private TableView Labtable;
+
+    @FXML
+    private TableColumn testDatecolumn;
+
+    @FXML
+    private TableColumn testTypecolumn;
+
+    @FXML
+    private TableColumn codeColumn;
+
+    @FXML
+    private TableColumn costColumn;
+
+    @FXML
+    private TableColumn descriptionColumn;
 
     public void closeAndDisablePanes(){
         overviewPane.setOpacity(0.0);
@@ -111,11 +132,11 @@ public class PatientController implements Initializable {
 
     }
 
-   public void setUsername(){
-//        LoginController l = new LoginController();
-//        Username = l.Username;
-
-   }
+//   public void setUsername(){
+//      LoginController l = new LoginController();
+//      Username = l.Username;
+//
+//   }
    public  void SetHeight(PatientJDBC p){
 
        height.setText(p.Height);
@@ -129,10 +150,8 @@ public class PatientController implements Initializable {
         bloodGroup.setText(p.Blood_group);
     }
     public void SetAllergies(PatientJDBC p){
+        allergiesLabel.setText(p.allergies);
 
-        for(int i = 0; i< p.allergies.length; i++) {
-            Allergies[i] = p.allergies[i];
-        }
     }
     public void  SetTreatment(PatientJDBC p){
         treatment.setText(p.Treatment);
@@ -142,22 +161,33 @@ public class PatientController implements Initializable {
         checkup.setText(p.Checkup);
     }
     public void SetMedication(PatientJDBC p){
-
-        for(int j = 0; j< p.medication.length; j++) {
-           Medication[j] = p.medication[j];
-        }
+        medicationLabel.setText(p.medication);
     }
-    public void SetName(PatientJDBC p){
+    public void SetName(PatientJDBC p) {
         username.setText(p.Username);
     }
+    public void SetId(PatientJDBC p) {
+        idfield.setText(p.Id);
+    }
+    public void SetGender(PatientJDBC p){
+        genderfield.setText(p.gender);
+    }
+    public  void SetColumnData(PatientJDBC p){
+        codeColumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_code"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_cost"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_description"));
+        testTypecolumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_type"));
+        testDatecolumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_date"));
+        Labtable.setItems(p.labData);
 
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         PatientJDBC p = new PatientJDBC();
+        //setUsername();
         p.GetInfo(Username);
-        setUsername();
         setAge(p);
         SetHeight(p);
         SetWeight(p);
@@ -167,6 +197,12 @@ public class PatientController implements Initializable {
         SetCheckup(p);
         //SetMedication(p);
         SetName(p);
+        SetId(p);
+        SetGender(p);
+        SetAllergies(p);
+        SetMedication(p);
+        //SetColumnData(p);
+
 
 
     }
