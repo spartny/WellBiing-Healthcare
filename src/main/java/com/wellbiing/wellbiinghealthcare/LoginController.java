@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 
 public class LoginController {
-//    @FXML
-//    private Button login;
     @FXML
     private TextField username;
     @FXML
