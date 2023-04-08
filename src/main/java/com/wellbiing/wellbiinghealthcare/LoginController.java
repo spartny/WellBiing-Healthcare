@@ -6,13 +6,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 
 public class LoginController {
-    @FXML
-    private Button login;
+//    @FXML
+//    private Button login;
     @FXML
     private TextField username;
     @FXML
@@ -42,7 +44,6 @@ public class LoginController {
         checkCredentials();
     }
     private void checkCredentials() throws IOException {
-
         String Password;
 
         Username = username.getText();
@@ -76,4 +77,31 @@ public class LoginController {
         }
 
     }
+    public void enterKeyPressTF(ActionEvent event) throws IOException{
+        TextField textField = (TextField)event.getSource();
+        textField.setOnKeyPressed(e ->{
+            if (e.getCode() == KeyCode.ENTER){
+                try {
+                    checkCredentials();
+                }
+                catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+    }
+    public void enterKeyPressPF(ActionEvent event) throws IOException{
+        PasswordField PassField = (PasswordField) event.getSource();
+        PassField.setOnKeyPressed(e ->{
+            if (e.getCode() == KeyCode.ENTER){
+                try {
+                    checkCredentials();
+                }
+                catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+    }
+
 }
