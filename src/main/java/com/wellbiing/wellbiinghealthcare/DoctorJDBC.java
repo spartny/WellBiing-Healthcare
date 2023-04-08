@@ -27,7 +27,7 @@ public class DoctorJDBC {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
 
-        String query = "INSERT INTO vitals VALUES(?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO operation VALUES(?, ?, ?, ?, ?, ?)";
 
         PreparedStatement ps = con.prepareStatement(query);
         ps.setString(1, patientId);
@@ -46,7 +46,7 @@ public class DoctorJDBC {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
 
-        String query = "INSERT INTO vitals VALUES(?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO treatments VALUES(?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement ps = con.prepareStatement(query);
         ps.setString(1, patientId);
@@ -66,7 +66,7 @@ public class DoctorJDBC {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
 
-        String query = "INSERT INTO vitals VALUES(?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO medication VALUES(?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement ps = con.prepareStatement(query);
         ps.setString(1, patientId);
