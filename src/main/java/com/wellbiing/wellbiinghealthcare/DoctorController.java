@@ -2,26 +2,70 @@ package com.wellbiing.wellbiinghealthcare;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class DoctorController {
+public class DoctorController implements Initializable {
 
-    @FXML
-    private ImageView homeIcon;
+
 
     @FXML
     private AnchorPane allergiesEntryPane;
 
     @FXML
+    private DatePicker patientDOB;
+
+    @FXML
+    private DatePicker treatmentEndDate;
+
+    @FXML
+    private TextField treatmentCodeField;
+
+    @FXML
+    private TextField treatmentTypeField;
+
+    @FXML
+    private TextField treatmentDescField;
+
+    @FXML
+    private TextField treatmentCostField;
+
+    @FXML
+    private TextField patientHeightField;
+
+    @FXML
+    private TextField testCodeField;
+
+    @FXML
+    private TextField allergyDescriptionField;
+
+    @FXML
+    private TextField patientWeightField;
+
+    @FXML
+    private TextField patientBloodGroupField;
+
+    @FXML
     private RadioButton allergiesRadio;
+
+    @FXML
+    private TextField allergyCodeFIeld;
+
+    @FXML
+    private TextField allergyNameField;
 
     @FXML
     private Button delPatientButton;
@@ -45,6 +89,9 @@ public class DoctorController {
     private Button homeButton;
 
     @FXML
+    private ImageView homeIcon;
+
+    @FXML
     private AnchorPane homePane;
 
     @FXML
@@ -54,16 +101,28 @@ public class DoctorController {
     private RadioButton labTestRadio;
 
     @FXML
-    private ComboBox<?> labTestSelect;
+    private Button logOutButton;
 
     @FXML
-    private Button logOutButton;
+    private TextField medicationCodeField;
+
+    @FXML
+    private TextField medicationCost;
+
+    @FXML
+    private TextField medicationDescription;
+
+    @FXML
+    private DatePicker medicationEndDate;
 
     @FXML
     private AnchorPane medicationEntryPane;
 
     @FXML
     private RadioButton medicationRadio;
+
+    @FXML
+    private TextField medicationTypeField;
 
     @FXML
     private Button newPatientButton;
@@ -75,13 +134,22 @@ public class DoctorController {
     private AnchorPane newPatientPane;
 
     @FXML
+    private TextField operationCodeField;
+
+    @FXML
+    private TextField operationCostField;
+
+    @FXML
+    private TextField operationDescriptionField;
+
+    @FXML
     private AnchorPane operationEntryPane;
 
     @FXML
     private RadioButton operationRadio;
 
     @FXML
-    private TextField patientAddressField;
+    private TextField operationTypeField;
 
     @FXML
     private TextField patientContactField;
@@ -94,6 +162,9 @@ public class DoctorController {
 
     @FXML
     private ToggleGroup patientEntryGroup;
+
+    @FXML
+    private TextField patientEntryIdField;
 
     @FXML
     private AnchorPane patientEntryPane;
@@ -120,6 +191,18 @@ public class DoctorController {
     private AnchorPane searchPatientPane;
 
     @FXML
+    private TextField testCost;
+
+    @FXML
+    private TextField testDescription;
+
+    @FXML
+    private ComboBox<?> testSelect;
+
+    @FXML
+    private TextField testTypeField;
+
+    @FXML
     private AnchorPane treatmentEntryPane;
 
     @FXML
@@ -144,13 +227,58 @@ public class DoctorController {
     private AnchorPane updatePatientPane;
 
     @FXML
+    private TextField vitalsBpField;
+
+    @FXML
+    private TextField vitalsBrField;
+
+    @FXML
     private AnchorPane vitalsEntryPane;
+
+    @FXML
+    private TextField vitalsHrField;
 
     @FXML
     private RadioButton vitalsRadio;
 
     @FXML
-    private TextField patientEntryIdField;
+    private TextField vitalsSpo2FIeld;
+
+    @FXML
+    private TextField vitalsTempFIeld;
+
+    @FXML
+    private TableColumn<PatientInfo, Integer> patientIdCol;
+
+    @FXML
+    private TableColumn<PatientInfo, String> patientNameCol;
+
+    @FXML
+    private TableColumn<PatientInfo, String> patientContactCol;
+
+    @FXML
+    private TableColumn<PatientInfo, Date> patientLastVisitCol;
+
+
+    @FXML
+    private TableView curPatientTable;
+
+    @FXML
+    private TextField patientStateField;
+
+    @FXML
+    private TextField patientCityField;
+
+    @FXML
+    private TextField patientStreetField;
+
+    @FXML
+    private RadioButton patientGenderMale;
+
+    @FXML
+    private RadioButton patientGenderFemale;
+
+
 
     @FXML
     void ButtonHoverEnd(MouseEvent event) {
@@ -275,26 +403,83 @@ public class DoctorController {
         DoctorJDBC jdbc = new DoctorJDBC();
         String patientId = patientEntryIdField.getText();
 
+        Date curDate = Date.valueOf(LocalDate.now());
+
+
 
         if (selectedToggle == vitalsRadio){
-            jdbc.EnterVitals();
+            jdbc.EnterVitals(patientId, vitalsTempFIeld.getText(), vitalsSpo2FIeld.getText(), vitalsBpField.getText(),
+                    vitalsHrField.getText(), vitalsBrField.getText(), curDate);
         }
         if (selectedToggle == labTestRadio){
-            jdbc.EnterTest();
+            jdbc.EnterTest(patientId, testCodeField.getText(), testCost.getText(), testDescription.getText(),
+                    testTypeField.getText(), curDate);
         }
+
         if (selectedToggle == medicationRadio){
-            jdbc.EnterMedication();
+            jdbc.EnterMedication(patientId, medicationCodeField.getText(), medicationCost.getText(), medicationDescription.getText(),
+                    medicationTypeField.getText(), curDate, Date.valueOf(medicationEndDate.getValue()));
         }
         if (selectedToggle == treatmentRadio){
-            jdbc.EnterTreatments();
+            jdbc.EnterTreatments(patientId, treatmentCodeField.getText(), treatmentCostField.getText(), treatmentDescField.getText(),
+                    treatmentTypeField.getText(), curDate,  Date.valueOf(treatmentEndDate.getValue()));
         }
         if (selectedToggle == operationRadio){
-            jdbc.EnterOperation();
+            jdbc.EnterOperation(patientId, operationCodeField.getText(), operationCostField.getText(), operationDescriptionField.getText(),
+                    operationTypeField.getText(), curDate);
         }
         if (selectedToggle == allergiesRadio){
-            jdbc.EnterAllergies();
+            jdbc.EnterAllergies(patientId, allergyCodeFIeld.getText(), allergyNameField.getText(), allergyDescriptionField.getText(),
+                    curDate);
         }
     }
 
+    public void NewPatientConfirm(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        Toggle selectedToggle = patientGenderGroup.getSelectedToggle();
+        String patientId = patientIdField.getText();
+        DoctorJDBC jdbc = new DoctorJDBC();
+
+        String gender;
+        if (selectedToggle == patientGenderMale){
+            gender = "M";
+        }
+        else {
+            gender = "F";
+        }
+        Date dob = Date.valueOf(patientDOB.getValue());
+
+        jdbc.EnterNewPatient(patientId, patientNameField.getText(), dob, gender, patientHeightField.getText(), patientWeightField.getText(),
+                patientBloodGroupField.getText(), patientContactField.getText(), patientStateField.getText(), patientCityField.getText(),
+                patientStreetField.getText());
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        TableColumn<PatientInfo, Integer> patientIdCol = new TableColumn<>("Patient ID");
+        TableColumn<PatientInfo, String> patientNameCol = new TableColumn<>("Name");
+        TableColumn<PatientInfo, String> patientContactCol = new TableColumn<>("Contact No.");
+        TableColumn<PatientInfo, Date> patientDateCol = new TableColumn<>("Last Visit");
+
+        patientIdCol.setCellValueFactory(new PropertyValueFactory<>("patientId"));
+        patientNameCol.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+        patientContactCol.setCellValueFactory(new PropertyValueFactory<>("patientContact"));
+
+        patientIdCol.setMinWidth(50);
+        patientNameCol.setMinWidth(250);
+        patientContactCol.setMinWidth(150);
+
+        InsertRows();
+
+        curPatientTable.getItems().add(new PatientInfo(1, "Parth Chauhan", "920911203"));
+
+        curPatientTable.getColumns().add(patientIdCol);
+        curPatientTable.getColumns().add(patientNameCol);
+        curPatientTable.getColumns().add(patientContactCol);
+    }
+
+    private void InsertRows() {
+
+    }
 }
 
