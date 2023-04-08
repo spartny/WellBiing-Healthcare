@@ -2,19 +2,23 @@ package com.wellbiing.wellbiinghealthcare;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class DoctorController {
+public class DoctorController implements Initializable {
 
 
 
@@ -244,6 +248,22 @@ public class DoctorController {
     private TextField vitalsTempFIeld;
 
     @FXML
+    private TableColumn<PatientInfo, Integer> patientIdCol;
+
+    @FXML
+    private TableColumn<PatientInfo, String> patientNameCol;
+
+    @FXML
+    private TableColumn<PatientInfo, String> patientContactCol;
+
+    @FXML
+    private TableColumn<PatientInfo, Date> patientLastVisitCol;
+
+
+    @FXML
+    private TableView curPatientTable;
+
+    @FXML
     private TextField patientStateField;
 
     @FXML
@@ -431,6 +451,34 @@ public class DoctorController {
         jdbc.EnterNewPatient(patientId, patientNameField.getText(), dob, gender, patientHeightField.getText(), patientWeightField.getText(),
                 patientBloodGroupField.getText(), patientContactField.getText(), patientStateField.getText(), patientCityField.getText(),
                 patientStreetField.getText());
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        TableColumn<PatientInfo, Integer> patientIdCol = new TableColumn<>("Patient ID");
+        TableColumn<PatientInfo, String> patientNameCol = new TableColumn<>("Name");
+        TableColumn<PatientInfo, String> patientContactCol = new TableColumn<>("Contact No.");
+        TableColumn<PatientInfo, Date> patientDateCol = new TableColumn<>("Last Visit");
+
+        patientIdCol.setCellValueFactory(new PropertyValueFactory<>("patientId"));
+        patientNameCol.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+        patientContactCol.setCellValueFactory(new PropertyValueFactory<>("patientContact"));
+
+        patientIdCol.setMinWidth(50);
+        patientNameCol.setMinWidth(250);
+        patientContactCol.setMinWidth(150);
+
+        InsertRows();
+
+        curPatientTable.getItems().add(new PatientInfo(1, "Parth Chauhan", "920911203"));
+
+        curPatientTable.getColumns().add(patientIdCol);
+        curPatientTable.getColumns().add(patientNameCol);
+        curPatientTable.getColumns().add(patientContactCol);
+    }
+
+    private void InsertRows() {
 
     }
 }
