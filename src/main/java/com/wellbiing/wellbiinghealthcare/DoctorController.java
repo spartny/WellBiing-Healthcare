@@ -454,8 +454,7 @@ public class DoctorController implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void CurrentPatientTable(){
         TableColumn<PatientInfo, Integer> patientIdCol = new TableColumn<>("Patient ID");
         TableColumn<PatientInfo, String> patientNameCol = new TableColumn<>("Name");
         TableColumn<PatientInfo, String> patientContactCol = new TableColumn<>("Contact No.");
@@ -464,21 +463,38 @@ public class DoctorController implements Initializable {
         patientIdCol.setCellValueFactory(new PropertyValueFactory<>("patientId"));
         patientNameCol.setCellValueFactory(new PropertyValueFactory<>("patientName"));
         patientContactCol.setCellValueFactory(new PropertyValueFactory<>("patientContact"));
+        patientDateCol.setCellValueFactory(new PropertyValueFactory<>("patientLastVisit"));
 
         patientIdCol.setMinWidth(50);
         patientNameCol.setMinWidth(250);
         patientContactCol.setMinWidth(150);
 
-        InsertRows();
+        try {
+            InsertCurPatientRows(curPatientTable);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
-        curPatientTable.getItems().add(new PatientInfo(1, "Parth Chauhan", "920911203"));
+//        curPatientTable.getItems().add(new PatientInfo(1, "Parth Chauhan", "920911203"));
 
         curPatientTable.getColumns().add(patientIdCol);
         curPatientTable.getColumns().add(patientNameCol);
         curPatientTable.getColumns().add(patientContactCol);
+        curPatientTable.getColumns().add(patientDateCol);
+
     }
 
-    private void InsertRows() {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        CurrentPatientTable();
+    }
+
+    private void InsertCurPatientRows(TableView curPatientTable) throws SQLException, ClassNotFoundException {
+        DoctorJDBC jdbc = new DoctorJDBC();
+
+        int patientCount = jdbc.GetPatientCount();
+
+        jdbc.GetPatients(curPatientTable);
 
     }
 }
