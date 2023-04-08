@@ -7,6 +7,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -20,13 +21,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1530.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wellbiing.wellbiinghealthcare.DoctorController">
    <children>
-      <ImageView fx:id="homeIcon" fitHeight="890.0" fitWidth="1535.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="homeIcon" fitHeight="805.0" fitWidth="1556.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/new_bg.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#075d5d" height="90.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="1536.0" />
-      <AnchorPane layoutY="87.0" minHeight="0.0" minWidth="0.0" prefHeight="695.0" prefWidth="330.0" style="-fx-background-color: #ffff;">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#075d5d" height="103.0" layoutY="-15.0" stroke="BLACK" strokeType="INSIDE" width="1560.0" />
+      <AnchorPane layoutY="87.0" minHeight="0.0" minWidth="0.0" prefHeight="705.0" prefWidth="330.0" style="-fx-background-color: #ffff;">
          <children>
             <Button fx:id="homeButton" alignment="BASELINE_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#HomeOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-image: url('assets\home.png'); -fx-background-color: transparent; ba: ;" text="Home" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="30.0">
                <font>
@@ -72,7 +73,7 @@
                   <Insets left="100.0" />
                </padding>
             </Button>
-            <Button fx:id="logOutButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="551.0" mnemonicParsing="false" onAction="#LogOut" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="419.0" style="-fx-background-color: #ffff;" text="Log Out" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="551.0">
+            <Button fx:id="logOutButton" alignment="BASELINE_LEFT" layoutY="592.0" mnemonicParsing="false" onAction="#LogOut" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="419.0" style="-fx-background-color: #ffff;" text="Log Out" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="592.0">
                <font>
                   <Font name="Leelawadee UI Bold" size="26.0" />
                </font>
@@ -105,6 +106,42 @@
                   <Insets left="100.0" />
                </padding>
             </Button>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_home_black_48dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_person_add_black_48dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_post_add_black_48dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="40.0" layoutX="36.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_backspace_black_48dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_sync_alt_black_48dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_search_black_48dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="34.0" layoutY="604.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_logout_black_48dp.png" />
+               </image>
+            </ImageView>
+            <Separator layoutX="15.0" layoutY="570.0" prefWidth="300.0" />
          </children>
       </AnchorPane>
       <Text fill="WHITE" layoutX="616.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WellBiing Healthcare" textAlignment="CENTER" wrappingWidth="374.1368408203125">
@@ -318,27 +355,27 @@
                         <ToggleGroup fx:id="patientEntryGroup" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="labTestRadio" layoutX="130.0" layoutY="150.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="105.0" text="Lab Test " textFill="WHITE" toggleGroup="$patientEntryGroup">
+                  <RadioButton fx:id="labTestRadio" layoutX="122.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="112.0" text="Lab Test " textFill="WHITE" toggleGroup="$patientEntryGroup">
                      <font>
                         <Font name="Leelawadee UI Bold" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="medicationRadio" layoutX="240.0" layoutY="150.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" text="Medication" textFill="WHITE" toggleGroup="$patientEntryGroup">
+                  <RadioButton fx:id="medicationRadio" layoutX="103.0" layoutY="150.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" text="Medication" textFill="WHITE" toggleGroup="$patientEntryGroup">
                      <font>
                         <Font name="Leelawadee UI Bold" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="treatmentRadio" layoutX="10.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="121.0" text="Treatment" textFill="WHITE" toggleGroup="$patientEntryGroup">
+                  <RadioButton fx:id="treatmentRadio" layoutX="244.0" layoutY="150.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="121.0" text="Treatment" textFill="WHITE" toggleGroup="$patientEntryGroup">
                      <font>
                         <Font name="Leelawadee UI Bold" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="operationRadio" layoutX="130.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Operation" textFill="WHITE" toggleGroup="$patientEntryGroup">
+                  <RadioButton fx:id="operationRadio" layoutX="244.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Operation" textFill="WHITE" toggleGroup="$patientEntryGroup">
                      <font>
                         <Font name="Leelawadee UI Bold" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="allergiesRadio" layoutX="250.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" text="Allergies" textFill="WHITE" toggleGroup="$patientEntryGroup">
+                  <RadioButton fx:id="allergiesRadio" layoutX="10.0" layoutY="200.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" text="Allergies" textFill="WHITE" toggleGroup="$patientEntryGroup">
                      <font>
                         <Font name="Leelawadee UI Bold" size="18.0" />
                      </font>

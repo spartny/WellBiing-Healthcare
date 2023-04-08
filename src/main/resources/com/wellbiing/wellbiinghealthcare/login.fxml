@@ -40,11 +40,11 @@
                   <Font name="Leelawadee UI Bold" size="28.0" />
                </font>
             </Button>
-            <PasswordField id="password" fx:id="password" layoutX="190.0" layoutY="310.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-background-radius: 20;">
+            <PasswordField id="password" fx:id="password" layoutX="190.0" layoutY="310.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#enterKeyPressPF" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-background-radius: 20;">
                <font>
                   <Font name="Leelawadee UI" size="20.0" />
                </font></PasswordField>
-            <TextField id="username" fx:id="username" layoutX="190.0" layoutY="236.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Username" style="-fx-background-radius: 20;">
+            <TextField id="username" fx:id="username" layoutX="190.0" layoutY="236.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#enterKeyPressTF" prefHeight="40.0" prefWidth="300.0" promptText="Username" style="-fx-background-radius: 20;">
                <font>
                   <Font name="Leelawadee UI" size="20.0" />
                </font></TextField>
