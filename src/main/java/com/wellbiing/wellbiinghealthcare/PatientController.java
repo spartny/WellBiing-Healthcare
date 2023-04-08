@@ -87,17 +87,12 @@ public class PatientController implements Initializable {
 
     }
 
-
     @FXML
     void LabTest(ActionEvent event) {
         closeAndDisablePanes();
         labTestPane.setOpacity(1.0);
         labTestPane.setDisable(false);
-
     }
-
-
-
     @FXML
     void HomeOpen(ActionEvent event){
         closeAndDisablePanes();
@@ -173,6 +168,7 @@ public class PatientController implements Initializable {
         genderfield.setText(p.gender);
     }
     public  void SetColumnData(PatientJDBC p){
+
         codeColumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_code"));
         costColumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_cost"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_description"));

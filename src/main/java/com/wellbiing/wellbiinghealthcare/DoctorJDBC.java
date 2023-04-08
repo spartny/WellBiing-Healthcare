@@ -209,7 +209,6 @@ public class DoctorJDBC {
             System.out.println("wow");
         }
 
-
     }
 
     public int GetPatientCount() throws ClassNotFoundException, SQLException {

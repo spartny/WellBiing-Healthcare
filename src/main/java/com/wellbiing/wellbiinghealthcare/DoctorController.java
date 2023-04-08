@@ -475,8 +475,6 @@ public class DoctorController implements Initializable {
             throw new RuntimeException(e);
         }
 
-//        curPatientTable.getItems().add(new PatientInfo(1, "Parth Chauhan", "920911203"));
-
         curPatientTable.getColumns().add(patientIdCol);
         curPatientTable.getColumns().add(patientNameCol);
         curPatientTable.getColumns().add(patientContactCol);
