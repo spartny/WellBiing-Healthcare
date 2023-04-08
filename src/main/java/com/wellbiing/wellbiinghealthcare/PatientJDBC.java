@@ -1,7 +1,15 @@
 package com.wellbiing.wellbiinghealthcare;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+
 public class PatientJDBC {
     String Username;
     String Age;
@@ -10,11 +18,14 @@ public class PatientJDBC {
     String Blood_group;
     String Treatment;
     String Checkup;
-    String allergies[];
-    String medication[];
+    String allergies="";
+    String medication ="";
     int id;
     String Id;
     String gender;
+    String testDate;
+    ObservableList<LabData> labData;
+
     public void GetInfo(String username){
         try
         {
@@ -28,7 +39,7 @@ public class PatientJDBC {
             ResultSet rs3=ps3.executeQuery();
             if (rs3.next()) {
                 id = rs3.getInt(1);
-                System.out.println(id);
+
             }
 
             // query for DOB
@@ -70,14 +81,65 @@ public class PatientJDBC {
                 Treatment = rs1.getString(1);
             }
 
-            // query for LabTest_type
-            String query2="Select LabTest_type from lab where  patient_ID= ?";
+            // query for last checkup
+            String query2="Select Test_date from vitals where  patient_ID= ?";
             PreparedStatement ps2=con.prepareStatement(query2);
             ps2.setInt(1, id);
             ResultSet rs2=ps2.executeQuery();
             if(rs2.next()){
-                Checkup = rs2.getString(1);
+                testDate = rs2.getString(1);
+                SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd");
+                Date date = dt.parse(testDate);
+                SimpleDateFormat dt1 = new SimpleDateFormat("dd-mm-yyyy");
+                 Checkup = dt1.format(date);
+
             }
+
+            // query for Allergies
+            String query4 = "Select Allergy_Name from allergy where patient_ID= ? ";
+            PreparedStatement ps4 = con.prepareStatement(query4);
+            ps4.setInt(1,id);
+            ResultSet rs4 =ps4.executeQuery();
+            for(int i =0; i<3;i++){
+                if(rs4.next()){
+                   allergies = allergies + rs4.getString(1)+ "\n";
+
+                }
+                else{
+                    break;
+                }
+            }
+
+            // query for medicine
+            String query5 = "Select Medication_type from medication where patient_ID= ? ";
+            PreparedStatement ps5 = con.prepareStatement(query5);
+            ps5.setInt(1,id);
+            ResultSet rs5 =ps5.executeQuery();
+            for(int i =0; i<=3;i++){
+                if(rs5.next()){
+                    medication = medication + rs5.getString(1)+"\n";
+                }
+                else{
+                    break;
+                }
+            }
+            labData = FXCollections.observableArrayList();
+            String query6 = "Select * from lab where patient_ID= ?";
+            PreparedStatement ps6 = con.prepareStatement(query6);
+            ps6.setInt(1,id);
+            ResultSet rs6 =ps6.executeQuery();
+            while(rs6.next()){
+                labData.add(new LabData(
+                        rs6.getString(2),
+                        rs6.getString(3),
+                        rs6.getString(4),
+                        rs6.getString(5),
+                        rs6.getString(6)
+                ));
+
+
+            }
+            System.out.println(labData.get(1));
 
 
 
