@@ -13,7 +13,7 @@ public class WellBiingApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stg = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(WellBiingApplication.class.getResource("doctor.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(WellBiingApplication.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1366, 768);
         stage.setTitle("WellBiing Healthcare Management System");
         stage.setScene(scene);
