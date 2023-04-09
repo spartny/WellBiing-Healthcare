@@ -56,22 +56,22 @@ public class PatientController implements Initializable {
     private Label genderfield;
     String Username ="Patient1";
     @FXML
-    private TableView Labtable;
+    private TableView <LabData> Labtable;
 
     @FXML
-    private TableColumn testDatecolumn;
+    private TableColumn <LabData,String> testDatecolumn;
 
     @FXML
-    private TableColumn testTypecolumn;
+    private TableColumn  <LabData,String> testTypecolumn;
+
+//    @FXML
+//    private TableColumn <LabData,String> codeColumn;
 
     @FXML
-    private TableColumn codeColumn;
+    private TableColumn <LabData,String> costColumn;
 
     @FXML
-    private TableColumn costColumn;
-
-    @FXML
-    private TableColumn descriptionColumn;
+    private TableColumn <LabData,String> descriptionColumn;
 
     public void closeAndDisablePanes(){
         overviewPane.setOpacity(0.0);
@@ -168,22 +168,22 @@ public class PatientController implements Initializable {
         genderfield.setText(p.gender);
     }
     public  void SetColumnData(PatientJDBC p){
+       // codeColumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_code"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_cost"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_description"));
+        testTypecolumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_type"));
+        testDatecolumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_date"));
+        //Labtable.getItems().addAll(p.labData);
+        //
 
-        codeColumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_code"));
-        costColumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_cost"));
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_description"));
-        testTypecolumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_type"));
-        testDatecolumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_date"));
-//        Labtable.setItems(p.labData);
 
-
-        System.out.println(p.labData.get(0).getLabTest_code());
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        TableColumn codeColumn = new TableColumn("LabTest_code");
+        System.out.println(codeColumn.getColumns());
         PatientJDBC p = new PatientJDBC();
         //setUsername();
         p.GetInfo(Username);
@@ -191,10 +191,8 @@ public class PatientController implements Initializable {
         SetHeight(p);
         SetWeight(p);
         SetBlood_Group(p);
-        //SetAllergies(p);
         SetTreatment(p);
         SetCheckup(p);
-        //SetMedication(p);
         SetName(p);
         SetId(p);
         SetGender(p);

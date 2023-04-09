@@ -3,11 +3,11 @@ package com.wellbiing.wellbiinghealthcare;
 import javafx.beans.property.SimpleStringProperty;
 
 public class LabData {
-    private SimpleStringProperty LabTest_code;
-    private SimpleStringProperty LabTest_cost;
-    private SimpleStringProperty LabTest_description;
-    private SimpleStringProperty LabTest_type;
-    private SimpleStringProperty LabTest_date;
+    private final SimpleStringProperty LabTest_code;
+    private final SimpleStringProperty LabTest_cost;
+    private final SimpleStringProperty LabTest_description;
+    private final SimpleStringProperty LabTest_type;
+    private final SimpleStringProperty LabTest_date;
     LabData(String LabTest_code, String LabTest_cost, String LabTest_description, String LabTest_type, String LabTest_date ){
         this.LabTest_code= new  SimpleStringProperty(LabTest_code);
         this.LabTest_cost = new SimpleStringProperty(LabTest_cost);
@@ -21,12 +21,14 @@ public class LabData {
     }
     public  void SetLabTest_code(String LabTest_code){
         this.LabTest_code.set(LabTest_code);
+        System.out.println(LabTest_code);
     }
     public String getLabTest_cost(){
         return LabTest_cost.get();
     }
     public  void SetLabTest_cost(String LabTest_cost){
         this.LabTest_cost.set(LabTest_cost);
+
     }
     public String LabTest_description(){
         return LabTest_description.get();
