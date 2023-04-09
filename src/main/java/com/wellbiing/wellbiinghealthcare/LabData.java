@@ -12,6 +12,7 @@ public class LabData {
         this.LabTest_code= new  SimpleStringProperty(LabTest_code);
         this.LabTest_cost = new SimpleStringProperty(LabTest_cost);
         this.LabTest_description= new SimpleStringProperty(LabTest_description);
+
         this.LabTest_type = new SimpleStringProperty(LabTest_type);
         this.LabTest_date = new SimpleStringProperty(LabTest_date);
 
@@ -21,7 +22,7 @@ public class LabData {
     }
     public  void SetLabTest_code(String LabTest_code){
         this.LabTest_code.set(LabTest_code);
-        System.out.println(LabTest_code);
+
     }
     public String getLabTest_cost(){
         return LabTest_cost.get();
@@ -30,7 +31,7 @@ public class LabData {
         this.LabTest_cost.set(LabTest_cost);
 
     }
-    public String LabTest_description(){
+    public String getLabTest_description(){
         return LabTest_description.get();
     }
     public  void SetLabTest_description(String LabTest_description){

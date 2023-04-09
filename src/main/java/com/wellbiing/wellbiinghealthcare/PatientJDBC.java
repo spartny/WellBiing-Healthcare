@@ -2,6 +2,7 @@ package com.wellbiing.wellbiinghealthcare;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -24,6 +25,17 @@ public class PatientJDBC {
     String Id;
     String gender;
     String testDate;
+    String LabTest_code;
+    String LabTest_cost;
+    String LabTest_description;
+    String LabTest_type;
+    String LabTest_date;
+    String Medication_code;
+    String Medication_cost;
+    String Medication_description;
+    String Medication_type;
+    String Medication_Sdate;
+    String Medication_Edate;
     ObservableList<LabData> labData = FXCollections.observableArrayList();
 
     public void GetInfo(String username){
@@ -124,21 +136,7 @@ public class PatientJDBC {
                 }
             }
 
-            String query6 = "Select * from lab where patient_ID= ?";
-            PreparedStatement ps6 = con.prepareStatement(query6);
-            ps6.setInt(1,id);
-            ResultSet rs6 =ps6.executeQuery();
-            while(rs6.next()){
-                labData.add(new LabData(
-                        rs6.getString(2),
-                        rs6.getString(3),
-                        rs6.getString(4),
-                        rs6.getString(5),
-                        rs6.getString(6)
-                ));
 
-
-            }
 
 
 
@@ -148,9 +146,84 @@ public class PatientJDBC {
 
 
         }
+
+
         catch(Exception e){
             e.printStackTrace();
         }
+
+
+    }
+    public void GetLabDetails(String username,TableView Labtable) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        // query for getId
+        String query3 ="Select ID from authentication where username= ?";
+        PreparedStatement ps3=con.prepareStatement(query3);
+        ps3.setString(1, username);
+        ResultSet rs3=ps3.executeQuery();
+        if (rs3.next()) {
+            id = rs3.getInt(1);
+
+        }
+        String query6 = "Select * from lab where patient_ID= ?";
+        PreparedStatement ps6 = con.prepareStatement(query6);
+        ps6.setInt(1,id);
+
+        ResultSet rs6 =ps6.executeQuery();
+
+        while (rs6.next()){
+                    LabTest_code =rs6.getString(2);
+                    LabTest_cost =rs6.getString(3);
+                    LabTest_description =rs6.getString(4);
+                    LabTest_type=rs6.getString(5);
+                    LabTest_date=rs6.getString(6);
+                    Labtable.getItems().add(new LabData(LabTest_code,LabTest_cost,LabTest_description,LabTest_type,LabTest_date));
+
+
+        }
+
+        con.close();
+
+
+
+    }
+    public void GetMedicineDetails(String username,TableView medicineTable) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        // query for getId
+        String query3 ="Select ID from authentication where username= ?";
+        PreparedStatement ps3=con.prepareStatement(query3);
+        ps3.setString(1, username);
+        ResultSet rs3=ps3.executeQuery();
+        if (rs3.next()) {
+            id = rs3.getInt(1);
+
+        }
+        String query6 = "Select * from medication where patient_ID= ?";
+        PreparedStatement ps6 = con.prepareStatement(query6);
+        ps6.setInt(1,id);
+        System.out.println(id);
+        ResultSet rs6 =ps6.executeQuery();
+
+        while (rs6.next()){
+            Medication_code =rs6.getString(2);
+            Medication_cost =rs6.getString(3);
+            Medication_description =rs6.getString(4);
+            Medication_type=rs6.getString(5);
+            Medication_Sdate=rs6.getString(6);
+            Medication_Edate=rs6.getString(7);
+
+            medicineTable.getItems().add(new MedicationData(Medication_code,Medication_cost,Medication_description,Medication_type,Medication_Sdate,Medication_Edate));
+
+
+        }
+
+        con.close();
+
+
 
     }
 
