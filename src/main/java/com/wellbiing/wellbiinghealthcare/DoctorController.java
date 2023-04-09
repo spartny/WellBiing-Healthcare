@@ -182,13 +182,34 @@ public class DoctorController implements Initializable {
     private TextField patientPasswordField;
 
     @FXML
+    private RadioButton searchAllergiesRadio;
+
+    @FXML
     private Button searchConfirmButton;
+
+    @FXML
+    private RadioButton searchLabTestRadio;
+
+    @FXML
+    private RadioButton searchMedicationRadio;
+
+    @FXML
+    private RadioButton searchOperationRadio;
+
+    @FXML
+    private ToggleGroup searchPatientGroup;
 
     @FXML
     private TextField searchPatientId;
 
     @FXML
     private AnchorPane searchPatientPane;
+
+    @FXML
+    private RadioButton searchTreatmentRadio;
+
+    @FXML
+    private RadioButton searchVitalsRadio;
 
     @FXML
     private TextField testCost;
@@ -248,20 +269,10 @@ public class DoctorController implements Initializable {
     private TextField vitalsTempFIeld;
 
     @FXML
-    private TableColumn<PatientInfo, Integer> patientIdCol;
-
-    @FXML
-    private TableColumn<PatientInfo, String> patientNameCol;
-
-    @FXML
-    private TableColumn<PatientInfo, String> patientContactCol;
-
-    @FXML
-    private TableColumn<PatientInfo, Date> patientLastVisitCol;
-
-
-    @FXML
     private TableView curPatientTable;
+
+    @FXML
+    private TableView searchTable;
 
     @FXML
     private TextField patientStateField;
@@ -278,6 +289,8 @@ public class DoctorController implements Initializable {
     @FXML
     private RadioButton patientGenderFemale;
 
+    @FXML
+    private Label patientCountLabel;
 
 
     @FXML
@@ -489,10 +502,39 @@ public class DoctorController implements Initializable {
 
     private void InsertCurPatientRows(TableView curPatientTable) throws SQLException, ClassNotFoundException {
         DoctorJDBC jdbc = new DoctorJDBC();
-
         int patientCount = jdbc.GetPatientCount();
 
+        patientCountLabel.setText(String.valueOf(patientCount));
+
         jdbc.GetPatients(curPatientTable);
+
+    }
+
+    public void SearchPatient(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        searchTable.getItems().clear();
+        searchTable.getColumns().clear();
+        Toggle selectedToggle = searchPatientGroup.getSelectedToggle();
+        CreateTables createTables = new CreateTables();
+
+        if (selectedToggle == searchVitalsRadio) {
+            createTables.SearchVitals(searchTable);
+            createTables.AddVitals(searchTable, searchPatientId);
+        }
+
+        if (selectedToggle == searchMedicationRadio){
+            createTables.SearchMedication(searchTable);
+            createTables.AddMedication(searchTable, searchPatientId);
+        }
+
+        if (selectedToggle == searchTreatmentRadio){
+            createTables.SearchTreatment(searchTable);
+            createTables.AddTreatment(searchTable, searchPatientId);
+        }
+
+        if (selectedToggle == searchAllergiesRadio){
+            createTables.SearchAllergy(searchTable);
+            createTables.AddAllergy(searchTable, searchPatientId);
+        }
 
     }
 }

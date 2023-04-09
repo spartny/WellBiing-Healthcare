@@ -1,6 +1,8 @@
 package com.wellbiing.wellbiinghealthcare;
 
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.*;
 
@@ -208,8 +210,9 @@ public class DoctorJDBC {
             curPatientTable.getItems().add(new PatientInfo(patientId, patientName, patientContact, patientLastVisit));
             System.out.println("wow");
         }
-
     }
+
+
 
     public int GetPatientCount() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -228,5 +231,90 @@ public class DoctorJDBC {
         }
 
         return patientCount;
+    }
+
+    public void AddVitals(TableView searchTable) {
+
+    }
+
+    public ResultSet GetVitals(int patientId) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        String query = "SELECT * FROM vitals where patient_ID = ?;";
+
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+
+        preparedStatement.setInt(1, patientId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        return resultSet;
+    }
+
+    public String GetName(int patientId) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        String query = "SELECT patient_name FROM personal_information WHERE patient_ID = ?;";
+
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+
+        preparedStatement.setInt(1, patientId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        String patientName = null;
+        
+        while (resultSet.next()){
+            patientName = resultSet.getString(1);
+        }
+
+        return patientName;
+    }
+
+    public ResultSet GetMedication(int patientId) throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        String query = "SELECT * FROM medication where patient_ID = ?;";
+
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+
+        preparedStatement.setInt(1, patientId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        return resultSet;
+    }
+
+    public ResultSet GetTreatment(int patientId) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        String query = "SELECT * FROM treatments where patient_ID = ?;";
+
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+
+        preparedStatement.setInt(1, patientId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        return resultSet;
+    }
+
+    public ResultSet GetAllergy(int patientId) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        String query = "SELECT * FROM allergy where patient_ID = ?;";
+
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+
+        preparedStatement.setInt(1, patientId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        return resultSet;
     }
 }
