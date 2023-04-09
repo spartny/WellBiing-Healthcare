@@ -1,6 +1,8 @@
 package com.wellbiing.wellbiinghealthcare;
 
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.*;
 
@@ -208,8 +210,9 @@ public class DoctorJDBC {
             curPatientTable.getItems().add(new PatientInfo(patientId, patientName, patientContact, patientLastVisit));
             System.out.println("wow");
         }
-
     }
+
+
 
     public int GetPatientCount() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -228,5 +231,24 @@ public class DoctorJDBC {
         }
 
         return patientCount;
+    }
+
+    public void AddVitals(TableView searchTable) {
+
+    }
+
+    public ResultSet GetVitals(int patientId) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        String query = "SELECT * FROM vitals where patient_ID = ?;";
+
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+
+        preparedStatement.setInt(1, patientId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        return resultSet;
     }
 }

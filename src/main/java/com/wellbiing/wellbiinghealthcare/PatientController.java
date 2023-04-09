@@ -174,7 +174,10 @@ public class PatientController implements Initializable {
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_description"));
         testTypecolumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_type"));
         testDatecolumn.setCellValueFactory(new PropertyValueFactory<LabData,String>("LabTest_date"));
-        Labtable.setItems(p.labData);
+//        Labtable.setItems(p.labData);
+
+
+        System.out.println(p.labData.get(0).getLabTest_code());
 
     }
 
