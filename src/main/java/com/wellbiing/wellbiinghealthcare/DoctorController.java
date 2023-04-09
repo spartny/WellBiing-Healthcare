@@ -511,6 +511,8 @@ public class DoctorController implements Initializable {
     }
 
     public void SearchPatient(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        searchTable.getItems().clear();
+        searchTable.getColumns().clear();
         Toggle selectedToggle = searchPatientGroup.getSelectedToggle();
         CreateTables createTables = new CreateTables();
 
@@ -518,6 +520,22 @@ public class DoctorController implements Initializable {
             createTables.SearchVitals(searchTable);
             createTables.AddVitals(searchTable, searchPatientId);
         }
+
+        if (selectedToggle == searchMedicationRadio){
+            createTables.SearchMedication(searchTable);
+            createTables.AddMedication(searchTable, searchPatientId);
+        }
+
+        if (selectedToggle == searchTreatmentRadio){
+            createTables.SearchTreatment(searchTable);
+            createTables.AddTreatment(searchTable, searchPatientId);
+        }
+
+        if (selectedToggle == searchAllergiesRadio){
+            createTables.SearchAllergy(searchTable);
+            createTables.AddAllergy(searchTable, searchPatientId);
+        }
+
     }
 }
 

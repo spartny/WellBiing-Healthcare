@@ -1,14 +1,18 @@
 package com.wellbiing.wellbiinghealthcare;
 
+import java.sql.Date;
+
 public class VitalsInfo {
+    String patientName;
     float temperature;
     float bloodPressure;
     float heartRate;
     float breathingRate;
-    float testDate;
+    Date testDate;
     float spO2;
 
-    public VitalsInfo(float temperature, float bloodPressure, float heartRate, float breathingRate, float testDate, float spO2) {
+    public VitalsInfo(String patientName, float temperature, float bloodPressure, float heartRate, float breathingRate, Date testDate, float spO2) {
+        this.patientName = patientName;
         this.temperature = temperature;
         this.bloodPressure = bloodPressure;
         this.heartRate = heartRate;
@@ -20,7 +24,6 @@ public class VitalsInfo {
     public float getTemperature() {
         return temperature;
     }
-
     public void setTemperature(float temperature) {
         this.temperature = temperature;
     }
@@ -49,16 +52,24 @@ public class VitalsInfo {
         this.breathingRate = breathingRate;
     }
 
-    public float getTestDate() {
+    public Date getTestDate() {
         return testDate;
     }
 
-    public void setTestDate(float testDate) {
+    public void setTestDate(Date testDate) {
         this.testDate = testDate;
     }
 
     public float getSpO2() {
         return spO2;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
     }
 
     public void setSpO2(float spO2) {
