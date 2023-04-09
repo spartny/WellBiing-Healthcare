@@ -24,7 +24,7 @@ public class PatientJDBC {
     String Id;
     String gender;
     String testDate;
-    ObservableList<LabData> labData;
+    ObservableList<LabData> labData = FXCollections.observableArrayList();
 
     public void GetInfo(String username){
         try
@@ -123,7 +123,7 @@ public class PatientJDBC {
                     break;
                 }
             }
-            labData = FXCollections.observableArrayList();
+
             String query6 = "Select * from lab where patient_ID= ?";
             PreparedStatement ps6 = con.prepareStatement(query6);
             ps6.setInt(1,id);
@@ -139,7 +139,6 @@ public class PatientJDBC {
 
 
             }
-            System.out.println(labData.get(1));
 
 
 

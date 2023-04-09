@@ -471,7 +471,7 @@ public class DoctorController implements Initializable {
 
         InsertRows();
 
-        curPatientTable.getItems().add(new PatientInfo(1, "Parth Chauhan", "920911203"));
+        //curPatientTable.getItems().add(new PatientInfo(1, "Parth Chauhan", "920911203"));
 
         curPatientTable.getColumns().add(patientIdCol);
         curPatientTable.getColumns().add(patientNameCol);
