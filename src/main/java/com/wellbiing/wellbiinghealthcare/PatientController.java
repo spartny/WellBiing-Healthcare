@@ -87,17 +87,12 @@ public class PatientController implements Initializable {
 
     }
 
-
     @FXML
     void LabTest(ActionEvent event) {
         closeAndDisablePanes();
         labTestPane.setOpacity(1.0);
         labTestPane.setDisable(false);
-
     }
-
-
-
     @FXML
     void HomeOpen(ActionEvent event){
         closeAndDisablePanes();

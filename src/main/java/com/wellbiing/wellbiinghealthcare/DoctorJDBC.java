@@ -1,7 +1,8 @@
 package com.wellbiing.wellbiinghealthcare;
 
+import javafx.scene.control.TableView;
+
 import java.sql.*;
-import java.time.LocalDate;
 
 public class DoctorJDBC {
     void EnterAllergies(String patientId, String allergyCode, String allergyName, String description, Date date) throws ClassNotFoundException, SQLException {
@@ -159,4 +160,73 @@ public class DoctorJDBC {
     }
 
 
+    public void GetPatients(TableView curPatientTable) throws ClassNotFoundException, SQLException {
+        //System.out.println("TeSTING waow");
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        String selectAllInfo = "SELECT * FROM personal_information;";
+
+        PreparedStatement selectAllInfoPS = con.prepareStatement(selectAllInfo);
+
+        ResultSet resultSetInfo = selectAllInfoPS.executeQuery();
+
+        String selectAllContact = "SELECT * FROM contact_info WHERE patient_ID = ?;";
+
+        PreparedStatement selectAllContactPS = con.prepareStatement(selectAllContact);
+
+        String selectAllVitals = "SELECT * FROM vitals WHERE patient_ID = ?;";
+
+        PreparedStatement selectAllVitalsPS = con.prepareStatement(selectAllVitals);
+
+        int patientId;
+        String patientName;
+        String patientContact = "";
+        Date patientLastVisit = null;
+
+        while (resultSetInfo.next()) {
+            patientId = resultSetInfo.getInt(1);
+            patientName = resultSetInfo.getString(2);
+
+            System.out.println(selectAllContactPS);
+
+            selectAllContactPS.setInt(1, patientId);
+            ResultSet resultSetContact = selectAllContactPS.executeQuery();
+
+            while (resultSetContact.next()){
+                patientContact = resultSetContact.getString(2);
+            }
+
+            selectAllVitalsPS.setInt(1, patientId);
+
+            ResultSet resultSetVitals = selectAllVitalsPS.executeQuery();
+
+            while (resultSetVitals.next()){
+                patientLastVisit = resultSetVitals.getDate(6);
+            }
+
+            curPatientTable.getItems().add(new PatientInfo(patientId, patientName, patientContact, patientLastVisit));
+            System.out.println("wow");
+        }
+
+    }
+
+    public int GetPatientCount() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        String query = "SELECT COUNT(patient_ID) FROM personal_information;";
+
+        PreparedStatement ps = con.prepareStatement(query);
+
+        ResultSet countResultSet = ps.executeQuery();
+
+        int patientCount = 0;
+        
+        while (countResultSet.next()) {
+            patientCount = countResultSet.getInt("COUNT(patient_ID)");
+        }
+
+        return patientCount;
+    }
 }

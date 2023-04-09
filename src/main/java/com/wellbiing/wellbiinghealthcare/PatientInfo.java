@@ -42,8 +42,6 @@ public class PatientInfo {
         this.patientContact = patientContact;
     }
 
-
-
     public int getPatientId() {
         return patientId;
     }
@@ -51,4 +49,5 @@ public class PatientInfo {
     public void setPatientId(int patientId) {
         this.patientId = patientId;
     }
+
 }
