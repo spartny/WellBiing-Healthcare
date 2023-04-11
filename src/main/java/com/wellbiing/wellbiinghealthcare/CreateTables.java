@@ -199,5 +199,8 @@ public class CreateTables {
         allergyNameCol.setCellValueFactory(new PropertyValueFactory<>("allergyName"));
         allergyDescCol.setCellValueFactory(new PropertyValueFactory<>("allergyDesc"));
         allergyTypeCol.setCellValueFactory(new PropertyValueFactory<>("allergyDate"));
+
+        searchTable.getColumns().addAll(patientNameCol, allergyCodeCol, allergyNameCol, allergyDescCol,
+                allergyTypeCol);
     }
 }
