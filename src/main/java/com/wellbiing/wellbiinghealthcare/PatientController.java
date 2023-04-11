@@ -18,6 +18,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
@@ -57,21 +59,8 @@ public class PatientController implements Initializable {
     String Username ="Patient1";
     @FXML
     private TableView <LabData> Labtable;
-
     @FXML
-    private TableColumn <LabData,String> testDatecolumn;
-
-    @FXML
-    private TableColumn  <LabData,String> testTypecolumn;
-
-//    @FXML
-//    private TableColumn <LabData,String> codeColumn;
-
-    @FXML
-    private TableColumn <LabData,String> costColumn;
-
-    @FXML
-    private TableColumn <LabData,String> descriptionColumn;
+    private TableView<MedicationData> medicineTable;
 
     public void closeAndDisablePanes(){
         overviewPane.setOpacity(0.0);
@@ -167,23 +156,88 @@ public class PatientController implements Initializable {
     public void SetGender(PatientJDBC p){
         genderfield.setText(p.gender);
     }
-    public  void SetColumnData(PatientJDBC p){
-       // codeColumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_code"));
+
+    public  void SetLabData(PatientJDBC p){
+        TableColumn<LabData, String> codeColumn = new TableColumn<>("Code");
+        TableColumn<LabData, String> costColumn = new TableColumn<>("Cost");
+        TableColumn<LabData, String> descriptionColumn = new TableColumn<>("Description");
+        TableColumn<LabData, String> testTypecolumn = new TableColumn<>("Type");
+        TableColumn<LabData, String> testDatecolumn = new TableColumn<>("Date");
+
+        codeColumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_code"));
         costColumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_cost"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_description"));
         testTypecolumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_type"));
         testDatecolumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_date"));
-        //Labtable.getItems().addAll(p.labData);
-        //
+        try {
+            InsertLabDetailsRows(Labtable);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        Labtable.getColumns().add(codeColumn);
+        Labtable.getColumns().add(costColumn);
+        Labtable.getColumns().add(descriptionColumn);
+        Labtable.getColumns().add(testTypecolumn);
+        Labtable.getColumns().add(testDatecolumn);
+       codeColumn.setMinWidth(84);
+       costColumn.setMinWidth(80);
+       descriptionColumn.setMinWidth(160);
+       testTypecolumn.setMinWidth(115);
+       testDatecolumn.setMinWidth(110);
 
+
+    }
+    private void InsertLabDetailsRows(TableView Labtable) throws SQLException, ClassNotFoundException {
+        PatientJDBC p = new PatientJDBC();
+        p.GetLabDetails(Username,Labtable);
+
+
+    }
+
+    public  void SetMedicationData(PatientJDBC p){
+        TableColumn<MedicationData, String> codeColumn = new TableColumn<>("Code");
+        TableColumn<MedicationData, String> costColumn = new TableColumn<>("Cost");
+        TableColumn<MedicationData, String> descriptionColumn = new TableColumn<>("Description");
+        TableColumn<MedicationData, String> medicineTypecolumn = new TableColumn<>("Type");
+        TableColumn<MedicationData, String> startDatecolumn = new TableColumn<>("Start_Date");
+        TableColumn<MedicationData, String> endDatecolumn = new TableColumn<>("End_Date");
+
+        codeColumn.setCellValueFactory(new PropertyValueFactory<>("Medication_code"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("Medication_cost"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("Medication_description"));
+        medicineTypecolumn.setCellValueFactory(new PropertyValueFactory<>("Medication_type"));
+        startDatecolumn.setCellValueFactory(new PropertyValueFactory<>("Medication_Sdate"));
+        endDatecolumn.setCellValueFactory(new PropertyValueFactory<>("Medication_Edate"));
+
+        try {
+            InsertMedicineDetailsRows(medicineTable);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        medicineTable.getColumns().add(codeColumn);
+        medicineTable.getColumns().add(costColumn);
+        medicineTable.getColumns().add(descriptionColumn);
+        medicineTable.getColumns().add(medicineTypecolumn);
+        medicineTable.getColumns().add(startDatecolumn);
+        medicineTable.getColumns().add(endDatecolumn);
+        codeColumn.setMinWidth(50);
+        costColumn.setMinWidth(50);
+        descriptionColumn.setMinWidth(120);
+        medicineTypecolumn.setMinWidth(120);
+        startDatecolumn.setMinWidth(100);
+        endDatecolumn.setMinWidth(99);
+
+
+    }
+    private void InsertMedicineDetailsRows(TableView medicineTable) throws SQLException, ClassNotFoundException {
+        PatientJDBC p = new PatientJDBC();
+        p.GetMedicineDetails(Username,medicineTable);
 
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TableColumn codeColumn = new TableColumn("LabTest_code");
-        System.out.println(codeColumn.getColumns());
         PatientJDBC p = new PatientJDBC();
         //setUsername();
         p.GetInfo(Username);
@@ -198,7 +252,8 @@ public class PatientController implements Initializable {
         SetGender(p);
         SetAllergies(p);
         SetMedication(p);
-        //SetColumnData(p);
+        SetLabData(p);
+        SetMedicationData(p);
 
 
 

@@ -254,7 +254,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="labTestPane" layoutX="380.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+            <Pane fx:id="labTestPane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
                   <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-radius: 50; -fx-background-color: white;">
                      <children>
@@ -262,15 +262,7 @@
                           <content>
                             <AnchorPane layoutY="275.0" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="535.0">
                                  <children>
-                                    <TableView prefHeight="318.0" prefWidth="539.0">
-                                      <columns>
-                                        <TableColumn fx:id="codeColumn" prefWidth="87.0" text="LabTest_code" />
-                                        <TableColumn fx:id="costColumn" text="LabTest_cost" />
-                                          <TableColumn fx:id="descriptionColumn" prefWidth="160.0" text="LabTest_description" />
-                                          <TableColumn fx:id="testTypecolumn" prefWidth="115.0" text="LabTest_type" />
-                                          <TableColumn fx:id="testDatecolumn" prefWidth="107.0" text="LabTest_date" />
-                                      </columns>
-                                    </TableView>
+                                    <TableView fx:id="Labtable" prefHeight="318.0" prefWidth="539.0" />
                                  </children></AnchorPane>
                           </content>
                         </ScrollPane>
@@ -302,13 +294,16 @@
                      </children>
                   </Pane>
                </children></Pane>
-            <AnchorPane fx:id="medicationPane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
+            <AnchorPane fx:id="medicationPane" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
                <children>
                   <AnchorPane prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                      <children>
                         <ScrollPane layoutY="275.0" prefHeight="318.0" prefWidth="550.0">
                            <content>
-                              <AnchorPane layoutY="275.0" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="535.0" />
+                              <AnchorPane layoutY="275.0" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="535.0">
+                                 <children>
+                                    <TableView fx:id="medicineTable" prefHeight="318.0" prefWidth="537.0" />
+                                 </children></AnchorPane>
                            </content>
                         </ScrollPane>
                         <Separator layoutX="11.0" layoutY="240.0" prefHeight="3.0" prefWidth="525.0" />
@@ -337,13 +332,16 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Pane fx:id="operationPane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+            <Pane fx:id="operationPane" layoutX="380.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
                   <Pane layoutY="-2.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                      <children>
                         <ScrollPane layoutY="275.0" prefHeight="318.0" prefWidth="550.0">
                            <content>
-                              <AnchorPane layoutY="275.0" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="535.0" />
+                              <AnchorPane layoutY="275.0" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="535.0">
+                                 <children>
+                                    <TableView fx:id="operationTable" prefHeight="318.0" prefWidth="539.0" />
+                                 </children></AnchorPane>
                            </content>
                         </ScrollPane>
                         <Text layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Operation Record" textAlignment="CENTER" wrappingWidth="550.0">
@@ -391,7 +389,7 @@
                               <Font name="Leelawadee UI Bold" size="26.0" />
                            </font>
                         </Text>
-                        <TableView fx:id="recentLabTable" layoutY="129.0" prefHeight="100.0" prefWidth="550.0" />
+                        <TableView layoutY="129.0" prefHeight="100.0" prefWidth="550.0" />
                         <Separator layoutX="11.0" layoutY="240.0" prefHeight="3.0" prefWidth="525.0" />
                         <Text fill="#075d5d" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Past Records" textAlignment="CENTER" wrappingWidth="550.0">
                            <font>
