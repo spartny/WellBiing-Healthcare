@@ -162,6 +162,23 @@ public class CreateTables {
         }
     }
 
+    public void SearchAllergy(TableView searchTable) {
+        TableColumn<AllergyInfo, String> patientNameCol = new TableColumn<>("Patient Name");
+        TableColumn<AllergyInfo, Integer> allergyCodeCol = new TableColumn<>("Code");
+        TableColumn<AllergyInfo, String> allergyNameCol = new TableColumn<>("Name");
+        TableColumn<AllergyInfo, String> allergyDescCol = new TableColumn<>("Description");
+        TableColumn<AllergyInfo, Date> allergyTypeCol = new TableColumn<>("Date");
+
+        patientNameCol.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+        allergyCodeCol.setCellValueFactory(new PropertyValueFactory<>("allergyCode"));
+        allergyNameCol.setCellValueFactory(new PropertyValueFactory<>("allergyName"));
+        allergyDescCol.setCellValueFactory(new PropertyValueFactory<>("allergyDesc"));
+        allergyTypeCol.setCellValueFactory(new PropertyValueFactory<>("allergyDate"));
+
+        searchTable.getColumns().addAll(patientNameCol, allergyCodeCol, allergyNameCol, allergyDescCol,
+                allergyTypeCol);
+    }
+
     public void AddAllergy(TableView searchTable, TextField searchPatientId) throws SQLException, ClassNotFoundException {
         DoctorJDBC jdbc = new DoctorJDBC();
 
@@ -187,20 +204,92 @@ public class CreateTables {
         }
     }
 
-    public void SearchAllergy(TableView searchTable) {
-        TableColumn<AllergyInfo, String> patientNameCol = new TableColumn<>("Patient Name");
-        TableColumn<AllergyInfo, Integer> allergyCodeCol = new TableColumn<>("Code");
-        TableColumn<AllergyInfo, String> allergyNameCol = new TableColumn<>("Name");
-        TableColumn<AllergyInfo, String> allergyDescCol = new TableColumn<>("Description");
-        TableColumn<AllergyInfo, Date> allergyTypeCol = new TableColumn<>("Date");
+
+
+    public void SearchOperation(TableView searchTable) {
+        TableColumn<OperationInfo, String> patientNameCol = new TableColumn<>("Patient Name");
+        TableColumn<OperationInfo, Integer> opCodeCol = new TableColumn<>("Code");
+        TableColumn<OperationInfo, Integer> opCostCol = new TableColumn<>("Cost");
+        TableColumn<OperationInfo, String> opDescCol = new TableColumn<>("Description");
+        TableColumn<OperationInfo, String> opTypeCol = new TableColumn<>("Type");
+        TableColumn<OperationInfo, Date> opDateCol = new TableColumn<>("Date");
 
         patientNameCol.setCellValueFactory(new PropertyValueFactory<>("patientName"));
-        allergyCodeCol.setCellValueFactory(new PropertyValueFactory<>("allergyCode"));
-        allergyNameCol.setCellValueFactory(new PropertyValueFactory<>("allergyName"));
-        allergyDescCol.setCellValueFactory(new PropertyValueFactory<>("allergyDesc"));
-        allergyTypeCol.setCellValueFactory(new PropertyValueFactory<>("allergyDate"));
+        opCodeCol.setCellValueFactory(new PropertyValueFactory<>("opCode"));
+        opCostCol.setCellValueFactory(new PropertyValueFactory<>("opCost"));
+        opDescCol.setCellValueFactory(new PropertyValueFactory<>("opDesc"));
+        opTypeCol.setCellValueFactory(new PropertyValueFactory<>("opType"));
+        opDateCol.setCellValueFactory(new PropertyValueFactory<>("opDate"));
 
-        searchTable.getColumns().addAll(patientNameCol, allergyCodeCol, allergyNameCol, allergyDescCol,
-                allergyTypeCol);
+        searchTable.getColumns().addAll(patientNameCol, opCodeCol, opCostCol, opDescCol, opTypeCol, opDateCol);
+
+    }
+
+    public void AddOperation(TableView searchTable, TextField searchPatientId) throws SQLException, ClassNotFoundException {
+        DoctorJDBC jdbc = new DoctorJDBC();
+
+        int patientId = Integer.parseInt(searchPatientId.getText());
+
+        ResultSet operations = jdbc.GetOperation(patientId);
+        String patientName = jdbc.GetName(patientId);
+
+        int opCode;
+        String opCost;
+        String opDesc;
+        String opType;
+        Date opDate;
+
+
+        while (operations.next()) {
+            opCode = operations.getInt(2);
+            opCost = operations.getString(3);
+            opDesc = operations.getString(4);
+            opType = operations.getString(5);
+            opDate = operations.getDate(6);
+
+            searchTable.getItems().add(new OperationInfo(patientName, opCode, opCost, opDesc, opType, opDate));
+        }
+    }
+
+    public void SearchTest(TableView searchTable) {
+        TableColumn<LabInfo, String> patientNameCol = new TableColumn<>("Patient Name");
+        TableColumn<LabInfo, Integer> labCodeCol = new TableColumn<>("Code");
+        TableColumn<LabInfo, Integer> labCostCol = new TableColumn<>("Cost");
+        TableColumn<LabInfo, String> labDescCol = new TableColumn<>("Description");
+        TableColumn<LabInfo, Date> labDateCol = new TableColumn<>("Date");
+
+        patientNameCol.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+        labCodeCol.setCellValueFactory(new PropertyValueFactory<>("labCode"));
+        labCostCol.setCellValueFactory(new PropertyValueFactory<>("labCost"));
+        labDescCol.setCellValueFactory(new PropertyValueFactory<>("labDesc"));
+        labDateCol.setCellValueFactory(new PropertyValueFactory<>("labDate"));
+
+        searchTable.getColumns().addAll(patientNameCol, labCodeCol, labCostCol, labDescCol, labDateCol);
+    }
+
+    public void AddTest(TableView searchTable, TextField searchPatientId) throws SQLException, ClassNotFoundException {
+        DoctorJDBC jdbc = new DoctorJDBC();
+
+        int patientId = Integer.parseInt(searchPatientId.getText());
+
+        ResultSet tests = jdbc.GetTest(patientId);
+        String patientName = jdbc.GetName(patientId);
+
+        int labCode;
+        String labCost;
+        String labDesc;
+        String labType;
+        Date labDate;
+
+
+        while (tests.next()) {
+            labCode = tests.getInt(2);
+            labCost = tests.getString(3);
+            labDesc = tests.getString(4);
+            labType = tests.getString(5);
+            labDate = tests.getDate(6);
+
+            searchTable.getItems().add(new LabInfo(patientName, labCode, labCost, labDesc, labType, labDate));
+        }
     }
 }

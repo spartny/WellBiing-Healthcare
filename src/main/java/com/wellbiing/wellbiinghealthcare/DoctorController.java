@@ -536,6 +536,20 @@ public class DoctorController implements Initializable {
             createTables.AddAllergy(searchTable, searchPatientId);
         }
 
+        if (selectedToggle == searchOperationRadio){
+            createTables.SearchOperation(searchTable);
+            createTables.AddOperation(searchTable, searchPatientId);
+        }
+
+        if (selectedToggle == searchLabTestRadio){
+            createTables.SearchTest(searchTable);
+            createTables.AddTest(searchTable, searchPatientId);
+        }
+
+    }
+
+    public void UpdatePatient(ActionEvent actionEvent) {
+        
     }
 }
 
