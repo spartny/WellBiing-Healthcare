@@ -61,6 +61,8 @@ public class PatientController implements Initializable {
     private TableView <LabData> Labtable;
     @FXML
     private TableView<MedicationData> medicineTable;
+    @FXML
+    private TableView<OperationData> operationTable;
 
     public void closeAndDisablePanes(){
         overviewPane.setOpacity(0.0);
@@ -236,6 +238,46 @@ public class PatientController implements Initializable {
 
     }
 
+    public  void SetOperationData(PatientJDBC p){
+        TableColumn<OperationData, String> codeColumn = new TableColumn<>("Code");
+        TableColumn<OperationData, String> costColumn = new TableColumn<>("Cost");
+        TableColumn<OperationData, String> descriptionColumn = new TableColumn<>("Description");
+        TableColumn<OperationData, String> operationTypecolumn = new TableColumn<>("Type");
+        TableColumn<OperationData, String> Datecolumn = new TableColumn<>("Date");
+
+        codeColumn.setCellValueFactory(new PropertyValueFactory<>("opCode"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("opCost"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("opDes"));
+        operationTypecolumn.setCellValueFactory(new PropertyValueFactory<>("opType"));
+        Datecolumn.setCellValueFactory(new PropertyValueFactory<>("opDate"));
+
+
+        try {
+            InsertMedicineDetailsRows(operationTable);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        operationTable.getColumns().add(codeColumn);
+        operationTable.getColumns().add(costColumn);
+        operationTable.getColumns().add(descriptionColumn);
+        operationTable.getColumns().add(operationTypecolumn);
+        operationTable.getColumns().add(Datecolumn);
+        codeColumn.setMinWidth(50);
+        costColumn.setMinWidth(50);
+        descriptionColumn.setMinWidth(120);
+        operationTypecolumn.setMinWidth(120);
+        Datecolumn.setMinWidth(100);
+
+
+
+    }
+    private void InsertOperationDetailsRows(TableView operationTable) throws SQLException, ClassNotFoundException {
+        PatientJDBC p = new PatientJDBC();
+        p.GetMedicineDetails(Username,operationTable);
+
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         PatientJDBC p = new PatientJDBC();
@@ -254,6 +296,7 @@ public class PatientController implements Initializable {
         SetMedication(p);
         SetLabData(p);
         SetMedicationData(p);
+        SetOperationData(p);
 
 
 

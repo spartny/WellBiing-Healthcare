@@ -36,6 +36,11 @@ public class PatientJDBC {
     String Medication_type;
     String Medication_Sdate;
     String Medication_Edate;
+    String opCode;
+    String opCost;
+    String opDescription;
+    String opType;
+    String opDate;
     ObservableList<LabData> labData = FXCollections.observableArrayList();
 
     public void GetInfo(String username){
@@ -205,7 +210,7 @@ public class PatientJDBC {
         String query6 = "Select * from medication where patient_ID= ?";
         PreparedStatement ps6 = con.prepareStatement(query6);
         ps6.setInt(1,id);
-        System.out.println(id);
+
         ResultSet rs6 =ps6.executeQuery();
 
         while (rs6.next()){
@@ -217,6 +222,43 @@ public class PatientJDBC {
             Medication_Edate=rs6.getString(7);
 
             medicineTable.getItems().add(new MedicationData(Medication_code,Medication_cost,Medication_description,Medication_type,Medication_Sdate,Medication_Edate));
+
+
+        }
+
+        con.close();
+
+
+
+    }
+
+    public void GetOperationDetails(String username,TableView operationTable) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        // query for getId
+        String query3 ="Select ID from authentication where username= ?";
+        PreparedStatement ps3=con.prepareStatement(query3);
+        ps3.setString(1, username);
+        ResultSet rs3=ps3.executeQuery();
+        if (rs3.next()) {
+            id = rs3.getInt(1);
+
+        }
+        String query6 = "Select * from operation where patient_ID= ?";
+        PreparedStatement ps6 = con.prepareStatement(query6);
+        ps6.setInt(1,id);
+
+        ResultSet rs6 =ps6.executeQuery();
+
+        while (rs6.next()){
+            opCode =rs6.getString(2);
+            opCost =rs6.getString(3);
+            opDescription =rs6.getString(4);
+            opType=rs6.getString(5);
+            opDate=rs6.getString(6);
+
+            operationTable.getItems().add(new OperationData(opCode,opCost,opDescription,opType,opDate));
 
 
         }

@@ -29,7 +29,7 @@ public class MedicationData {
     public String getMedication_cost(){
         return Medication_cost;
     }
-    public  void SetLMedication_cost(String Medication_cost){
+    public  void SetMedication_cost(String Medication_cost){
         this.Medication_cost=Medication_cost;
 
     }

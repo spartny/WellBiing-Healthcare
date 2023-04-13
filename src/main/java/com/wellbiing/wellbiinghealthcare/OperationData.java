@@ -1,58 +1,52 @@
 package com.wellbiing.wellbiinghealthcare;
 
 public class OperationData {
-    String Medication_code;
-    String Medication_cost;
-    String Medication_description;
-    String Medication_type;
-    String Medication_Sdate;
-    String Medication_Edate;
-    OperationData(String Medication_code, String Medication_cost, String Medication_description, String Medication_type, String Medication_Sdate,String Medication_Edate ){
-        this.Medication_code=Medication_code;
-        this.Medication_cost =Medication_cost;
-        this.Medication_description=Medication_description;
+    String opCode;
+    String opCost;
+    String opDesc;
+    String opType;
+    String opDate;
+    OperationData(String opCode, String opCost, String opDesc, String opType, String opDate ){
+        this.opCode=opCode;
+        this.opCost =opCost;
+        this.opDesc=opDesc;
 
-        this.Medication_type =Medication_type;
-        this.Medication_Sdate = Medication_Sdate;
-        this.Medication_Edate = Medication_Edate;
+        this.opType =opType;
+        this.opDate = opDate;
 
-    }
-    public String getMedication_code(){
-        return Medication_code;
-    }
-    public  void SetMedication_code(String Medication_code){
-        this.Medication_code=Medication_code;
 
     }
-    public String getMedication_cost(){
-        return Medication_cost;
+    public String getopCode(){
+        return opCode;
     }
-    public  void SetLMedication_cost(String Medication_cost){
-        this.Medication_cost=Medication_cost;
+    public  void SetopCode(String opCode){
+        this.opCode=opCode;
 
     }
-    public String getMedication_description(){
-        return Medication_description;
+    public String getopCost(){
+        return opCost;
     }
-    public  void SetMedication_description(String Medication_description){
-        this.Medication_description=Medication_description;
+    public  void SetopCost(String opCost){
+        this.opCost=opCost;
+
     }
-    public String getMedication_type(){
-        return Medication_type;
+    public String getopDesc(){
+        return opDesc;
     }
-    public  void SetMedication_type(String Medication_type){
-        this.Medication_type=Medication_type;
+    public  void SetopDesc(String opDesc){
+        this.opDesc=opDesc;
     }
-    public String getMedication_Sdate(){
-        return Medication_Sdate;
+    public String getopType(){
+        return opType;
     }
-    public  void SetMedication_Sdate(String Medication_Sdate){
-        this.Medication_Sdate=Medication_Sdate;
+    public  void SetopType(String opType){
+        this.opType=opType;
     }
-    public String getMedication_Edate(){
-        return Medication_Edate;
+    public String getopDate(){
+        return opDate;
     }
-    public  void SetMedication_Edate(String Medication_Edate){
-        this.Medication_Edate=Medication_Edate;
+    public  void SetopDate(String opDate){
+        this.opDate=opDate;
     }
+
 }
