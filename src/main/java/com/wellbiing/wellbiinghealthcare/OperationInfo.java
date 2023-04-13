@@ -1,7 +1,7 @@
 package com.wellbiing.wellbiinghealthcare;
 
-import java.sql.Date;
-
+//import java.sql.Date;
+import java.util.Date;
 public class OperationInfo {
     String patientName;
     int opCode;
@@ -60,6 +60,14 @@ public class OperationInfo {
 
     public OperationInfo(String patientName, int opCode, String opCost, String opDesc, String opType, Date opDate) {
         this.patientName = patientName;
+        this.opCode = opCode;
+        this.opCost = opCost;
+        this.opDesc = opDesc;
+        this.opType = opType;
+        this.opDate = opDate;
+    }
+
+    public OperationInfo( int opCode, String opCost, String opDesc, String opType, Date opDate) {
         this.opCode = opCode;
         this.opCost = opCost;
         this.opDesc = opDesc;

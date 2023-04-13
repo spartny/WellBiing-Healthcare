@@ -25,23 +25,29 @@ public class PatientJDBC {
     String Id;
     String gender;
     String testDate;
-    String LabTest_code;
+    int LabTest_code;
     String LabTest_cost;
     String LabTest_description;
     String LabTest_type;
-    String LabTest_date;
-    String Medication_code;
+    Date LabTest_date;
+    int Medication_code;
     String Medication_cost;
     String Medication_description;
     String Medication_type;
-    String Medication_Sdate;
-    String Medication_Edate;
-    String opCode;
+    Date Medication_Sdate;
+    Date Medication_Edate;
+    int opCode;
     String opCost;
     String opDescription;
     String opType;
-    String opDate;
-    ObservableList<LabData> labData = FXCollections.observableArrayList();
+    Date opDate;
+
+    int treatmentCode;
+    String treatmentCost;
+    String treatmentDesc;
+    String treatmentType;
+    Date treatmentSDate;
+    Date treatmentEDate;
 
     public void GetInfo(String username){
         try
@@ -179,12 +185,12 @@ public class PatientJDBC {
         ResultSet rs6 =ps6.executeQuery();
 
         while (rs6.next()){
-                    LabTest_code =rs6.getString(2);
+                    LabTest_code =rs6.getInt(2);
                     LabTest_cost =rs6.getString(3);
                     LabTest_description =rs6.getString(4);
                     LabTest_type=rs6.getString(5);
-                    LabTest_date=rs6.getString(6);
-                    Labtable.getItems().add(new LabData(LabTest_code,LabTest_cost,LabTest_description,LabTest_type,LabTest_date));
+                    LabTest_date=rs6.getDate(6);
+                    Labtable.getItems().add(new LabInfo(LabTest_code,LabTest_cost,LabTest_description,LabTest_type,LabTest_date));
 
 
         }
@@ -214,14 +220,14 @@ public class PatientJDBC {
         ResultSet rs6 =ps6.executeQuery();
 
         while (rs6.next()){
-            Medication_code =rs6.getString(2);
+            Medication_code =rs6.getInt(2);
             Medication_cost =rs6.getString(3);
             Medication_description =rs6.getString(4);
             Medication_type=rs6.getString(5);
-            Medication_Sdate=rs6.getString(6);
-            Medication_Edate=rs6.getString(7);
+            Medication_Sdate=rs6.getDate(6);
+            Medication_Edate=rs6.getDate(7);
 
-            medicineTable.getItems().add(new MedicationData(Medication_code,Medication_cost,Medication_description,Medication_type,Medication_Sdate,Medication_Edate));
+            medicineTable.getItems().add(new MedicationInfo(Medication_code,Medication_cost,Medication_description,Medication_type,Medication_Sdate,Medication_Edate));
 
 
         }
@@ -252,13 +258,52 @@ public class PatientJDBC {
         ResultSet rs6 =ps6.executeQuery();
 
         while (rs6.next()){
-            opCode =rs6.getString(2);
+            opCode =rs6.getInt(2);
             opCost =rs6.getString(3);
             opDescription =rs6.getString(4);
             opType=rs6.getString(5);
-            opDate=rs6.getString(6);
+            opDate=rs6.getDate(6);
 
-            operationTable.getItems().add(new OperationData(opCode,opCost,opDescription,opType,opDate));
+            operationTable.getItems().add(new OperationInfo(opCode,opCost,opDescription,opType,opDate));
+
+
+        }
+
+        con.close();
+
+
+
+    }
+
+
+    public void GetTreatmentDetails(String username,TableView treatmentTable) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        // query for getId
+        String query3 ="Select ID from authentication where username= ?";
+        PreparedStatement ps3=con.prepareStatement(query3);
+        ps3.setString(1, username);
+        ResultSet rs3=ps3.executeQuery();
+        if (rs3.next()) {
+            id = rs3.getInt(1);
+
+        }
+        String query6 = "Select * from treatment where patient_ID= ?";
+        PreparedStatement ps6 = con.prepareStatement(query6);
+        ps6.setInt(1,id);
+
+        ResultSet rs6 =ps6.executeQuery();
+
+        while (rs6.next()){
+            treatmentCode =rs6.getInt(2);
+            treatmentCost =rs6.getString(3);
+            treatmentDesc =rs6.getString(4);
+            treatmentType=rs6.getString(5);
+            treatmentSDate=rs6.getDate(6);
+            treatmentEDate=rs6.getDate(7);
+
+            treatmentTable.getItems().add(new TreatmentInfo(treatmentCode,treatmentCost,treatmentDesc,treatmentType,treatmentSDate,treatmentEDate));
 
 
         }

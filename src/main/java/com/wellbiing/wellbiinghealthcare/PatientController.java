@@ -58,11 +58,13 @@ public class PatientController implements Initializable {
     private Label genderfield;
     String Username ="Patient1";
     @FXML
-    private TableView <LabData> Labtable;
+    private TableView <LabInfo> Labtable;
     @FXML
-    private TableView<MedicationData> medicineTable;
+    private TableView<MedicationInfo> medicineTable;
     @FXML
-    private TableView<OperationData> operationTable;
+    private TableView<OperationInfo> operationTable;
+    @FXML
+    private  TableView<TreatmentInfo> treatmentTable;
 
     public void closeAndDisablePanes(){
         overviewPane.setOpacity(0.0);
@@ -160,17 +162,17 @@ public class PatientController implements Initializable {
     }
 
     public  void SetLabData(PatientJDBC p){
-        TableColumn<LabData, String> codeColumn = new TableColumn<>("Code");
-        TableColumn<LabData, String> costColumn = new TableColumn<>("Cost");
-        TableColumn<LabData, String> descriptionColumn = new TableColumn<>("Description");
-        TableColumn<LabData, String> testTypecolumn = new TableColumn<>("Type");
-        TableColumn<LabData, String> testDatecolumn = new TableColumn<>("Date");
+        TableColumn<LabInfo, String> codeColumn = new TableColumn<>("Code");
+        TableColumn<LabInfo, String> costColumn = new TableColumn<>("Cost");
+        TableColumn<LabInfo, String> descriptionColumn = new TableColumn<>("Description");
+        TableColumn<LabInfo, String> testTypecolumn = new TableColumn<>("Type");
+        TableColumn<LabInfo, String> testDatecolumn = new TableColumn<>("Date");
 
-        codeColumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_code"));
-        costColumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_cost"));
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_description"));
-        testTypecolumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_type"));
-        testDatecolumn.setCellValueFactory(new PropertyValueFactory<>("LabTest_date"));
+        codeColumn.setCellValueFactory(new PropertyValueFactory<>("LabCode"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("LabCost"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("LabDesc"));
+        testTypecolumn.setCellValueFactory(new PropertyValueFactory<>("LabType"));
+        testDatecolumn.setCellValueFactory(new PropertyValueFactory<>("LabDate"));
         try {
             InsertLabDetailsRows(Labtable);
         } catch (SQLException | ClassNotFoundException e) {
@@ -197,19 +199,19 @@ public class PatientController implements Initializable {
     }
 
     public  void SetMedicationData(PatientJDBC p){
-        TableColumn<MedicationData, String> codeColumn = new TableColumn<>("Code");
-        TableColumn<MedicationData, String> costColumn = new TableColumn<>("Cost");
-        TableColumn<MedicationData, String> descriptionColumn = new TableColumn<>("Description");
-        TableColumn<MedicationData, String> medicineTypecolumn = new TableColumn<>("Type");
-        TableColumn<MedicationData, String> startDatecolumn = new TableColumn<>("Start_Date");
-        TableColumn<MedicationData, String> endDatecolumn = new TableColumn<>("End_Date");
+        TableColumn<MedicationInfo, String> codeColumn = new TableColumn<>("Code");
+        TableColumn<MedicationInfo, String> costColumn = new TableColumn<>("Cost");
+        TableColumn<MedicationInfo, String> descriptionColumn = new TableColumn<>("Description");
+        TableColumn<MedicationInfo, String> medicineTypecolumn = new TableColumn<>("Type");
+        TableColumn<MedicationInfo, String> startDatecolumn = new TableColumn<>("Start_Date");
+        TableColumn<MedicationInfo, String> endDatecolumn = new TableColumn<>("End_Date");
 
-        codeColumn.setCellValueFactory(new PropertyValueFactory<>("Medication_code"));
-        costColumn.setCellValueFactory(new PropertyValueFactory<>("Medication_cost"));
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("Medication_description"));
-        medicineTypecolumn.setCellValueFactory(new PropertyValueFactory<>("Medication_type"));
-        startDatecolumn.setCellValueFactory(new PropertyValueFactory<>("Medication_Sdate"));
-        endDatecolumn.setCellValueFactory(new PropertyValueFactory<>("Medication_Edate"));
+        codeColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationC"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationC"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationDesc"));
+        medicineTypecolumn.setCellValueFactory(new PropertyValueFactory<>("MedicationType"));
+        startDatecolumn.setCellValueFactory(new PropertyValueFactory<>("MedicationSdate"));
+        endDatecolumn.setCellValueFactory(new PropertyValueFactory<>("MedicationEdate"));
 
         try {
             InsertMedicineDetailsRows(medicineTable);
@@ -239,11 +241,11 @@ public class PatientController implements Initializable {
     }
 
     public  void SetOperationData(PatientJDBC p){
-        TableColumn<OperationData, String> codeColumn = new TableColumn<>("Code");
-        TableColumn<OperationData, String> costColumn = new TableColumn<>("Cost");
-        TableColumn<OperationData, String> descriptionColumn = new TableColumn<>("Description");
-        TableColumn<OperationData, String> operationTypecolumn = new TableColumn<>("Type");
-        TableColumn<OperationData, String> Datecolumn = new TableColumn<>("Date");
+        TableColumn<OperationInfo, String> codeColumn = new TableColumn<>("Code");
+        TableColumn<OperationInfo, String> costColumn = new TableColumn<>("Cost");
+        TableColumn<OperationInfo, String> descriptionColumn = new TableColumn<>("Description");
+        TableColumn<OperationInfo, String> operationTypecolumn = new TableColumn<>("Type");
+        TableColumn<OperationInfo, String> Datecolumn = new TableColumn<>("Date");
 
         codeColumn.setCellValueFactory(new PropertyValueFactory<>("opCode"));
         costColumn.setCellValueFactory(new PropertyValueFactory<>("opCost"));
@@ -253,7 +255,7 @@ public class PatientController implements Initializable {
 
 
         try {
-            InsertMedicineDetailsRows(operationTable);
+            InsertOperationDetailsRows(operationTable);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -273,7 +275,52 @@ public class PatientController implements Initializable {
     }
     private void InsertOperationDetailsRows(TableView operationTable) throws SQLException, ClassNotFoundException {
         PatientJDBC p = new PatientJDBC();
-        p.GetMedicineDetails(Username,operationTable);
+        p.GetOperationDetails(Username,operationTable);
+
+
+    }
+
+    public  void SetTreatmentData(PatientJDBC p){
+        TableColumn<TreatmentInfo, String> codeColumn = new TableColumn<>("Code");
+        TableColumn<TreatmentInfo, String> costColumn = new TableColumn<>("Cost");
+        TableColumn<TreatmentInfo, String> descriptionColumn = new TableColumn<>("Description");
+        TableColumn<TreatmentInfo, String> TypeColumn = new TableColumn<>("Type");
+        TableColumn<TreatmentInfo, String> SDateColumn = new TableColumn<>("startDate");
+        TableColumn<TreatmentInfo, String> EDateColumn = new TableColumn<>("endDate");
+
+        codeColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentCode"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentCost"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentDes"));
+        TypeColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentType"));
+        SDateColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentSDate"));
+        EDateColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentEDate"));
+
+
+        try {
+            InsertTreatmentDetailsRows(treatmentTable);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        treatmentTable.getColumns().add(codeColumn);
+        treatmentTable.getColumns().add(costColumn);
+        treatmentTable.getColumns().add(descriptionColumn);
+        treatmentTable.getColumns().add(TypeColumn);
+        treatmentTable.getColumns().add(SDateColumn);
+        treatmentTable.getColumns().add(EDateColumn);
+        codeColumn.setMinWidth(50);
+        costColumn.setMinWidth(50);
+        descriptionColumn.setMinWidth(120);
+        TypeColumn.setMinWidth(120);
+        SDateColumn.setMinWidth(100);
+        EDateColumn.setMinWidth(99);
+
+
+
+
+    }
+    private void InsertTreatmentDetailsRows(TableView treatmentTable) throws SQLException, ClassNotFoundException {
+        PatientJDBC p = new PatientJDBC();
+        p.GetOperationDetails(Username,operationTable);
 
 
     }

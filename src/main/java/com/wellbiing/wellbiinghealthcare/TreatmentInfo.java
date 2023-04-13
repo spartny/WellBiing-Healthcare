@@ -1,6 +1,6 @@
 package com.wellbiing.wellbiinghealthcare;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class TreatmentInfo {
     String patientName;
@@ -69,6 +69,15 @@ public class TreatmentInfo {
 
     public TreatmentInfo(String patientName, int medicationCode, String medicationCost, String medicationDesc, String medicationType, Date medicationSDate, Date medicationEDate) {
         this.patientName = patientName;
+        this.treatmentCode = medicationCode;
+        this.treatmentCost = medicationCost;
+        this.treatmentDesc = medicationDesc;
+        this.treatmentType = medicationType;
+        this.treatmentSDate = medicationSDate;
+        this.treatmentEDate = medicationEDate;
+    }
+
+    public TreatmentInfo( int medicationCode, String medicationCost, String medicationDesc, String medicationType, Date medicationSDate, Date medicationEDate) {
         this.treatmentCode = medicationCode;
         this.treatmentCost = medicationCost;
         this.treatmentDesc = medicationDesc;

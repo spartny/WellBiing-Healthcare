@@ -332,7 +332,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Pane fx:id="operationPane" layoutX="380.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+            <Pane fx:id="operationPane" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
                   <Pane layoutY="-2.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                      <children>
@@ -370,13 +370,16 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="treatmentPane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+            <Pane fx:id="treatmentPane" disable="true" layoutX="380.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
                   <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                      <children>
                         <ScrollPane layoutY="275.0" prefHeight="318.0" prefWidth="550.0">
                            <content>
-                              <AnchorPane layoutY="275.0" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="535.0" />
+                              <AnchorPane layoutY="275.0" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="535.0">
+                                 <children>
+                                    <TableView fx:id="treatmentTable" prefHeight="318.0" prefWidth="536.0" />
+                                 </children></AnchorPane>
                            </content>
                         </ScrollPane>
                         <Text layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Treatment Record" textAlignment="CENTER" wrappingWidth="550.0">
