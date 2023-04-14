@@ -1,8 +1,8 @@
 package com.wellbiing.wellbiinghealthcare;
 
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.*;
 
@@ -346,5 +346,80 @@ public class DoctorJDBC {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         return resultSet;
+    }
+
+    public void UpdateVitals(TablePosition position, TableView<?> updateTable, float newValue) throws ClassNotFoundException, SQLException {
+        int column = position.getColumn();
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        int row = position.getRow();
+        TableColumn col = updateTable.getColumns().get(6);
+        Date testDate = (Date) col.getCellData(row);
+
+        System.out.println(newValue);
+        String query;
+        PreparedStatement ps = null;
+        System.out.println(column);
+
+        switch (column) {
+            case (1):
+                query = "UPDATE vitals SET Temperature = ? WHERE Test_date = ?";
+                ps = con.prepareStatement(query);
+                ps.setFloat(1, newValue);
+                ps.setDate(2, testDate);
+                break;
+            case (2):
+                query = "UPDATE vitals SET Blood_Pressure = ? WHERE Test_date = ?";
+                ps = con.prepareStatement(query);
+                ps.setFloat(1, newValue);
+                ps.setDate(2, testDate);
+                break;
+            case (3):
+                query = "UPDATE vitals SET Heart_Rate = ? WHERE Test_date = ?";
+                ps = con.prepareStatement(query);
+                ps.setFloat(1, newValue);
+                ps.setDate(2, testDate);
+                break;
+            case (4):
+                query = "UPDATE vitals SET Breathing_Rate = ? WHERE Test_date = ?";
+                ps = con.prepareStatement(query);
+                ps.setFloat(1, newValue);
+                ps.setDate(2, testDate);
+                break;
+            case (5):
+                query = "UPDATE vitals SET SpO2 = ? WHERE Test_date = ?";
+                ps = con.prepareStatement(query);
+                ps.setFloat(1, newValue);
+                ps.setDate(2, testDate);
+                System.out.println("wow");
+                break;
+            }
+
+        ps.executeUpdate();
+        System.out.println("wowie");
+
+    }
+
+    public void UpdateMedication(TablePosition position, TableView<?> updateTable, String newValue) throws SQLException, ClassNotFoundException {
+        int column = position.getColumn();
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        int row = position.getRow();
+        TableColumn col = updateTable.getColumns().get(6);
+        Date testDate = (Date) col.getCellData(row);
+
+        System.out.println(newValue);
+        String query;
+        PreparedStatement ps = null;
+        System.out.println(column);
+
+        switch (column) {
+
+        }
+
+        ps.executeUpdate();
+        System.out.println("wowie");
     }
 }

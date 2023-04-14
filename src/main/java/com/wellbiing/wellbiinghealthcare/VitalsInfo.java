@@ -75,4 +75,6 @@ public class VitalsInfo {
     public void setSpO2(float spO2) {
         this.spO2 = spO2;
     }
+
+
 }
