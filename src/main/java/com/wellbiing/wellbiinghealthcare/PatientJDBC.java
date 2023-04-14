@@ -289,11 +289,12 @@ public class PatientJDBC {
             id = rs3.getInt(1);
 
         }
-        String query6 = "Select * from treatment where patient_ID= ?";
+        String query6 = "Select * from treatments where patient_ID= ?";
         PreparedStatement ps6 = con.prepareStatement(query6);
         ps6.setInt(1,id);
 
         ResultSet rs6 =ps6.executeQuery();
+
 
         while (rs6.next()){
             treatmentCode =rs6.getInt(2);

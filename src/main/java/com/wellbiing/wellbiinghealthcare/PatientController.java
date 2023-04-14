@@ -65,6 +65,8 @@ public class PatientController implements Initializable {
     private TableView<OperationInfo> operationTable;
     @FXML
     private  TableView<TreatmentInfo> treatmentTable;
+    @FXML
+    private  TableView<LabInfo> recentLabTest;
 
     public void closeAndDisablePanes(){
         overviewPane.setOpacity(0.0);
@@ -120,11 +122,11 @@ public class PatientController implements Initializable {
 
     }
 
-//   public void setUsername(){
-//      LoginController l = new LoginController();
-//      Username = l.Username;
-//
-//   }
+   public void setUsername(){
+      LoginController l = new LoginController();
+      Username = l.Username;
+
+   }
    public  void SetHeight(PatientJDBC p){
 
        height.setText(p.Height);
@@ -183,6 +185,7 @@ public class PatientController implements Initializable {
         Labtable.getColumns().add(descriptionColumn);
         Labtable.getColumns().add(testTypecolumn);
         Labtable.getColumns().add(testDatecolumn);
+
        codeColumn.setMinWidth(84);
        costColumn.setMinWidth(80);
        descriptionColumn.setMinWidth(160);
@@ -206,12 +209,12 @@ public class PatientController implements Initializable {
         TableColumn<MedicationInfo, String> startDatecolumn = new TableColumn<>("Start_Date");
         TableColumn<MedicationInfo, String> endDatecolumn = new TableColumn<>("End_Date");
 
-        codeColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationC"));
-        costColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationC"));
+        codeColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationCode"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationCost"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationDesc"));
         medicineTypecolumn.setCellValueFactory(new PropertyValueFactory<>("MedicationType"));
-        startDatecolumn.setCellValueFactory(new PropertyValueFactory<>("MedicationSdate"));
-        endDatecolumn.setCellValueFactory(new PropertyValueFactory<>("MedicationEdate"));
+        startDatecolumn.setCellValueFactory(new PropertyValueFactory<>("MedicationSDate"));
+        endDatecolumn.setCellValueFactory(new PropertyValueFactory<>("MedicationEDate"));
 
         try {
             InsertMedicineDetailsRows(medicineTable);
@@ -249,7 +252,7 @@ public class PatientController implements Initializable {
 
         codeColumn.setCellValueFactory(new PropertyValueFactory<>("opCode"));
         costColumn.setCellValueFactory(new PropertyValueFactory<>("opCost"));
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("opDes"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("opDesc"));
         operationTypecolumn.setCellValueFactory(new PropertyValueFactory<>("opType"));
         Datecolumn.setCellValueFactory(new PropertyValueFactory<>("opDate"));
 
@@ -264,11 +267,11 @@ public class PatientController implements Initializable {
         operationTable.getColumns().add(descriptionColumn);
         operationTable.getColumns().add(operationTypecolumn);
         operationTable.getColumns().add(Datecolumn);
-        codeColumn.setMinWidth(50);
-        costColumn.setMinWidth(50);
-        descriptionColumn.setMinWidth(120);
-        operationTypecolumn.setMinWidth(120);
-        Datecolumn.setMinWidth(100);
+        codeColumn.setMinWidth(80);
+        costColumn.setMinWidth(84);
+        descriptionColumn.setMinWidth(160);
+        operationTypecolumn.setMinWidth(115);
+        Datecolumn.setMinWidth(110);
 
 
 
@@ -290,10 +293,13 @@ public class PatientController implements Initializable {
 
         codeColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentCode"));
         costColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentCost"));
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentDes"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentDesc"));
         TypeColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentType"));
         SDateColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentSDate"));
         EDateColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentEDate"));
+
+
+
 
 
         try {
@@ -320,7 +326,7 @@ public class PatientController implements Initializable {
     }
     private void InsertTreatmentDetailsRows(TableView treatmentTable) throws SQLException, ClassNotFoundException {
         PatientJDBC p = new PatientJDBC();
-        p.GetOperationDetails(Username,operationTable);
+        p.GetTreatmentDetails(Username,treatmentTable);
 
 
     }
@@ -344,6 +350,7 @@ public class PatientController implements Initializable {
         SetLabData(p);
         SetMedicationData(p);
         SetOperationData(p);
+        SetTreatmentData(p);
 
 
 
