@@ -21,7 +21,7 @@ public class LoginController {
     private Label invalid;
     @FXML
     private Label valid;
-    String Username;
+    static  String Username;
 
     @FXML
     void ButtonHoverEnd(MouseEvent event) {

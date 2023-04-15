@@ -107,15 +107,7 @@
                         <Font name="Leelawadee UI Bold" size="36.0" />
                     </font></Text>
             <Pane layoutY="90.0" prefHeight="800.0" prefWidth="330.0" style="-fx-background-color: white;">
-                      <Button fx:id="medicationButton" alignment="BASELINE_LEFT" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#MedicationOpen" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Medication" textFill="#075d5d">
-                          <font>
-                              <Font name="Leelawadee UI" size="26.0" />
-                          </font>
-                  <padding>
-                     <Insets left="100.0" />
-                  </padding>
-                      </Button>
-                      <Button id="LabTest" fx:id="labTest" alignment="BASELINE_LEFT" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#LabTest" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Lab Test" textFill="#075d5d">
+                      <Button fx:id="medicationButton" alignment="BASELINE_LEFT" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#MedicationOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: white;" text="Medication" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
@@ -123,7 +115,7 @@
                      <Insets left="100.0" />
                   </padding>
                       </Button>
-                      <Button fx:id="operation" alignment="BASELINE_LEFT" contentDisplay="CENTER" graphicTextGap="0.0" layoutY="240.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#OperationOpen" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Operations" textFill="#075d5d">
+                      <Button id="LabTest" fx:id="labTest" alignment="BASELINE_LEFT" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#LabTest" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Lab Test" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
@@ -131,17 +123,25 @@
                      <Insets left="100.0" />
                   </padding>
                       </Button>
-                      <Button fx:id="profileSet" alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutY="597.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Profile" textFill="#075d5d">
+                      <Button fx:id="operation" alignment="BASELINE_LEFT" contentDisplay="CENTER" graphicTextGap="0.0" layoutY="240.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#OperationOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Operations" textFill="#075d5d">
                           <font>
-                              <Font size="26.0" />
+                              <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
                   <padding>
                      <Insets left="100.0" />
                   </padding>
                       </Button>
-                      <Button fx:id="logOut" alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="-1.0" layoutY="657.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff; -fx-font-weight: bold;" text="Log Out" textFill="#075d5d">
+                      <Button fx:id="profileSet" alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutY="570.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Profile" textFill="#075d5d">
                           <font>
-                              <Font name="Leelawadee UI" size="26.0" />
+                              <Font name="Leelawadee UI Bold" size="26.0" />
+                          </font>
+                  <padding>
+                     <Insets left="100.0" />
+                  </padding>
+                      </Button>
+                      <Button fx:id="logOut" alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutY="630.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#SignOut" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Log Out" textFill="#075d5d">
+                          <font>
+                              <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
                   <padding>
                      <Insets left="100.0" />
@@ -157,17 +157,17 @@
                         <Image url="@assets/round_medication_black_48dp.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="34.0" layoutY="595.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="34.0" layoutY="570.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/round_account_circle_black_48dp.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="34.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="34.0" layoutY="630.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/round_logout_black_48dp.png" />
                      </image>
                   </ImageView>
-                      <Button fx:id="treatments" alignment="BASELINE_LEFT" layoutY="310.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#TreatmentOpen" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Treatments" textFill="#075d5d">
+                      <Button fx:id="treatments" alignment="BASELINE_LEFT" layoutY="310.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#TreatmentOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Treatments" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
@@ -176,7 +176,7 @@
                   </padding>
                       </Button>
                   <Separator layoutX="20.0" layoutY="560.0" prefHeight="1.0" prefWidth="290.0" />
-                  <Button id="LabTest" fx:id="home" alignment="BASELINE_LEFT" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#HomeOpen" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Home" textAlignment="RIGHT" textFill="#075d5d">
+                  <Button id="LabTest" fx:id="home" alignment="BASELINE_LEFT" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#HomeOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Home" textAlignment="RIGHT" textFill="#075d5d">
                      <font>
                         <Font name="Leelawadee UI Bold" size="26.0" />
                      </font>
@@ -253,7 +253,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="labTestPane" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+            <Pane fx:id="labTestPane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
                   <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-radius: 50; -fx-background-color: white;">
                      <children>
@@ -353,7 +353,7 @@
             </Pane>
             <Pane fx:id="treatmentPane" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
-                  <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+                  <Pane onMouseMoved="#ButtonHoverStart" onMousePressed="#ButtonHoverEnd" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                      <children>
                         <ScrollPane layoutY="275.0" prefHeight="318.0" prefWidth="550.0">
                            <content>

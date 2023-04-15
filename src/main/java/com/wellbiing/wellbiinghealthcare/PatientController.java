@@ -6,17 +6,16 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -56,7 +55,7 @@ public class PatientController implements Initializable {
     private Label idfield;
     @FXML
     private Label genderfield;
-    String Username ="Patient1";
+    String Username;
     @FXML
     private TableView <LabInfo> Labtable;
     @FXML
@@ -117,6 +116,25 @@ public class PatientController implements Initializable {
         operationPane.setDisable(false);
 
     }
+
+    @FXML
+    void ButtonHoverEnd(MouseEvent event) {
+        Button b = (Button)event.getSource();
+        b.setStyle("-fx-background-color: #ffffff");
+    }
+
+    @FXML
+    void ButtonHoverStart(MouseEvent event) {
+        Button b = (Button) event.getSource();
+        //b.setStyle("-fx-font-size: 30");
+        b.setStyle("-fx-background-color: #a4adb7");
+    }
+
+    public void SignOut(ActionEvent actionEvent) throws IOException {
+        WellBiingApplication wa = new WellBiingApplication();
+        wa.changeScene("login.fxml");
+    }
+
     public void setAge(PatientJDBC p){
         age.setText(p.Age);
 
@@ -125,6 +143,7 @@ public class PatientController implements Initializable {
    public void setUsername(){
       LoginController l = new LoginController();
       Username = l.Username;
+
 
    }
    public  void SetHeight(PatientJDBC p){
@@ -176,7 +195,7 @@ public class PatientController implements Initializable {
         testTypecolumn.setCellValueFactory(new PropertyValueFactory<>("LabType"));
         testDatecolumn.setCellValueFactory(new PropertyValueFactory<>("LabDate"));
         try {
-            InsertLabDetailsRows(Labtable);
+            InsertLabDetailsRows(Labtable,p);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -194,8 +213,8 @@ public class PatientController implements Initializable {
 
 
     }
-    private void InsertLabDetailsRows(TableView Labtable) throws SQLException, ClassNotFoundException {
-        PatientJDBC p = new PatientJDBC();
+    private void InsertLabDetailsRows(TableView Labtable,PatientJDBC p) throws SQLException, ClassNotFoundException {
+
         p.GetLabDetails(Username,Labtable);
 
 
@@ -217,7 +236,7 @@ public class PatientController implements Initializable {
         endDatecolumn.setCellValueFactory(new PropertyValueFactory<>("MedicationEDate"));
 
         try {
-            InsertMedicineDetailsRows(medicineTable);
+            InsertMedicineDetailsRows(medicineTable,p);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -236,8 +255,8 @@ public class PatientController implements Initializable {
 
 
     }
-    private void InsertMedicineDetailsRows(TableView medicineTable) throws SQLException, ClassNotFoundException {
-        PatientJDBC p = new PatientJDBC();
+    private void InsertMedicineDetailsRows(TableView medicineTable,PatientJDBC p) throws SQLException, ClassNotFoundException {
+
         p.GetMedicineDetails(Username,medicineTable);
 
 
@@ -258,7 +277,7 @@ public class PatientController implements Initializable {
 
 
         try {
-            InsertOperationDetailsRows(operationTable);
+            InsertOperationDetailsRows(operationTable,p);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -276,8 +295,8 @@ public class PatientController implements Initializable {
 
 
     }
-    private void InsertOperationDetailsRows(TableView operationTable) throws SQLException, ClassNotFoundException {
-        PatientJDBC p = new PatientJDBC();
+    private void InsertOperationDetailsRows(TableView operationTable,PatientJDBC p) throws SQLException, ClassNotFoundException {
+
         p.GetOperationDetails(Username,operationTable);
 
 
@@ -303,7 +322,7 @@ public class PatientController implements Initializable {
 
 
         try {
-            InsertTreatmentDetailsRows(treatmentTable);
+            InsertTreatmentDetailsRows(treatmentTable,p);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -324,8 +343,8 @@ public class PatientController implements Initializable {
 
 
     }
-    private void InsertTreatmentDetailsRows(TableView treatmentTable) throws SQLException, ClassNotFoundException {
-        PatientJDBC p = new PatientJDBC();
+    private void InsertTreatmentDetailsRows(TableView treatmentTable,PatientJDBC p ) throws SQLException, ClassNotFoundException {
+
         p.GetTreatmentDetails(Username,treatmentTable);
 
 
@@ -334,7 +353,7 @@ public class PatientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         PatientJDBC p = new PatientJDBC();
-        //setUsername();
+        setUsername();
         p.GetInfo(Username);
         setAge(p);
         SetHeight(p);
@@ -355,4 +374,6 @@ public class PatientController implements Initializable {
 
 
     }
+
+
 }
