@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -15,11 +14,9 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DoctorController implements Initializable {
-
 
 
     @FXML
@@ -236,16 +233,40 @@ public class DoctorController implements Initializable {
     private Button updPatientButton1;
 
     @FXML
+    private RadioButton updateAllergiesRadio;
+
+    @FXML
+    private RadioButton updateLabTestRadio;
+
+    @FXML
+    private RadioButton updateMedicationRadio;
+
+    @FXML
+    private RadioButton updateOperationRadio;
+
+    @FXML
     private Button updatePatientConfirmButton;
 
     @FXML
     private DatePicker updatePatientDate;
 
     @FXML
+    private ToggleGroup updatePatientGroup;
+
+    @FXML
     private TextField updatePatientId;
 
     @FXML
     private AnchorPane updatePatientPane;
+
+    @FXML
+    private TableView<?> updateTable;
+
+    @FXML
+    private RadioButton updateTreatmentRadio;
+
+    @FXML
+    private RadioButton updateVitalsRadio;
 
     @FXML
     private TextField vitalsBpField;
@@ -295,7 +316,7 @@ public class DoctorController implements Initializable {
 
     @FXML
     void ButtonHoverEnd(MouseEvent event) {
-        Button b = (Button)event.getSource();
+        Button b = (Button) event.getSource();
         b.setStyle("-fx-background-color: #ffffff");
     }
 
@@ -308,7 +329,7 @@ public class DoctorController implements Initializable {
 //        b.setStyle("fx-background-image: url('assets\\home.png')");
     }
 
-    public void closeAndDisablePanes(){
+    public void closeAndDisablePanes() {
         homePane.setOpacity(0);
         homePane.setDisable(true);
         newPatientPane.setOpacity(0);
@@ -322,6 +343,7 @@ public class DoctorController implements Initializable {
         deletePatientPane.setOpacity(0);
         deletePatientPane.setDisable(true);
     }
+
     public void HomeOpen(ActionEvent actionEvent) {
         closeAndDisablePanes();
         homePane.setDisable(false);
@@ -351,6 +373,7 @@ public class DoctorController implements Initializable {
         updatePatientPane.setDisable(false);
         updatePatientPane.setOpacity(1);
     }
+
     public void DeletePatientOpen(ActionEvent actionEvent) {
         closeAndDisablePanes();
         deletePatientPane.setDisable(false);
@@ -362,7 +385,7 @@ public class DoctorController implements Initializable {
         wa.changeScene("login.fxml");
     }
 
-    public void closeEntryPanes(){
+    public void closeEntryPanes() {
         vitalsEntryPane.setOpacity(0);
         vitalsEntryPane.setDisable(true);
         labTestEntryPane.setOpacity(0);
@@ -376,34 +399,35 @@ public class DoctorController implements Initializable {
         operationEntryPane.setOpacity(0);
         operationEntryPane.setDisable(true);
     }
+
     public void SelectEntry(ActionEvent actionEvent) {
         Toggle selectedToggle = patientEntryGroup.getSelectedToggle();
-        if (selectedToggle == vitalsRadio){
+        if (selectedToggle == vitalsRadio) {
             closeEntryPanes();
             vitalsEntryPane.setDisable(false);
             vitalsEntryPane.setOpacity(1);
         }
-        if (selectedToggle == labTestRadio){
+        if (selectedToggle == labTestRadio) {
             closeEntryPanes();
             labTestEntryPane.setDisable(false);
             labTestEntryPane.setOpacity(1);
         }
-        if (selectedToggle == medicationRadio){
+        if (selectedToggle == medicationRadio) {
             closeEntryPanes();
             medicationEntryPane.setDisable(false);
             medicationEntryPane.setOpacity(1);
         }
-        if (selectedToggle == treatmentRadio){
+        if (selectedToggle == treatmentRadio) {
             closeEntryPanes();
             treatmentEntryPane.setDisable(false);
             treatmentEntryPane.setOpacity(1);
         }
-        if (selectedToggle == operationRadio){
+        if (selectedToggle == operationRadio) {
             closeEntryPanes();
             operationEntryPane.setDisable(false);
             operationEntryPane.setOpacity(1);
         }
-        if (selectedToggle == allergiesRadio){
+        if (selectedToggle == allergiesRadio) {
             closeEntryPanes();
             allergiesEntryPane.setDisable(false);
             allergiesEntryPane.setOpacity(1);
@@ -419,29 +443,28 @@ public class DoctorController implements Initializable {
         Date curDate = Date.valueOf(LocalDate.now());
 
 
-
-        if (selectedToggle == vitalsRadio){
+        if (selectedToggle == vitalsRadio) {
             jdbc.EnterVitals(patientId, vitalsTempFIeld.getText(), vitalsSpo2FIeld.getText(), vitalsBpField.getText(),
                     vitalsHrField.getText(), vitalsBrField.getText(), curDate);
         }
-        if (selectedToggle == labTestRadio){
+        if (selectedToggle == labTestRadio) {
             jdbc.EnterTest(patientId, testCodeField.getText(), testCost.getText(), testDescription.getText(),
                     testTypeField.getText(), curDate);
         }
 
-        if (selectedToggle == medicationRadio){
+        if (selectedToggle == medicationRadio) {
             jdbc.EnterMedication(patientId, medicationCodeField.getText(), medicationCost.getText(), medicationDescription.getText(),
                     medicationTypeField.getText(), curDate, Date.valueOf(medicationEndDate.getValue()));
         }
-        if (selectedToggle == treatmentRadio){
+        if (selectedToggle == treatmentRadio) {
             jdbc.EnterTreatments(patientId, treatmentCodeField.getText(), treatmentCostField.getText(), treatmentDescField.getText(),
-                    treatmentTypeField.getText(), curDate,  Date.valueOf(treatmentEndDate.getValue()));
+                    treatmentTypeField.getText(), curDate, Date.valueOf(treatmentEndDate.getValue()));
         }
-        if (selectedToggle == operationRadio){
+        if (selectedToggle == operationRadio) {
             jdbc.EnterOperation(patientId, operationCodeField.getText(), operationCostField.getText(), operationDescriptionField.getText(),
                     operationTypeField.getText(), curDate);
         }
-        if (selectedToggle == allergiesRadio){
+        if (selectedToggle == allergiesRadio) {
             jdbc.EnterAllergies(patientId, allergyCodeFIeld.getText(), allergyNameField.getText(), allergyDescriptionField.getText(),
                     curDate);
         }
@@ -453,10 +476,9 @@ public class DoctorController implements Initializable {
         DoctorJDBC jdbc = new DoctorJDBC();
 
         String gender;
-        if (selectedToggle == patientGenderMale){
+        if (selectedToggle == patientGenderMale) {
             gender = "M";
-        }
-        else {
+        } else {
             gender = "F";
         }
         Date dob = Date.valueOf(patientDOB.getValue());
@@ -467,7 +489,7 @@ public class DoctorController implements Initializable {
 
     }
 
-    public void CurrentPatientTable(){
+    public void CurrentPatientTable() {
         TableColumn<PatientInfo, Integer> patientIdCol = new TableColumn<>("Patient ID");
         TableColumn<PatientInfo, String> patientNameCol = new TableColumn<>("Name");
         TableColumn<PatientInfo, String> patientContactCol = new TableColumn<>("Contact No.");
@@ -515,41 +537,194 @@ public class DoctorController implements Initializable {
         searchTable.getColumns().clear();
         Toggle selectedToggle = searchPatientGroup.getSelectedToggle();
         CreateTables createTables = new CreateTables();
+        TableView table = searchTable;
 
         if (selectedToggle == searchVitalsRadio) {
-            createTables.SearchVitals(searchTable);
-            createTables.AddVitals(searchTable, searchPatientId);
+            createTables.VitalsTable(table);
+            createTables.AddVitals(table, searchPatientId);
         }
 
-        if (selectedToggle == searchMedicationRadio){
-            createTables.SearchMedication(searchTable);
-            createTables.AddMedication(searchTable, searchPatientId);
+        if (selectedToggle == searchMedicationRadio) {
+            createTables.MedicationTable(table);
+            createTables.AddMedication(table, searchPatientId);
         }
 
-        if (selectedToggle == searchTreatmentRadio){
-            createTables.SearchTreatment(searchTable);
-            createTables.AddTreatment(searchTable, searchPatientId);
+        if (selectedToggle == searchTreatmentRadio) {
+            createTables.TreatmentTable(table);
+            createTables.AddTreatment(table, searchPatientId);
         }
 
-        if (selectedToggle == searchAllergiesRadio){
-            createTables.SearchAllergy(searchTable);
-            createTables.AddAllergy(searchTable, searchPatientId);
+        if (selectedToggle == searchAllergiesRadio) {
+            createTables.AllergyTable(table);
+            createTables.AddAllergy(table, searchPatientId);
         }
 
-        if (selectedToggle == searchOperationRadio){
-            createTables.SearchOperation(searchTable);
-            createTables.AddOperation(searchTable, searchPatientId);
+        if (selectedToggle == searchOperationRadio) {
+            createTables.OperationTable(table);
+            createTables.AddOperation(table, searchPatientId);
         }
 
-        if (selectedToggle == searchLabTestRadio){
-            createTables.SearchTest(searchTable);
-            createTables.AddTest(searchTable, searchPatientId);
+        if (selectedToggle == searchLabTestRadio) {
+            createTables.TestTable(table);
+            createTables.AddTest(table, searchPatientId);
         }
 
     }
 
-    public void UpdatePatient(ActionEvent actionEvent) {
-        
+    public void UpdatePatient(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        updateTable.getColumns().clear();
+        updateTable.getItems().clear();
+        for (TableColumn<?, ?> column : updateTable.getColumns()) {
+            column.setReorderable(false);
+        }
+
+        Toggle selectedToggle = updatePatientGroup.getSelectedToggle();
+        CreateTables createTables = new CreateTables();
+        DoctorJDBC jdbc = new DoctorJDBC();
+        TableView table = updateTable;
+
+        if (selectedToggle == updateVitalsRadio) {
+            createTables.VitalsTable(table);
+            createTables.AddVitals(table, updatePatientId);
+            System.out.println(updateTable.isEditable());
+            for (TableColumn<?, ?> column : updateTable.getColumns()) {
+                column.setReorderable(false);
+                System.out.println(column.isEditable());
+                column.setOnEditCommit(event -> {
+                    float newValue = (float) event.getNewValue();
+                    TablePosition position = updateTable.getEditingCell();
+
+                    System.out.println(position.getTableColumn());
+                    try {
+                        jdbc.UpdateVitals(position, updateTable, newValue);
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            }
+        }
+
+        if (selectedToggle == updateMedicationRadio) {
+            createTables.MedicationTable(table);
+            createTables.AddMedication(table, updatePatientId);
+            for (TableColumn<?, ?> column : updateTable.getColumns()) {
+                column.setReorderable(false);
+                System.out.println(column.isEditable());
+                column.setOnEditCommit(event -> {
+
+                    String newValue = (String) event.getNewValue();
+
+                    TablePosition position = updateTable.getEditingCell();
+
+                    System.out.println(position.getTableColumn());
+                    try {
+                        jdbc.UpdateMedication(position, updateTable, newValue);
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            }
+
+            if (selectedToggle == updateTreatmentRadio) {
+                createTables.TreatmentTable(table);
+                createTables.AddTreatment(table, updatePatientId);
+                for (TableColumn<?, ?> column : updateTable.getColumns()) {
+                    column.setReorderable(false);
+                    System.out.println(column.isEditable());
+                    column.setOnEditCommit(event -> {
+
+                        VitalsInfo vitalsInfo = (VitalsInfo) event.getRowValue();
+                        float newValue = (float) event.getNewValue();
+                        TablePosition position = updateTable.getEditingCell();
+
+                        System.out.println(position.getTableColumn());
+                        try {
+                            jdbc.UpdateVitals(position, updateTable, newValue);
+                        } catch (ClassNotFoundException e) {
+                            throw new RuntimeException(e);
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+                }
+
+                if (selectedToggle == updateAllergiesRadio) {
+                    createTables.AllergyTable(table);
+                    createTables.AddAllergy(table, updatePatientId);
+                    for (TableColumn<?, ?> column : updateTable.getColumns()) {
+                        column.setReorderable(false);
+                        System.out.println(column.isEditable());
+                        column.setOnEditCommit(event -> {
+
+                            VitalsInfo vitalsInfo = (VitalsInfo) event.getRowValue();
+                            float newValue = (float) event.getNewValue();
+                            TablePosition position = updateTable.getEditingCell();
+
+                            System.out.println(position.getTableColumn());
+                            try {
+                                jdbc.UpdateVitals(position, updateTable, newValue);
+                            } catch (ClassNotFoundException e) {
+                                throw new RuntimeException(e);
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+                        });
+                    }
+
+                    if (selectedToggle == updateOperationRadio) {
+                        createTables.OperationTable(table);
+                        createTables.AddOperation(table, updatePatientId);
+                        for (TableColumn<?, ?> column : updateTable.getColumns()) {
+                            column.setReorderable(false);
+                            System.out.println(column.isEditable());
+                            column.setOnEditCommit(event -> {
+
+                                VitalsInfo vitalsInfo = (VitalsInfo) event.getRowValue();
+                                float newValue = (float) event.getNewValue();
+                                TablePosition position = updateTable.getEditingCell();
+
+                                System.out.println(position.getTableColumn());
+                                try {
+                                    jdbc.UpdateVitals(position, updateTable, newValue);
+                                } catch (ClassNotFoundException e) {
+                                    throw new RuntimeException(e);
+                                } catch (SQLException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
+                        }
+
+                        if (selectedToggle == updateAllergiesRadio) {
+                            createTables.TestTable(table);
+                            createTables.AddTest(table, updatePatientId);
+                            for (TableColumn<?, ?> column : updateTable.getColumns()) {
+                                column.setReorderable(false);
+                                System.out.println(column.isEditable());
+                                column.setOnEditCommit(event -> {
+
+                                    VitalsInfo vitalsInfo = (VitalsInfo) event.getRowValue();
+                                    float newValue = (float) event.getNewValue();
+                                    TablePosition position = updateTable.getEditingCell();
+
+                                    System.out.println(position.getTableColumn());
+                                    try {
+                                        jdbc.UpdateVitals(position, updateTable, newValue);
+                                    } catch (ClassNotFoundException e) {
+                                        throw new RuntimeException(e);
+                                    } catch (SQLException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

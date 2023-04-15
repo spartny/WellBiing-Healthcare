@@ -1,17 +1,23 @@
 package com.wellbiing.wellbiinghealthcare;
 
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
+import javafx.util.StringConverter;
+import javafx.util.converter.DateStringConverter;
+import javafx.util.converter.FloatStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 
-import javax.xml.transform.Result;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CreateTables {
-    public void SearchVitals(TableView searchTable) {
+    public void VitalsTable(TableView searchTable) {
         TableColumn<VitalsInfo, String> patientNameCol = new TableColumn<>("Name");
         TableColumn<VitalsInfo, Float> patientTempCol = new TableColumn<>("Temperature");
         TableColumn<VitalsInfo, Float> patientBPCol = new TableColumn<>("Blood Pressure");
@@ -21,15 +27,25 @@ public class CreateTables {
         TableColumn<VitalsInfo, Date> patientDateCol = new TableColumn<>("Date");
 
         patientNameCol.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+
         patientTempCol.setCellValueFactory(new PropertyValueFactory<>("temperature"));
+        patientTempCol.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
+
         patientBPCol.setCellValueFactory(new PropertyValueFactory<>("bloodPressure"));
+        patientBPCol.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
+
         patientHRCol.setCellValueFactory(new PropertyValueFactory<>("heartRate"));
+        patientHRCol.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
+
         patientBRCol.setCellValueFactory(new PropertyValueFactory<>("breathingRate"));
+        patientBRCol.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
+
         patientSpO2Col.setCellValueFactory(new PropertyValueFactory<>("spO2"));
+        patientSpO2Col.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
+
         patientDateCol.setCellValueFactory(new PropertyValueFactory<>("testDate"));
 
-        searchTable.getColumns().addAll(patientNameCol, patientTempCol, patientBPCol, patientHRCol,
-                patientBRCol, patientSpO2Col, patientDateCol);
+        searchTable.getColumns().addAll(patientNameCol, patientTempCol, patientBPCol, patientHRCol, patientBRCol, patientSpO2Col, patientDateCol);
 
     }
 
@@ -40,6 +56,7 @@ public class CreateTables {
 
         ResultSet vitals = jdbc.GetVitals(patientId);
         String patientName = jdbc.GetName(patientId);
+
         float temperature;
         float bloodPressure;
         float heartRate;
@@ -61,7 +78,7 @@ public class CreateTables {
 
     }
 
-    public void SearchMedication(TableView searchTable) {
+    public void MedicationTable(TableView searchTable) {
         TableColumn<MedicationInfo, String> patientNameCol = new TableColumn<>("Name");
         TableColumn<MedicationInfo, Integer> medicationCodeCol = new TableColumn<>("Code");
         TableColumn<MedicationInfo, String> medicationCostCol = new TableColumn<>("Cost");
@@ -71,15 +88,23 @@ public class CreateTables {
         TableColumn<MedicationInfo, Date> medicationEDateCol = new TableColumn<>("End Date");
 
         patientNameCol.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+
         medicationCodeCol.setCellValueFactory(new PropertyValueFactory<>("medicationCode"));
+        medicationCodeCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
         medicationCostCol.setCellValueFactory(new PropertyValueFactory<>("medicationCost"));
+        medicationCostCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
         medicationDescCol.setCellValueFactory(new PropertyValueFactory<>("medicationDesc"));
+        medicationDescCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
         medicationTypeCol.setCellValueFactory(new PropertyValueFactory<>("medicationType"));
+        medicationTypeCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
         medicationSDateCol.setCellValueFactory(new PropertyValueFactory<>("medicationSDate"));
         medicationEDateCol.setCellValueFactory(new PropertyValueFactory<>("medicationEDate"));
 
-        searchTable.getColumns().addAll(patientNameCol, medicationCodeCol, medicationCostCol, medicationDescCol,
-                medicationTypeCol, medicationSDateCol, medicationEDateCol);
+        searchTable.getColumns().addAll(patientNameCol, medicationCodeCol, medicationCostCol, medicationDescCol, medicationTypeCol, medicationSDateCol, medicationEDateCol);
 
     }
 
@@ -107,12 +132,11 @@ public class CreateTables {
             medicationSDate = medication.getDate(6);
             medicationEDate = medication.getDate(7);
 
-            searchTable.getItems().add(new MedicationInfo(patientName, medicationCode, medicationCost,
-                    medicationDesc, medicationType, medicationSDate, medicationEDate));
+            searchTable.getItems().add(new MedicationInfo(patientName, medicationCode, medicationCost, medicationDesc, medicationType, medicationSDate, medicationEDate));
         }
     }
 
-    public void SearchTreatment(TableView searchTable) {
+    public void TreatmentTable(TableView searchTable) {
         TableColumn<TreatmentInfo, String> patientNameCol = new TableColumn<>("Name");
         TableColumn<TreatmentInfo, Integer> treatmentCodeCol = new TableColumn<>("Code");
         TableColumn<TreatmentInfo, String> treatmentCostCol = new TableColumn<>("Cost");
@@ -122,15 +146,23 @@ public class CreateTables {
         TableColumn<TreatmentInfo, Date> treatmentEDateCol = new TableColumn<>("End Date");
 
         patientNameCol.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+
         treatmentCodeCol.setCellValueFactory(new PropertyValueFactory<>("treatmentCode"));
+        treatmentCodeCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
         treatmentCostCol.setCellValueFactory(new PropertyValueFactory<>("treatmentCost"));
+        treatmentCostCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
         treatmentDescCol.setCellValueFactory(new PropertyValueFactory<>("treatmentDesc"));
+        treatmentDescCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
         treatmentTypeCol.setCellValueFactory(new PropertyValueFactory<>("treatmentType"));
+        treatmentTypeCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
         treatmentSDateCol.setCellValueFactory(new PropertyValueFactory<>("treatmentSDate"));
         treatmentEDateCol.setCellValueFactory(new PropertyValueFactory<>("treatmentEDate"));
 
-        searchTable.getColumns().addAll(patientNameCol, treatmentCodeCol, treatmentCostCol, treatmentDescCol,
-                treatmentTypeCol, treatmentSDateCol, treatmentEDateCol);
+        searchTable.getColumns().addAll(patientNameCol, treatmentCodeCol, treatmentCostCol, treatmentDescCol, treatmentTypeCol, treatmentSDateCol, treatmentEDateCol);
     }
 
     public void AddTreatment(TableView searchTable, TextField searchPatientId) throws SQLException, ClassNotFoundException {
@@ -157,26 +189,31 @@ public class CreateTables {
             treatmentSDate = treatments.getDate(6);
             treatmentEDate = treatments.getDate(7);
 
-            searchTable.getItems().add(new TreatmentInfo(patientName, treatmentCode, treatmentCost,
-                    treatmentDesc, treatmentType, treatmentSDate, treatmentEDate));
+            searchTable.getItems().add(new TreatmentInfo(patientName, treatmentCode, treatmentCost, treatmentDesc, treatmentType, treatmentSDate, treatmentEDate));
         }
     }
 
-    public void SearchAllergy(TableView searchTable) {
+    public void AllergyTable(TableView searchTable) {
         TableColumn<AllergyInfo, String> patientNameCol = new TableColumn<>("Patient Name");
         TableColumn<AllergyInfo, Integer> allergyCodeCol = new TableColumn<>("Code");
         TableColumn<AllergyInfo, String> allergyNameCol = new TableColumn<>("Name");
         TableColumn<AllergyInfo, String> allergyDescCol = new TableColumn<>("Description");
-        TableColumn<AllergyInfo, Date> allergyTypeCol = new TableColumn<>("Date");
+        TableColumn<AllergyInfo, Date> allergyDateCol = new TableColumn<>("Date");
 
         patientNameCol.setCellValueFactory(new PropertyValueFactory<>("patientName"));
-        allergyCodeCol.setCellValueFactory(new PropertyValueFactory<>("allergyCode"));
-        allergyNameCol.setCellValueFactory(new PropertyValueFactory<>("allergyName"));
-        allergyDescCol.setCellValueFactory(new PropertyValueFactory<>("allergyDesc"));
-        allergyTypeCol.setCellValueFactory(new PropertyValueFactory<>("allergyDate"));
 
-        searchTable.getColumns().addAll(patientNameCol, allergyCodeCol, allergyNameCol, allergyDescCol,
-                allergyTypeCol);
+        allergyCodeCol.setCellValueFactory(new PropertyValueFactory<>("allergyCode"));
+        allergyCodeCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
+        allergyNameCol.setCellValueFactory(new PropertyValueFactory<>("allergyName"));
+        allergyNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        allergyDescCol.setCellValueFactory(new PropertyValueFactory<>("allergyDesc"));
+        allergyDescCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        allergyDateCol.setCellValueFactory(new PropertyValueFactory<>("allergyDate"));
+
+        searchTable.getColumns().addAll(patientNameCol, allergyCodeCol, allergyNameCol, allergyDescCol, allergyDateCol);
     }
 
     public void AddAllergy(TableView searchTable, TextField searchPatientId) throws SQLException, ClassNotFoundException {
@@ -199,14 +236,12 @@ public class CreateTables {
             allergyDesc = allergies.getString(4);
             allergyDate = allergies.getDate(5);
 
-            searchTable.getItems().add(new AllergyInfo(patientName, allergyCode, allergyName,
-                    allergyDesc, allergyDate));
+            searchTable.getItems().add(new AllergyInfo(patientName, allergyCode, allergyName, allergyDesc, allergyDate));
         }
     }
 
 
-
-    public void SearchOperation(TableView searchTable) {
+    public void OperationTable(TableView searchTable) {
         TableColumn<OperationInfo, String> patientNameCol = new TableColumn<>("Patient Name");
         TableColumn<OperationInfo, Integer> opCodeCol = new TableColumn<>("Code");
         TableColumn<OperationInfo, Integer> opCostCol = new TableColumn<>("Cost");
@@ -215,10 +250,19 @@ public class CreateTables {
         TableColumn<OperationInfo, Date> opDateCol = new TableColumn<>("Date");
 
         patientNameCol.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+
         opCodeCol.setCellValueFactory(new PropertyValueFactory<>("opCode"));
+        opCodeCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
         opCostCol.setCellValueFactory(new PropertyValueFactory<>("opCost"));
+        opCostCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
         opDescCol.setCellValueFactory(new PropertyValueFactory<>("opDesc"));
+        opDescCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
         opTypeCol.setCellValueFactory(new PropertyValueFactory<>("opType"));
+        opTypeCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
         opDateCol.setCellValueFactory(new PropertyValueFactory<>("opDate"));
 
         searchTable.getColumns().addAll(patientNameCol, opCodeCol, opCostCol, opDescCol, opTypeCol, opDateCol);
@@ -251,7 +295,7 @@ public class CreateTables {
         }
     }
 
-    public void SearchTest(TableView searchTable) {
+    public void TestTable(TableView searchTable) {
         TableColumn<LabInfo, String> patientNameCol = new TableColumn<>("Patient Name");
         TableColumn<LabInfo, Integer> labCodeCol = new TableColumn<>("Code");
         TableColumn<LabInfo, Integer> labCostCol = new TableColumn<>("Cost");
@@ -259,9 +303,16 @@ public class CreateTables {
         TableColumn<LabInfo, Date> labDateCol = new TableColumn<>("Date");
 
         patientNameCol.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+
         labCodeCol.setCellValueFactory(new PropertyValueFactory<>("labCode"));
+        labCodeCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
         labCostCol.setCellValueFactory(new PropertyValueFactory<>("labCost"));
+        labCostCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
         labDescCol.setCellValueFactory(new PropertyValueFactory<>("labDesc"));
+        labDescCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
         labDateCol.setCellValueFactory(new PropertyValueFactory<>("labDate"));
 
         searchTable.getColumns().addAll(patientNameCol, labCodeCol, labCostCol, labDescCol, labDateCol);
