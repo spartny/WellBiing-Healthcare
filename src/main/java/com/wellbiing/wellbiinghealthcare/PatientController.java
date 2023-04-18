@@ -66,6 +66,10 @@ public class PatientController implements Initializable {
     private  TableView<TreatmentInfo> treatmentTable;
     @FXML
     private  TableView<LabInfo> recentLabTest;
+    @FXML
+    private TableView<OperationInfo> recentOperation;
+    @FXML
+    private  TableView<TreatmentInfo> recentTreatment;
 
     public void closeAndDisablePanes(){
         overviewPane.setOpacity(0.0);
@@ -126,7 +130,7 @@ public class PatientController implements Initializable {
     @FXML
     void ButtonHoverStart(MouseEvent event) {
         Button b = (Button) event.getSource();
-        //b.setStyle("-fx-font-size: 30");
+
         b.setStyle("-fx-background-color: #a4adb7");
     }
 
@@ -217,6 +221,43 @@ public class PatientController implements Initializable {
 
         p.GetLabDetails(Username,Labtable);
 
+    }
+
+    public  void SetRecentLabData(PatientJDBC p){
+        TableColumn<LabInfo, String> codeColumn = new TableColumn<>("Code");
+        TableColumn<LabInfo, String> costColumn = new TableColumn<>("Cost");
+        TableColumn<LabInfo, String> descriptionColumn = new TableColumn<>("Description");
+        TableColumn<LabInfo, String> testTypecolumn = new TableColumn<>("Type");
+        TableColumn<LabInfo, String> testDatecolumn = new TableColumn<>("Date");
+
+        codeColumn.setCellValueFactory(new PropertyValueFactory<>("LabCode"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("LabCost"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("LabDesc"));
+        testTypecolumn.setCellValueFactory(new PropertyValueFactory<>("LabType"));
+        testDatecolumn.setCellValueFactory(new PropertyValueFactory<>("LabDate"));
+        try {
+            InsertRecentLabDetailRow(recentLabTest,p);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        recentLabTest.getColumns().add(codeColumn);
+        recentLabTest.getColumns().add(costColumn);
+        recentLabTest.getColumns().add(descriptionColumn);
+        recentLabTest.getColumns().add(testTypecolumn);
+        recentLabTest.getColumns().add(testDatecolumn);
+
+        codeColumn.setMinWidth(84);
+        costColumn.setMinWidth(80);
+        descriptionColumn.setMinWidth(160);
+        testTypecolumn.setMinWidth(115);
+        testDatecolumn.setMinWidth(110);
+
+
+    }
+    private void InsertRecentLabDetailRow(TableView recentLabTest,PatientJDBC p) throws SQLException, ClassNotFoundException {
+         p.GetRecentLabDetail(Username,recentLabTest);
+
 
     }
 
@@ -302,6 +343,46 @@ public class PatientController implements Initializable {
 
     }
 
+    public  void SetRecentOperationData(PatientJDBC p){
+        TableColumn<OperationInfo, String> codeColumn = new TableColumn<>("Code");
+        TableColumn<OperationInfo, String> costColumn = new TableColumn<>("Cost");
+        TableColumn<OperationInfo, String> descriptionColumn = new TableColumn<>("Description");
+        TableColumn<OperationInfo, String> operationTypecolumn = new TableColumn<>("Type");
+        TableColumn<OperationInfo, String> Datecolumn = new TableColumn<>("Date");
+
+        codeColumn.setCellValueFactory(new PropertyValueFactory<>("opCode"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("opCost"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("opDesc"));
+        operationTypecolumn.setCellValueFactory(new PropertyValueFactory<>("opType"));
+        Datecolumn.setCellValueFactory(new PropertyValueFactory<>("opDate"));
+
+
+        try {
+            InsertRecentOperationDetailRow(recentOperation,p);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        recentOperation.getColumns().add(codeColumn);
+        recentOperation.getColumns().add(costColumn);
+        recentOperation.getColumns().add(descriptionColumn);
+        recentOperation.getColumns().add(operationTypecolumn);
+        recentOperation.getColumns().add(Datecolumn);
+        codeColumn.setMinWidth(80);
+        costColumn.setMinWidth(84);
+        descriptionColumn.setMinWidth(160);
+        operationTypecolumn.setMinWidth(115);
+        Datecolumn.setMinWidth(110);
+
+
+
+    }
+    private void InsertRecentOperationDetailRow(TableView recentOperation,PatientJDBC p) throws SQLException, ClassNotFoundException {
+
+        p.GetRecentOperation(Username,recentOperation);
+
+
+    }
+
     public  void SetTreatmentData(PatientJDBC p){
         TableColumn<TreatmentInfo, String> codeColumn = new TableColumn<>("Code");
         TableColumn<TreatmentInfo, String> costColumn = new TableColumn<>("Cost");
@@ -350,6 +431,54 @@ public class PatientController implements Initializable {
 
     }
 
+    public  void SetRecentTreatmentData(PatientJDBC p){
+        TableColumn<TreatmentInfo, String> codeColumn = new TableColumn<>("Code");
+        TableColumn<TreatmentInfo, String> costColumn = new TableColumn<>("Cost");
+        TableColumn<TreatmentInfo, String> descriptionColumn = new TableColumn<>("Description");
+        TableColumn<TreatmentInfo, String> TypeColumn = new TableColumn<>("Type");
+        TableColumn<TreatmentInfo, String> SDateColumn = new TableColumn<>("startDate");
+        TableColumn<TreatmentInfo, String> EDateColumn = new TableColumn<>("endDate");
+
+        codeColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentCode"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentCost"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentDesc"));
+        TypeColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentType"));
+        SDateColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentSDate"));
+        EDateColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentEDate"));
+
+
+
+
+
+        try {
+            InsertRecentTreatmentDetailRow(recentTreatment,p);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        recentTreatment.getColumns().add(codeColumn);
+        recentTreatment.getColumns().add(costColumn);
+        recentTreatment.getColumns().add(descriptionColumn);
+        recentTreatment.getColumns().add(TypeColumn);
+        recentTreatment.getColumns().add(SDateColumn);
+        recentTreatment.getColumns().add(EDateColumn);
+        codeColumn.setMinWidth(50);
+        costColumn.setMinWidth(50);
+        descriptionColumn.setMinWidth(120);
+        TypeColumn.setMinWidth(120);
+        SDateColumn.setMinWidth(100);
+        EDateColumn.setMinWidth(99);
+
+
+
+
+    }
+    private void InsertRecentTreatmentDetailRow(TableView recentTreatment,PatientJDBC p ) throws SQLException, ClassNotFoundException {
+
+        p.GetRecentTreatment(Username,recentTreatment);
+
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         PatientJDBC p = new PatientJDBC();
@@ -370,6 +499,9 @@ public class PatientController implements Initializable {
         SetMedicationData(p);
         SetOperationData(p);
         SetTreatmentData(p);
+        SetRecentLabData(p);
+        SetRecentOperationData(p);
+        SetRecentTreatmentData(p);
 
 
 

@@ -315,4 +315,115 @@ public class PatientJDBC {
 
     }
 
+    public void GetRecentLabDetail(String username,TableView recentLabtable) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        // query for getId
+        String query3 ="Select ID from authentication where username= ?";
+        PreparedStatement ps3=con.prepareStatement(query3);
+        ps3.setString(1, username);
+        ResultSet rs3=ps3.executeQuery();
+        if (rs3.next()) {
+            id = rs3.getInt(1);
+
+        }
+        String query6 = "Select * from lab where patient_ID= ?";
+        PreparedStatement ps6 = con.prepareStatement(query6);
+        ps6.setInt(1,id);
+
+        ResultSet rs6 =ps6.executeQuery();
+
+        if (rs6.next()){
+            LabTest_code =rs6.getInt(2);
+            LabTest_cost =rs6.getString(3);
+            LabTest_description =rs6.getString(4);
+            LabTest_type=rs6.getString(5);
+            LabTest_date=rs6.getDate(6);
+            recentLabtable.getItems().add(new LabInfo(LabTest_code,LabTest_cost,LabTest_description,LabTest_type,LabTest_date));
+
+
+        }
+        con.close();
+
+    }
+
+    public void GetRecentOperation(String username,TableView recentOperation) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        // query for getId
+        String query3 ="Select ID from authentication where username= ?";
+        PreparedStatement ps3=con.prepareStatement(query3);
+        ps3.setString(1, username);
+        ResultSet rs3=ps3.executeQuery();
+        if (rs3.next()) {
+            id = rs3.getInt(1);
+
+        }
+        String query6 = "Select * from operation where patient_ID= ?";
+        PreparedStatement ps6 = con.prepareStatement(query6);
+        ps6.setInt(1,id);
+
+        ResultSet rs6 =ps6.executeQuery();
+
+        if (rs6.next()){
+            opCode =rs6.getInt(2);
+            opCost =rs6.getString(3);
+            opDescription =rs6.getString(4);
+            opType=rs6.getString(5);
+            opDate=rs6.getDate(6);
+
+            recentOperation.getItems().add(new OperationInfo(opCode,opCost,opDescription,opType,opDate));
+
+
+        }
+
+        con.close();
+
+
+
+    }
+
+
+    public void GetRecentTreatment(String username,TableView recentTreatment) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        // query for getId
+        String query3 ="Select ID from authentication where username= ?";
+        PreparedStatement ps3=con.prepareStatement(query3);
+        ps3.setString(1, username);
+        ResultSet rs3=ps3.executeQuery();
+        if (rs3.next()) {
+            id = rs3.getInt(1);
+
+        }
+        String query6 = "Select * from treatments where patient_ID= ?";
+        PreparedStatement ps6 = con.prepareStatement(query6);
+        ps6.setInt(1,id);
+
+        ResultSet rs6 =ps6.executeQuery();
+
+
+       if (rs6.next()){
+            treatmentCode =rs6.getInt(2);
+            treatmentCost =rs6.getString(3);
+            treatmentDesc =rs6.getString(4);
+            treatmentType=rs6.getString(5);
+            treatmentSDate=rs6.getDate(6);
+            treatmentEDate=rs6.getDate(7);
+
+            recentTreatment.getItems().add(new TreatmentInfo(treatmentCode,treatmentCost,treatmentDesc,treatmentType,treatmentSDate,treatmentEDate));
+
+
+        }
+
+        con.close();
+
+
+
+    }
+
+
 }
