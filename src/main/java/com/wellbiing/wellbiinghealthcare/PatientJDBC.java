@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
 import java.util.List;
 
 public class PatientJDBC {
@@ -421,7 +422,75 @@ public class PatientJDBC {
 
         con.close();
 
+    }
 
+    public void updateInfo(String username,Double Height,Double Weight,Date D_O_B,String Gender,String BloodGroup, String contact_num,String State,String Street,String City) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        String query3 ="Select ID from authentication where username= ?";
+        PreparedStatement ps3=con.prepareStatement(query3);
+        ps3.setString(1, username);
+        ResultSet rs3=ps3.executeQuery();
+        if (rs3.next()) {
+            id = rs3.getInt(1);
+        }
+        Double height = Height;
+        Double weight = Weight;
+        Date d_o_b = D_O_B;
+        String gender = Gender;
+        String bloodGroup = BloodGroup;
+        String phone = contact_num;
+        String city =City;
+        String state=State;
+        String street=Street;
+        String query = "UPDATE personal_information SET height = ? WHERE patient_ID = ?";
+        ps3 = con.prepareStatement(query);
+        ps3.setDouble(1, height);
+        ps3.setInt(2, id);
+
+        String query1 = "UPDATE personal_information SET weight = ? WHERE patient_ID = ?";
+        ps3 = con.prepareStatement(query1);
+        ps3.setDouble(1, weight);
+        ps3.setInt(2, id);
+
+        String query2 = "UPDATE personal_information SET blood_group = ? WHERE patient_ID = ?";
+        ps3 = con.prepareStatement(query2);
+        ps3.setString(1, bloodGroup);
+        ps3.setInt(2, id);
+
+        String query4 = "UPDATE personal_information SET gender = ? WHERE patient_ID = ?";
+        ps3 = con.prepareStatement(query4);
+        ps3.setString(1, gender);
+        ps3.setInt(2, id);
+
+        String query5 = "UPDATE personal_information SET date_of_birth = ? WHERE patient_ID = ?";
+        ps3 = con.prepareStatement(query5);
+        ps3.setDate(1, (java.sql.Date) d_o_b);
+        ps3.setInt(2, id);
+
+        String query6 = "UPDATE contact_info SET phone = ? WHERE patient_ID = ?";
+        ps3 = con.prepareStatement(query6);
+        ps3.setString(1,phone );
+        ps3.setInt(2, id);
+
+        String query7 = "UPDATE address SET street = ? WHERE patient_ID = ?";
+        ps3 = con.prepareStatement(query7);
+        ps3.setString(1,street );
+        ps3.setInt(2, id);
+
+        String query8 = "UPDATE address SET city = ? WHERE patient_ID = ?";
+        ps3 = con.prepareStatement(query8);
+        ps3.setString(1,city );
+        ps3.setInt(2, id);
+
+        String query9 = "UPDATE address SET state = ? WHERE patient_ID = ?";
+        ps3 = con.prepareStatement(query9);
+        ps3.setString(1,state );
+        ps3.setInt(2, id);
+
+
+        con.close();
 
     }
 

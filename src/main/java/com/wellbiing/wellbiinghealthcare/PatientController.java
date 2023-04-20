@@ -34,6 +34,8 @@ public class PatientController implements Initializable {
     @FXML
     private Pane operationPane;
     @FXML
+    private Pane profilePane;
+    @FXML
     private Label username;
     @FXML
     private Label age;
@@ -82,6 +84,8 @@ public class PatientController implements Initializable {
         treatmentPane.setDisable(true);
         operationPane.setStyle("-fx-opacity : 0.0");
         operationPane.setDisable(true);
+        profilePane.setStyle("-fx-opacity : 0.0");
+        profilePane.setDisable(true);
 
     }
 
@@ -120,6 +124,15 @@ public class PatientController implements Initializable {
         operationPane.setDisable(false);
 
     }
+
+    @FXML
+    public void ProfileOpen(ActionEvent actionEvent) {
+        closeAndDisablePanes();
+        profilePane.setStyle("-fx-opacity : 1.0");
+        profilePane.setDisable(false);
+
+    }
+
 
     @FXML
     void ButtonHoverEnd(MouseEvent event) {

@@ -134,7 +134,7 @@
                      <Insets left="100.0" />
                   </padding>
                       </Button>
-                      <Button fx:id="profileSet" alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutY="570.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Profile" textFill="#075d5d">
+                      <Button fx:id="profileSet" alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutY="570.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ProfileOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Profile" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
@@ -142,7 +142,7 @@
                      <Insets left="100.0" />
                   </padding>
                       </Button>
-                      <Button fx:id="logOut" alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutY="630.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#SignOut" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Log Out" textFill="#075d5d">
+                      <Button fx:id="logOut" alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutY="630.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#SignOut" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="48.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Log Out" textFill="#075d5d">
                           <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                           </font>
@@ -387,7 +387,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane layoutX="380.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+            <Pane fx:id="profilePane" layoutX="380.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
                   <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                      <children>
@@ -396,92 +396,107 @@
                               <Font name="Leelawadee UI Bold" size="40.0" />
                            </font>
                         </Text>
-                        <Text fill="#075d5d" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Height" textAlignment="CENTER" wrappingWidth="274.8287353515626">
+                        <Text fill="#075d5d" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Height" textAlignment="CENTER" wrappingWidth="274.8287353515626">
                            <font>
                               <Font name="Leelawadee UI Bold" size="25.0" />
                            </font>
                         </Text>
-                        <TextField alignment="CENTER" layoutX="5.0" layoutY="135.0" prefHeight="30.0" prefWidth="265.0" promptText="Enter Height">
+                        <TextField alignment="CENTER" layoutX="5.0" layoutY="110.0" minHeight="40.0" prefHeight="10.0" prefWidth="265.0" promptText="Enter Height">
                            <font>
                               <Font name="Leelawadee UI" size="26.0" />
                            </font>
                         </TextField>
-                        <Text fill="#075d5d" layoutX="260.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight" textAlignment="CENTER" wrappingWidth="290.07159423828125">
+                        <Text fill="#075d5d" layoutX="260.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight" textAlignment="CENTER" wrappingWidth="290.07159423828125">
                            <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                            </font>
                         </Text>
-                        <TextField alignment="CENTER" layoutX="280.0" layoutY="135.0" prefHeight="30.0" prefWidth="265.0" promptText="Enter Weight">
+                        <TextField alignment="CENTER" layoutX="280.0" layoutY="110.0" minHeight="40.0" prefHeight="30.0" prefWidth="265.0" promptText="Enter Weight">
                            <font>
                               <Font name="Leelawadee UI" size="26.0" />
                            </font>
                         </TextField>
-                        <Text fill="#075d5d" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Group" textAlignment="CENTER" wrappingWidth="265.0">
+                        <Text fill="#075d5d" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Group" textAlignment="CENTER" wrappingWidth="265.0">
                            <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                            </font>
                         </Text>
-                        <TextField alignment="CENTER" layoutX="5.0" layoutY="265.0" prefHeight="30.0" prefWidth="265.0" promptText="Enter Blood Group">
+                        <TextField alignment="CENTER" layoutX="5.0" layoutY="215.0" minHeight="40.0" prefHeight="30.0" prefWidth="265.0" promptText="Enter Blood Group">
                            <font>
                               <Font name="Leelawadee UI" size="26.0" />
                            </font>
                         </TextField>
-                        <Text fill="#075d5d" layoutX="260.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number" textAlignment="CENTER" wrappingWidth="265.0">
+                        <Text fill="#075d5d" layoutX="260.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number" textAlignment="CENTER" wrappingWidth="265.0">
                            <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                            </font>
                         </Text>
-                        <TextField alignment="CENTER" layoutX="280.0" layoutY="265.0" prefHeight="30.0" prefWidth="265.0" promptText="Enter Mobile No.">
+                        <TextField alignment="CENTER" layoutX="280.0" layoutY="215.0" minHeight="40.0" prefHeight="30.0" prefWidth="265.0" promptText="Enter Mobile No.">
                            <font>
                               <Font name="Leelawadee UI" size="26.0" />
                            </font>
                         </TextField>
-                        <Text fill="#075d5d" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth" textAlignment="CENTER" wrappingWidth="265.0">
+                        <Text fill="#075d5d" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth" textAlignment="CENTER" wrappingWidth="265.0">
                            <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                            </font>
                         </Text>
-                        <DatePicker layoutX="5.0" layoutY="395.0" maxHeight="40.0" maxWidth="214.0" minHeight="40.0" minWidth="170.0" prefHeight="40.0" prefWidth="214.0" promptText="DOB" />
-                        <Text fill="#075d5d" layoutX="260.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" textAlignment="CENTER" wrappingWidth="290.07159423828136">
+                        <DatePicker layoutX="5.0" layoutY="320.0" maxHeight="40.0" maxWidth="214.0" minHeight="40.0" minWidth="170.0" prefHeight="40.0" prefWidth="214.0" promptText="DOB" />
+                        <Text fill="#075d5d" layoutX="260.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" textAlignment="CENTER" wrappingWidth="290.07159423828136">
                            <font>
                               <Font name="Leelawadee UI Bold" size="26.0" />
                            </font>
                         </Text>
-                        <RadioButton layoutX="280.0" layoutY="395.0" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" text="Male" textOverrun="CENTER_ELLIPSIS">
+                        <RadioButton layoutX="280.0" layoutY="320.0" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" text="Male" textOverrun="CENTER_ELLIPSIS">
                            <font>
                               <Font name="Leelawadee UI" size="26.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton layoutX="400.0" layoutY="395.0" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" text="Female" textOverrun="CENTER_ELLIPSIS">
+                        <RadioButton layoutX="400.0" layoutY="320.0" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" text="Female" textOverrun="CENTER_ELLIPSIS">
                            <font>
                               <Font name="Leelawadee UI" size="26.0" />
                            </font>
                         </RadioButton>
-                        <Text layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" textAlignment="CENTER" wrappingWidth="550.0">
+                        <Text layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" textAlignment="CENTER" wrappingWidth="550.0">
                            <font>
                               <Font name="Leelawadee UI Bold" size="30.0" />
                            </font>
                         </Text>
-                        <Text fill="#075d5d" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City" textAlignment="CENTER" wrappingWidth="274.8287353515626">
+                        <Text fill="#075d5d" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City" textAlignment="CENTER" wrappingWidth="274.8287353515626">
                            <font>
                               <Font name="Leelawadee UI Bold" size="25.0" />
                            </font>
                         </Text>
-                        <TextField alignment="CENTER" layoutX="5.0" layoutY="540.0" prefHeight="30.0" prefWidth="265.0" promptText="Enter City">
+                        <TextField alignment="CENTER" layoutX="5.0" layoutY="465.0" minHeight="40.0" prefHeight="30.0" prefWidth="265.0" promptText="Enter City">
                            <font>
                               <Font name="Leelawadee UI" size="26.0" />
                            </font>
                         </TextField>
-                        <Text fill="#075d5d" layoutX="260.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Street" textAlignment="CENTER" wrappingWidth="274.8287353515626">
+                        <Text fill="#075d5d" layoutX="260.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Street" textAlignment="CENTER" wrappingWidth="274.8287353515626">
                            <font>
                               <Font name="Leelawadee UI Bold" size="25.0" />
                            </font>
                         </Text>
-                        <TextField alignment="CENTER" layoutX="280.0" layoutY="540.0" prefHeight="30.0" prefWidth="265.0" promptText="Enter Street">
+                        <TextField alignment="CENTER" layoutX="280.0" layoutY="465.0" minHeight="40.0" prefHeight="30.0" prefWidth="265.0" promptText="Enter Street">
                            <font>
                               <Font name="Leelawadee UI" size="26.0" />
                            </font>
                         </TextField>
+                        <Text fill="#075d5d" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State" textAlignment="CENTER" wrappingWidth="274.8287353515626">
+                           <font>
+                              <Font name="Leelawadee UI Bold" size="25.0" />
+                           </font>
+                        </Text>
+                        <TextField alignment="CENTER" layoutX="187.0" layoutY="528.0" minHeight="40.0" prefHeight="30.0" prefWidth="265.0" promptText="Enter State">
+                           <font>
+                              <Font name="Leelawadee UI" size="26.0" />
+                           </font>
+                        </TextField>
+                        <Button layoutX="176.0" layoutY="590.0" minHeight="40.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="208.0" style="-fx-background-radius: 50;" text="UPDATE">
+                           <font>
+                              <Font name="Leelawadee UI Bold" size="20.0" />
+                           </font>
+                        </Button>
                      </children>
                   </Pane>
                </children>
