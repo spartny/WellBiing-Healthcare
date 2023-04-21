@@ -72,6 +72,31 @@ public class PatientController implements Initializable {
     private TableView<OperationInfo> recentOperation;
     @FXML
     private  TableView<TreatmentInfo> recentTreatment;
+    @FXML
+    private  TableView<MedicationInfo> recentMedication;
+    @FXML
+    private Button updateProfile;
+    @FXML
+    private TextField updateHeight;
+    @FXML
+    private TextField updateWeight;
+    @FXML
+    private TextField updateBloodGroup;
+    @FXML
+    private TextField updatePhone;
+    @FXML
+    private DatePicker UpdateDOB;
+    @FXML
+    private TextField updateCity;
+    @FXML
+    private TextField updateState;
+    @FXML
+    private TextField updateStreet;
+    @FXML
+    private RadioButton maleRadioButton;
+    @FXML
+    private RadioButton femaleRadioButton;
+
 
     public void closeAndDisablePanes(){
         overviewPane.setOpacity(0.0);
@@ -127,9 +152,18 @@ public class PatientController implements Initializable {
 
     @FXML
     public void ProfileOpen(ActionEvent actionEvent) {
+        PatientJDBC p = new PatientJDBC();
         closeAndDisablePanes();
         profilePane.setStyle("-fx-opacity : 1.0");
         profilePane.setDisable(false);
+        updatePhone.setPromptText(p.phone);
+        updateCity.setPromptText(p.city);
+        updateStreet.setPromptText(p.street);
+        updateHeight.setPromptText(p.Height);
+        updateBloodGroup.setPromptText(p.Blood_group);
+        updateWeight.setPromptText(p.Weight);
+        UpdateDOB.setPromptText(p.dob);
+        updateState.setPromptText(p.state);
 
     }
 
@@ -145,6 +179,32 @@ public class PatientController implements Initializable {
         Button b = (Button) event.getSource();
 
         b.setStyle("-fx-background-color: #a4adb7");
+    }
+
+    @FXML
+    void updateInfo(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        PatientJDBC p = new PatientJDBC();
+        String city = updateCity.getText();
+        String street = updateStreet.getText();
+        String DOB = UpdateDOB.getValue().toString();
+        String height = updateHeight.getText();
+        String weight = updateWeight.getText();
+        String state= updateState.getText();
+        String bloodGroup = updateBloodGroup.getText();
+        String phone = updatePhone.getText();
+        String gender;
+        if (maleRadioButton.isSelected()){
+            gender = "M";
+        }
+        else if(femaleRadioButton.isSelected()){
+            gender ="F";
+        }
+        else{
+            gender= p.gender;
+        }
+                p.updateInfo(Username,height,weight,DOB,gender,bloodGroup,phone,state,street,city);
+        HomeOpen(actionEvent);
+
     }
 
     public void SignOut(ActionEvent actionEvent) throws IOException {
@@ -492,6 +552,54 @@ public class PatientController implements Initializable {
 
     }
 
+    public  void SetRecentMedicationData(PatientJDBC p){
+        TableColumn<MedicationInfo, String> codeColumn = new TableColumn<>("Code");
+        TableColumn<MedicationInfo, String> costColumn = new TableColumn<>("Cost");
+        TableColumn<MedicationInfo, String> descriptionColumn = new TableColumn<>("Description");
+        TableColumn<MedicationInfo, String> TypeColumn = new TableColumn<>("Type");
+        TableColumn<MedicationInfo, String> SDateColumn = new TableColumn<>("startDate");
+        TableColumn<MedicationInfo, String> EDateColumn = new TableColumn<>("endDate");
+
+        codeColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentCode"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentCost"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentDesc"));
+        TypeColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentType"));
+        SDateColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentSDate"));
+        EDateColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentEDate"));
+
+
+
+
+
+        try {
+            InsertRecentMedicationDetailRow(recentMedication,p);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        recentMedication.getColumns().add(codeColumn);
+        recentMedication.getColumns().add(costColumn);
+        recentMedication.getColumns().add(descriptionColumn);
+        recentMedication.getColumns().add(TypeColumn);
+        recentMedication.getColumns().add(SDateColumn);
+        recentMedication.getColumns().add(EDateColumn);
+        codeColumn.setMinWidth(50);
+        costColumn.setMinWidth(50);
+        descriptionColumn.setMinWidth(120);
+        TypeColumn.setMinWidth(120);
+        SDateColumn.setMinWidth(100);
+        EDateColumn.setMinWidth(99);
+
+
+
+
+    }
+    private void InsertRecentMedicationDetailRow(TableView recentMedication,PatientJDBC p ) throws SQLException, ClassNotFoundException {
+
+        p.GetRecentMedicineDetails(Username,recentMedication);
+
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         PatientJDBC p = new PatientJDBC();
@@ -515,6 +623,7 @@ public class PatientController implements Initializable {
         SetRecentLabData(p);
         SetRecentOperationData(p);
         SetRecentTreatmentData(p);
+        SetRecentMedicationData(p);
 
 
 

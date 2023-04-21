@@ -49,6 +49,11 @@ public class PatientJDBC {
     String treatmentType;
     Date treatmentSDate;
     Date treatmentEDate;
+    String dob;
+    String city;
+    String street;
+    String state;
+    String phone;
 
     public void GetInfo(String username){
         try
@@ -77,6 +82,7 @@ public class PatientJDBC {
 
             if (rs.next()) {
                 D_O_B = rs.getDate(3);
+                dob =D_O_B.toString();
 
                 gender = rs.getString(4);
                 height = rs.getDouble(5);
@@ -148,14 +154,28 @@ public class PatientJDBC {
                 }
             }
 
+            // query for contact no.
+            String qContact = "Select phone from contact_info where patient_ID= ?";
+            PreparedStatement ps6 = con.prepareStatement(qContact);
+            ps5.setInt(1,id);
+            ResultSet rs6 =ps6.executeQuery();
+            if (rs6.next()){
+                phone = rs6.getString(2);
+            }
 
 
-
+            // query for Street , City , State
+            String qAddress = "Select * from address where patient_ID= ?";
+            PreparedStatement ps7 = con.prepareStatement(qAddress);
+            ps5.setInt(1,id);
+            ResultSet rs7 =ps7.executeQuery();
+            if (rs7.next()){
+                street = rs7.getString(2);
+                state = rs7.getString(3);
+                city = rs7.getString(4);
+            }
 
             con.close();
-
-
-
 
         }
 
@@ -424,7 +444,48 @@ public class PatientJDBC {
 
     }
 
-    public void updateInfo(String username,Double Height,Double Weight,Date D_O_B,String Gender,String BloodGroup, String contact_num,String State,String Street,String City) throws ClassNotFoundException, SQLException {
+
+    public void GetRecentMedicineDetails(String username,TableView recentMedication) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        // query for getId
+        String query3 ="Select ID from authentication where username= ?";
+        PreparedStatement ps3=con.prepareStatement(query3);
+        ps3.setString(1, username);
+        ResultSet rs3=ps3.executeQuery();
+        if (rs3.next()) {
+            id = rs3.getInt(1);
+
+        }
+        String query6 = "Select * from medication where patient_ID= ?";
+        PreparedStatement ps6 = con.prepareStatement(query6);
+        ps6.setInt(1,id);
+
+        ResultSet rs6 =ps6.executeQuery();
+
+        while (rs6.next()){
+            Medication_code =rs6.getInt(2);
+            Medication_cost =rs6.getString(3);
+            Medication_description =rs6.getString(4);
+            Medication_type=rs6.getString(5);
+            Medication_Sdate=rs6.getDate(6);
+            Medication_Edate=rs6.getDate(7);
+            int today = Calendar.getInstance().get(Calendar.DATE);
+            if ((today>=Medication_Sdate.getDate()) && (today<=Medication_Edate.getDate())) {
+                recentMedication.getItems().add(new MedicationInfo(Medication_code, Medication_cost, Medication_description, Medication_type, Medication_Sdate, Medication_Edate));
+            }
+
+
+        }
+
+        con.close();
+
+
+
+    }
+
+    public void updateInfo(String username,String Height,String Weight,String D_O_B,String Gender,String BloodGroup, String contact_num,String State,String Street,String City) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
 
@@ -435,60 +496,112 @@ public class PatientJDBC {
         if (rs3.next()) {
             id = rs3.getInt(1);
         }
-        Double height = Height;
-        Double weight = Weight;
-        Date d_o_b = D_O_B;
+        String height = Height;
+        String weight = Weight;
+        String d_o_b = D_O_B;
         String gender = Gender;
         String bloodGroup = BloodGroup;
         String phone = contact_num;
         String city =City;
         String state=State;
         String street=Street;
-        String query = "UPDATE personal_information SET height = ? WHERE patient_ID = ?";
-        ps3 = con.prepareStatement(query);
-        ps3.setDouble(1, height);
-        ps3.setInt(2, id);
+        System.out.print(height);
 
-        String query1 = "UPDATE personal_information SET weight = ? WHERE patient_ID = ?";
-        ps3 = con.prepareStatement(query1);
-        ps3.setDouble(1, weight);
-        ps3.setInt(2, id);
+            String query = "UPDATE personal_information"
+                            +"SET height = ?"
+                            +"WHERE patient_ID = ?";
+            ps3 = con.prepareStatement(query);
+            ps3.setString(1, height);
+            ps3.setInt(2, id);
+            int rowAffected = ps3.executeUpdate();
+            System.out.println(String.format("Row affected %d", rowAffected));
 
-        String query2 = "UPDATE personal_information SET blood_group = ? WHERE patient_ID = ?";
-        ps3 = con.prepareStatement(query2);
-        ps3.setString(1, bloodGroup);
-        ps3.setInt(2, id);
+        if(weight != null){
+            String query1 = "UPDATE personal_information"
+                    + "SET weight = ?"
+                    +"WHERE patient_ID = ?";
+            ps3 = con.prepareStatement(query1);
+            ps3.setString(1, weight);
+            ps3.setInt(2, id);
+            int rowAffected1 = ps3.executeUpdate();
+            System.out.println(String.format("Row affected %d", rowAffected1));
+        }
 
-        String query4 = "UPDATE personal_information SET gender = ? WHERE patient_ID = ?";
-        ps3 = con.prepareStatement(query4);
-        ps3.setString(1, gender);
-        ps3.setInt(2, id);
+        if(bloodGroup != null){
+            String query2 = "UPDATE personal_information"
+                    +"SET blood_group = ?"
+                    +" WHERE patient_ID = ?";
+            ps3 = con.prepareStatement(query2);
+            ps3.setString(1, bloodGroup);
+            ps3.setInt(2, id);
+            int rowAffected2 = ps3.executeUpdate();
+            System.out.println(String.format("Row affected %d", rowAffected2));
+        }
 
-        String query5 = "UPDATE personal_information SET date_of_birth = ? WHERE patient_ID = ?";
-        ps3 = con.prepareStatement(query5);
-        ps3.setDate(1, (java.sql.Date) d_o_b);
-        ps3.setInt(2, id);
+        if(gender!=  null){
+            String query4 = "UPDATE personal_information"
+                    +"SET gender = ?"
+                    +" WHERE patient_ID = ?";
+            ps3 = con.prepareStatement(query4);
+            ps3.setString(1, gender);
+            ps3.setInt(2, id);
+            int rowAffected3 = ps3.executeUpdate();
+            System.out.println(String.format("Row affected %d", rowAffected3));
+        }
+        if(d_o_b!=  null){
+            String query5 = "UPDATE personal_information"
+                    +" SET date_of_birth = ?"
+                    +"WHERE patient_ID = ?";
+            ps3 = con.prepareStatement(query5);
+            ps3.setString(1, d_o_b);
+            ps3.setInt(2, id);
+            int rowAffected4 = ps3.executeUpdate();
+            System.out.println(String.format("Row affected %d", rowAffected4));
+        }
 
-        String query6 = "UPDATE contact_info SET phone = ? WHERE patient_ID = ?";
-        ps3 = con.prepareStatement(query6);
-        ps3.setString(1,phone );
-        ps3.setInt(2, id);
+        if(phone!=  null){
+            String query6 = "UPDATE contact_info"
+                    +" SET phone = ?"
+                    +" WHERE patient_ID = ?";
+            ps3 = con.prepareStatement(query6);
+            ps3.setString(1,phone );
+            ps3.setInt(2, id);
+            int rowAffected5 = ps3.executeUpdate();
+            System.out.println(String.format("Row affected %d", rowAffected5));
+        }
 
-        String query7 = "UPDATE address SET street = ? WHERE patient_ID = ?";
-        ps3 = con.prepareStatement(query7);
-        ps3.setString(1,street );
-        ps3.setInt(2, id);
+        if(street!=  null){
+            String query7 = "UPDATE address"
+                    +" SET street = ?"
+                    +"WHERE patient_ID = ?";
+            ps3 = con.prepareStatement(query7);
+            ps3.setString(1,street );
+            ps3.setInt(2, id);
+            int rowAffected5 = ps3.executeUpdate();
+            System.out.println(String.format("Row affected %d", rowAffected5));
+        }
 
-        String query8 = "UPDATE address SET city = ? WHERE patient_ID = ?";
-        ps3 = con.prepareStatement(query8);
-        ps3.setString(1,city );
-        ps3.setInt(2, id);
+        if(city!=  null){
+            String query8 = "UPDATE address"
+                    +" SET city = ?"
+                    +" WHERE patient_ID = ?";
+            ps3 = con.prepareStatement(query8);
+            ps3.setString(1,city );
+            ps3.setInt(2, id);
+            int rowAffected6 = ps3.executeUpdate();
+            System.out.println(String.format("Row affected %d", rowAffected6));
+        }
 
-        String query9 = "UPDATE address SET state = ? WHERE patient_ID = ?";
-        ps3 = con.prepareStatement(query9);
-        ps3.setString(1,state );
-        ps3.setInt(2, id);
-
+        if(state!=  null){
+            String query9 = "UPDATE address"
+                    +" SET state = ?"
+                    +" WHERE patient_ID = ?";
+            ps3 = con.prepareStatement(query9);
+            ps3.setString(1,state );
+            ps3.setInt(2, id);
+            int rowAffected7 = ps3.executeUpdate();
+            System.out.println(String.format("Row affected %d", rowAffected7));
+        }
 
         con.close();
 
