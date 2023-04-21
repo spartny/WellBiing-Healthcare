@@ -213,8 +213,8 @@ public class PatientJDBC {
                     LabTest_cost =rs6.getString(3);
                     LabTest_description =rs6.getString(4);
                     LabTest_type=rs6.getString(5);
-                    LabTest_date=rs6.getDate(6);
-                    Labtable.getItems().add(new LabInfo(LabTest_code,LabTest_cost,LabTest_description,LabTest_type,LabTest_date));
+                    LabTest_date= rs6.getDate(6);
+                    Labtable.getItems().add(new LabInfo(LabTest_code,LabTest_cost,LabTest_description,LabTest_type, LabTest_date));
 
 
         }

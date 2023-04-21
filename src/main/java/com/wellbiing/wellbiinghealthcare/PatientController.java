@@ -18,12 +18,17 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class PatientController implements Initializable {
+
+    @FXML
+    private TextField patientProfileHeight;
+
     @FXML
     private Pane overviewPane;
     @FXML
@@ -171,6 +176,9 @@ public class PatientController implements Initializable {
         else{
             femaleRadioButton.setSelected(true);
         }
+
+        patientProfileHeight.setText(String.valueOf(jdbc.Height));
+
 
     }
 

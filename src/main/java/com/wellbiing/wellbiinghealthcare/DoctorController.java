@@ -614,7 +614,7 @@ public class DoctorController implements Initializable {
                 System.out.println(column.isEditable());
                 column.setOnEditCommit(event -> {
 
-                    String newValue = (String) event.getNewValue();
+                    String newValue = String.valueOf(event.getNewValue());
 
                     TablePosition position = updateTable.getEditingCell();
 
@@ -628,103 +628,102 @@ public class DoctorController implements Initializable {
                     }
                 });
             }
+        }
 
-            if (selectedToggle == updateTreatmentRadio) {
-                createTables.TreatmentTable(table);
-                createTables.AddTreatment(table, updatePatientId);
-                for (TableColumn<?, ?> column : updateTable.getColumns()) {
-                    column.setReorderable(false);
-                    System.out.println(column.isEditable());
-                    column.setOnEditCommit(event -> {
+        if (selectedToggle == updateTreatmentRadio) {
+            createTables.TreatmentTable(table);
+            createTables.AddTreatment(table, updatePatientId);
 
-                        VitalsInfo vitalsInfo = (VitalsInfo) event.getRowValue();
-                        float newValue = (float) event.getNewValue();
-                        TablePosition position = updateTable.getEditingCell();
+            for (TableColumn<?, ?> column : updateTable.getColumns()) {
+                column.setReorderable(false);
+                System.out.println(column.isEditable());
+                column.setOnEditCommit(event -> {
 
-                        System.out.println(position.getTableColumn());
-                        try {
-                            jdbc.UpdateVitals(position, updateTable, newValue);
-                        } catch (ClassNotFoundException e) {
-                            throw new RuntimeException(e);
-                        } catch (SQLException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
-                }
+                    String newValue = String.valueOf(event.getNewValue());
+                    TablePosition position = updateTable.getEditingCell();
 
-                if (selectedToggle == updateAllergiesRadio) {
-                    createTables.AllergyTable(table);
-                    createTables.AddAllergy(table, updatePatientId);
-                    for (TableColumn<?, ?> column : updateTable.getColumns()) {
-                        column.setReorderable(false);
-                        System.out.println(column.isEditable());
-                        column.setOnEditCommit(event -> {
-
-                            VitalsInfo vitalsInfo = (VitalsInfo) event.getRowValue();
-                            float newValue = (float) event.getNewValue();
-                            TablePosition position = updateTable.getEditingCell();
-
-                            System.out.println(position.getTableColumn());
-                            try {
-                                jdbc.UpdateVitals(position, updateTable, newValue);
-                            } catch (ClassNotFoundException e) {
-                                throw new RuntimeException(e);
-                            } catch (SQLException e) {
-                                throw new RuntimeException(e);
-                            }
-                        });
+                    System.out.println(position.getTableColumn());
+                    try {
+                        jdbc.UpdateTreatment(position, updateTable, newValue);
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
                     }
+                });
+            }
+        }
 
-                    if (selectedToggle == updateOperationRadio) {
-                        createTables.OperationTable(table);
-                        createTables.AddOperation(table, updatePatientId);
-                        for (TableColumn<?, ?> column : updateTable.getColumns()) {
-                            column.setReorderable(false);
-                            System.out.println(column.isEditable());
-                            column.setOnEditCommit(event -> {
+        if (selectedToggle == updateAllergiesRadio) {
+            createTables.AllergyTable(table);
+            createTables.AddAllergy(table, updatePatientId);
+            for (TableColumn<?, ?> column : updateTable.getColumns()) {
+                column.setReorderable(false);
+                System.out.println(column.isEditable());
+                column.setOnEditCommit(event -> {
 
-                                VitalsInfo vitalsInfo = (VitalsInfo) event.getRowValue();
-                                float newValue = (float) event.getNewValue();
-                                TablePosition position = updateTable.getEditingCell();
+                    String newValue = (String) event.getNewValue();
+                    TablePosition position = updateTable.getEditingCell();
 
-                                System.out.println(position.getTableColumn());
-                                try {
-                                    jdbc.UpdateVitals(position, updateTable, newValue);
-                                } catch (ClassNotFoundException e) {
-                                    throw new RuntimeException(e);
-                                } catch (SQLException e) {
-                                    throw new RuntimeException(e);
-                                }
-                            });
-                        }
-
-                        if (selectedToggle == updateAllergiesRadio) {
-                            createTables.TestTable(table);
-                            createTables.AddTest(table, updatePatientId);
-                            for (TableColumn<?, ?> column : updateTable.getColumns()) {
-                                column.setReorderable(false);
-                                System.out.println(column.isEditable());
-                                column.setOnEditCommit(event -> {
-
-                                    VitalsInfo vitalsInfo = (VitalsInfo) event.getRowValue();
-                                    float newValue = (float) event.getNewValue();
-                                    TablePosition position = updateTable.getEditingCell();
-
-                                    System.out.println(position.getTableColumn());
-                                    try {
-                                        jdbc.UpdateVitals(position, updateTable, newValue);
-                                    } catch (ClassNotFoundException e) {
-                                        throw new RuntimeException(e);
-                                    } catch (SQLException e) {
-                                        throw new RuntimeException(e);
-                                    }
-                                });
-                            }
-                        }
+                    System.out.println(position.getTableColumn());
+                    try {
+                        jdbc.UpdateAllergies(position, updateTable, newValue);
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
                     }
-                }
+                });
+            }
+        }
+
+        if (selectedToggle == updateOperationRadio) {
+            createTables.OperationTable(table);
+            createTables.AddOperation(table, updatePatientId);
+            for (TableColumn<?, ?> column : updateTable.getColumns()) {
+                column.setReorderable(false);
+                System.out.println(column.isEditable());
+                column.setOnEditCommit(event -> {
+
+                    VitalsInfo vitalsInfo = (VitalsInfo) event.getRowValue();
+                    float newValue = (float) event.getNewValue();
+                    TablePosition position = updateTable.getEditingCell();
+
+                    System.out.println(position.getTableColumn());
+                    try {
+                        jdbc.UpdateVitals(position, updateTable, newValue);
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            }
+        }
+
+        if (selectedToggle == updateLabTestRadio) {
+            createTables.TestTable(table);
+            createTables.AddTest(table, updatePatientId);
+            for (TableColumn<?, ?> column : updateTable.getColumns()) {
+                column.setReorderable(false);
+                System.out.println(column.isEditable());
+                column.setOnEditCommit(event -> {
+                    String newValue =  String.valueOf(event.getNewValue());
+                    TablePosition position = updateTable.getEditingCell();
+
+                    System.out.println(position.getTableColumn());
+                    try {
+                        jdbc.UpdateAllergies(position, updateTable, newValue);
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
             }
         }
     }
 }
+
+
 
