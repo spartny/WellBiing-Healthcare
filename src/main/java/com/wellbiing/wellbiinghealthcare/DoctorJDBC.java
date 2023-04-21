@@ -518,5 +518,107 @@ public class DoctorJDBC {
         System.out.println("wowie");
     }
 
+    public void DeleteVitals(VitalsInfo row, int patientId) throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whcd", "pass123");
+
+        Date testDate = row.getTestDate();
+
+        String query = "DELETE FROM vitals WHERE patient_ID = ? And Test_date = ?";
+
+        PreparedStatement ps = con.prepareStatement(query);
+
+        ps.setInt(1, patientId);
+        ps.setDate(2, testDate);
+
+        ps.execute();
+        System.out.println("wowie");
+
+    }
+
+    public void DeleteMedication(MedicationInfo row, int patientId) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whcd", "pass123");
+
+        int medicationCode = row.getMedicationCode();
+
+        String query = "DELETE FROM medication WHERE patient_ID = ? And Medication_code = ?";
+
+        PreparedStatement ps = con.prepareStatement(query);
+
+        ps.setInt(1, patientId);
+        ps.setInt(2, medicationCode);
+
+        ps.execute();
+        System.out.println("wowie");
+    }
+
+    public void DeleteTreatments(TreatmentInfo row, int patientId) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whcd", "pass123");
+
+        int treatmentCode = row.getTreatmentCode();
+
+        String query = "DELETE FROM treatments WHERE patient_ID = ? And Treatment_code = ?";
+
+        PreparedStatement ps = con.prepareStatement(query);
+
+        ps.setInt(1, patientId);
+        ps.setInt(2, treatmentCode);
+
+        ps.execute();
+        System.out.println("wowie");
+    }
+    public void DeleteAllergies(AllergyInfo row, int patientId) throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whcd", "pass123");
+
+        int allergyCode = row.getAllergyCode();
+
+        String query = "DELETE FROM allergy WHERE patient_ID = ? And Allergy_code = ?";
+
+        PreparedStatement ps = con.prepareStatement(query);
+
+        ps.setInt(1, patientId);
+        ps.setInt(2, allergyCode);
+
+        ps.execute();
+        System.out.println("wowie");
+    }
+
+    public void DeleteOperations(OperationInfo row, int patientId) throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whcd", "pass123");
+
+        int opCode = row.getOpCode();
+
+        String query = "DELETE FROM operation WHERE patient_ID = ? And Operation_code = ?";
+
+        PreparedStatement ps = con.prepareStatement(query);
+
+        ps.setInt(1, patientId);
+        ps.setInt(2, opCode);
+
+        ps.execute();
+        System.out.println("wowie");
+    }
+
+    public void DeleteTests(LabInfo row, int patientId) throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whcd", "pass123");
+
+        int labCode = row.getLabCode();
+
+        String query = "DELETE FROM lab WHERE patient_ID = ? And LabTest_code = ?";
+
+        PreparedStatement ps = con.prepareStatement(query);
+
+        ps.setInt(1, patientId);
+        ps.setInt(2, labCode);
+
+        ps.execute();
+        System.out.println("wowie");
+    }
+
 }
 

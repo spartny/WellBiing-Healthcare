@@ -792,34 +792,54 @@ public class DoctorController implements Initializable {
         }
     }
 
-    public void DeleteRow(ActionEvent actionEvent) {
+    public void DeleteRow(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         Toggle selectedToggle = deletePatientGroup.getSelectedToggle();
+        DoctorJDBC jdbc = new DoctorJDBC();
+        int patientId = Integer.parseInt(deletePateintId.getText());
 
         if (selectedToggle == deleteVitalsRadio) {
             VitalsInfo row = (VitalsInfo) deleteTable.getSelectionModel().getSelectedItem();
             System.out.println(row.getPatientName());
-
-            
+            jdbc.DeleteVitals(row, patientId);
+            deleteTable.getItems().remove(row);
         }
 
         if (selectedToggle == deleteMedicationRadio) {
-
+            MedicationInfo row = (MedicationInfo) deleteTable.getSelectionModel().getSelectedItem();
+            System.out.println(row.getPatientName());
+            jdbc.DeleteMedication(row, patientId);
+            deleteTable.getItems().remove(row);
         }
 
         if (selectedToggle == deleteTreatmentRadio) {
+            TreatmentInfo row = (TreatmentInfo) deleteTable.getSelectionModel().getSelectedItem();
+            System.out.println(row.getPatientName());
+            jdbc.DeleteTreatments(row, patientId);
+            deleteTable.getItems().remove(row);
 
         }
 
         if (selectedToggle == deleteAllergiesRadio) {
+            AllergyInfo row = (AllergyInfo) deleteTable.getSelectionModel().getSelectedItem();
+            System.out.println(row.getPatientName());
+            jdbc.DeleteAllergies(row, patientId);
+            deleteTable.getItems().remove(row);
 
         }
 
         if (selectedToggle == deleteOperationRadio) {
+            OperationInfo row = (OperationInfo) deleteTable.getSelectionModel().getSelectedItem();
+            System.out.println(row.getPatientName());
+            jdbc.DeleteOperations(row, patientId);
+            deleteTable.getItems().remove(row);
 
         }
 
         if (selectedToggle == deleteLabTestRadio) {
-
+            LabInfo row = (LabInfo) deleteTable.getSelectionModel().getSelectedItem();
+            System.out.println(row.getPatientName());
+            jdbc.DeleteTests(row, patientId);
+            deleteTable.getItems().remove(row);
         }
     }
 

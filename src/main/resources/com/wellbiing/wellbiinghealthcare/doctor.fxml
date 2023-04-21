@@ -762,7 +762,11 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Button fx:id="deleteRowConfirm" layoutX="209.0" layoutY="479.0" mnemonicParsing="false" onAction="#DeleteRow" opacity="0.93" prefHeight="58.0" prefWidth="131.0" style="-fx-background-radius: 50;" text="Confirm" />
+                  <Button fx:id="deleteRowConfirm" layoutX="209.0" layoutY="479.0" mnemonicParsing="false" onAction="#DeleteRow" opacity="0.93" prefHeight="58.0" prefWidth="131.0" style="-fx-background-radius: 50;" text="Delete Row">
+                     <font>
+                        <Font name="Leelawadee UI" size="12.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </children>
