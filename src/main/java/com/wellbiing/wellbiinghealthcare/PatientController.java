@@ -170,7 +170,7 @@ public class PatientController implements Initializable {
         UpdateDOB.setPromptText(p.dob);
         updateState.setPromptText(p.state);
 
-        patientProfileHeight.setText(String.valueOf(jdbc.Height));
+        patientProfileHeight.setText(String.valueOf(p.Height));
 
 
     }

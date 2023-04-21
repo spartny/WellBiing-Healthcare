@@ -68,6 +68,18 @@ public class DoctorController implements Initializable {
     private Button delPatientButton;
 
     @FXML
+    private RadioButton deleteAllergiesRadio;
+
+    @FXML
+    private RadioButton deleteLabTestRadio;
+
+    @FXML
+    private RadioButton deleteMedicationRadio;
+
+    @FXML
+    private RadioButton deleteOperationRadio;
+
+    @FXML
     private TextField deletePateintId;
 
     @FXML
@@ -77,7 +89,22 @@ public class DoctorController implements Initializable {
     private DatePicker deletePatientDate;
 
     @FXML
+    private ToggleGroup deletePatientGroup;
+
+    @FXML
     private AnchorPane deletePatientPane;
+
+    @FXML
+    private Button deleteRowConfirm;
+
+    @FXML
+    private TableView<?> deleteTable;
+
+    @FXML
+    private RadioButton deleteTreatmentRadio;
+
+    @FXML
+    private RadioButton deleteVitalsRadio;
 
     @FXML
     private Button entrySelectButton;
@@ -723,6 +750,80 @@ public class DoctorController implements Initializable {
             }
         }
     }
+
+
+    public void DeletePatient(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        deleteTable.getColumns().clear();
+        deleteTable.getItems().clear();
+
+        Toggle selectedToggle = deletePatientGroup.getSelectedToggle();
+        CreateTables createTables = new CreateTables();
+        DoctorJDBC jdbc = new DoctorJDBC();
+        TableView table = deleteTable;
+
+        if (selectedToggle == deleteVitalsRadio) {
+            createTables.VitalsTable(table);
+            createTables.AddVitals(table, deletePateintId);
+        }
+
+        if (selectedToggle == deleteMedicationRadio) {
+            createTables.MedicationTable(table);
+            createTables.AddMedication(table, deletePateintId);
+        }
+
+        if (selectedToggle == deleteTreatmentRadio) {
+            createTables.TreatmentTable(table);
+            createTables.AddTreatment(table, deletePateintId);
+        }
+
+        if (selectedToggle == deleteAllergiesRadio) {
+            createTables.AllergyTable(table);
+            createTables.AddAllergy(table, deletePateintId);
+        }
+
+        if (selectedToggle == deleteOperationRadio) {
+            createTables.OperationTable(table);
+            createTables.AddOperation(table, deletePateintId);
+        }
+
+        if (selectedToggle == deleteLabTestRadio) {
+            createTables.TestTable(table);
+            createTables.AddTest(table, deletePateintId);
+        }
+    }
+
+    public void DeleteRow(ActionEvent actionEvent) {
+        Toggle selectedToggle = deletePatientGroup.getSelectedToggle();
+
+        if (selectedToggle == deleteVitalsRadio) {
+            VitalsInfo row = (VitalsInfo) deleteTable.getSelectionModel().getSelectedItem();
+            System.out.println(row.getPatientName());
+
+            
+        }
+
+        if (selectedToggle == deleteMedicationRadio) {
+
+        }
+
+        if (selectedToggle == deleteTreatmentRadio) {
+
+        }
+
+        if (selectedToggle == deleteAllergiesRadio) {
+
+        }
+
+        if (selectedToggle == deleteOperationRadio) {
+
+        }
+
+        if (selectedToggle == deleteLabTestRadio) {
+
+        }
+    }
+
+
 }
 
 
