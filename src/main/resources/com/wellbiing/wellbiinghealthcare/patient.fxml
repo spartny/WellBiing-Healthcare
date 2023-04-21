@@ -256,38 +256,6 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="labTestPane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
-               <children>
-                  <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-radius: 50; -fx-background-color: white;">
-                     <children>
-                        <ScrollPane layoutY="275.0" prefHeight="318.0" prefWidth="550.0">
-                          <content>
-                            <AnchorPane layoutY="275.0" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="535.0">
-                                 <children>
-                                    <TableView fx:id="Labtable" prefHeight="318.0" prefWidth="539.0" />
-                                 </children></AnchorPane>
-                          </content>
-                        </ScrollPane>
-                        <Text layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lab Test Record" textAlignment="CENTER" wrappingWidth="550.0">
-                           <font>
-                              <Font name="Leelawadee UI Bold" size="26.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#075d5d" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recent Lab Test" textAlignment="CENTER" wrappingWidth="550.0">
-                           <font>
-                              <Font name="Leelawadee UI Bold" size="26.0" />
-                           </font>
-                        </Text>
-                        <TableView fx:id="recentLabTest" layoutY="129.0" prefHeight="25.0" prefWidth="550.0" />
-                        <Separator layoutX="11.0" layoutY="240.0" prefHeight="3.0" prefWidth="525.0" />
-                        <Text fill="#075d5d" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Past Records" textAlignment="CENTER" wrappingWidth="550.0">
-                           <font>
-                              <Font name="Leelawadee UI Bold" size="26.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Pane>
-               </children></Pane>
             <AnchorPane fx:id="medicationPane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: #ffff; -fx-background-radius: 50;">
                <children>
                   <AnchorPane prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
@@ -387,7 +355,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="profilePane" layoutX="380.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+            <Pane fx:id="profilePane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                <children>
                   <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                      <children>
@@ -401,7 +369,7 @@
                               <Font name="Leelawadee UI Bold" size="25.0" />
                            </font>
                         </Text>
-                        <TextField alignment="CENTER" layoutX="5.0" layoutY="110.0" minHeight="40.0" prefHeight="10.0" prefWidth="265.0" promptText="Enter Height">
+                        <TextField fx:id="patientProfileHeight" alignment="CENTER" layoutX="5.0" layoutY="110.0" minHeight="40.0" prefHeight="10.0" prefWidth="265.0" promptText="Enter Height">
                            <font>
                               <Font name="Leelawadee UI" size="26.0" />
                            </font>
@@ -501,6 +469,38 @@
                   </Pane>
                </children>
             </Pane>
+            <Pane fx:id="labTestPane" layoutX="380.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+               <children>
+                  <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-radius: 50; -fx-background-color: white;">
+                     <children>
+                        <ScrollPane layoutY="275.0" prefHeight="318.0" prefWidth="550.0">
+                          <content>
+                            <AnchorPane layoutY="275.0" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="535.0">
+                                 <children>
+                                    <TableView fx:id="Labtable" prefHeight="318.0" prefWidth="539.0" />
+                                 </children></AnchorPane>
+                          </content>
+                        </ScrollPane>
+                        <Text layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lab Test Record" textAlignment="CENTER" wrappingWidth="550.0">
+                           <font>
+                              <Font name="Leelawadee UI Bold" size="26.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#075d5d" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recent Lab Test" textAlignment="CENTER" wrappingWidth="550.0">
+                           <font>
+                              <Font name="Leelawadee UI Bold" size="26.0" />
+                           </font>
+                        </Text>
+                        <TableView fx:id="recentLabTest" layoutY="129.0" prefHeight="75.0" prefWidth="550.0" />
+                        <Separator layoutX="11.0" layoutY="240.0" prefHeight="3.0" prefWidth="525.0" />
+                        <Text fill="#075d5d" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Past Records" textAlignment="CENTER" wrappingWidth="550.0">
+                           <font>
+                              <Font name="Leelawadee UI Bold" size="26.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+               </children></Pane>
             </children>
 
         </Pane>

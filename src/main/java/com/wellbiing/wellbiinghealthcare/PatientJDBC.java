@@ -190,8 +190,8 @@ public class PatientJDBC {
                     LabTest_cost =rs6.getString(3);
                     LabTest_description =rs6.getString(4);
                     LabTest_type=rs6.getString(5);
-                    LabTest_date=rs6.getDate(6);
-                    Labtable.getItems().add(new LabInfo(LabTest_code,LabTest_cost,LabTest_description,LabTest_type,LabTest_date));
+                    LabTest_date= rs6.getDate(6);
+                    Labtable.getItems().add(new LabInfo(LabTest_code,LabTest_cost,LabTest_description,LabTest_type, LabTest_date));
 
 
         }
@@ -424,7 +424,7 @@ public class PatientJDBC {
 
     }
 
-    public void updateInfo(String username,Double Height,Double Weight,Date D_O_B,String Gender,String BloodGroup, String contact_num,String State,String Street,String City) throws ClassNotFoundException, SQLException {
+    public void UpdateProfile(String username,Double Height,Double Weight,Date D_O_B,String Gender,String BloodGroup, String contact_num,String State,String Street,String City) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
 

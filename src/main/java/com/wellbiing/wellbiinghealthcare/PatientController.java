@@ -18,11 +18,16 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 public class PatientController implements Initializable {
+
+    @FXML
+    private TextField patientProfileHeight;
+
     @FXML
     private Pane overviewPane;
     @FXML
@@ -127,9 +132,13 @@ public class PatientController implements Initializable {
 
     @FXML
     public void ProfileOpen(ActionEvent actionEvent) {
+        PatientJDBC jdbc = new PatientJDBC();
         closeAndDisablePanes();
         profilePane.setStyle("-fx-opacity : 1.0");
         profilePane.setDisable(false);
+
+        patientProfileHeight.setText(String.valueOf(jdbc.Height));
+
 
     }
 
