@@ -14,17 +14,17 @@ import java.util.List;
 
 public class PatientJDBC {
     String Username;
-    String Age;
-    String Height;
-    String Weight;
-    String Blood_group;
+    static String Age;
+    static String Height;
+    static String Weight;
+    static String Blood_group;
     String Treatment;
     String Checkup;
     String allergies="";
     String medication ="";
     int id;
     String Id;
-    String gender;
+    static String gender;
     String testDate;
     int LabTest_code;
     String LabTest_cost;
@@ -49,11 +49,13 @@ public class PatientJDBC {
     String treatmentType;
     Date treatmentSDate;
     Date treatmentEDate;
-    String dob;
-    String city;
-    String street;
-    String state;
-    String phone;
+    static String dob;
+    static String city;
+    static String street;
+    static String state;
+    static String phone;
+    static String userHeight;
+    static  String userWeight;
 
     public void GetInfo(String username){
         try
@@ -95,7 +97,8 @@ public class PatientJDBC {
 
             int Current_year = Calendar.getInstance().get(Calendar.YEAR);
 
-
+            userHeight = Double.toString(height);
+            userWeight = Double.toString(weight);
             int age = (Current_year)-(Birth_year);
             Age = Integer.toString(age);
             Height = Double.toString(height)+" "+"cm";
@@ -157,17 +160,17 @@ public class PatientJDBC {
             // query for contact no.
             String qContact = "Select phone from contact_info where patient_ID= ?";
             PreparedStatement ps6 = con.prepareStatement(qContact);
-            ps5.setInt(1,id);
+            ps6.setInt(1,id);
             ResultSet rs6 =ps6.executeQuery();
             if (rs6.next()){
-                phone = rs6.getString(2);
+                phone = rs6.getString(1);
             }
 
 
             // query for Street , City , State
             String qAddress = "Select * from address where patient_ID= ?";
             PreparedStatement ps7 = con.prepareStatement(qAddress);
-            ps5.setInt(1,id);
+            ps7.setInt(1,id);
             ResultSet rs7 =ps7.executeQuery();
             if (rs7.next()){
                 street = rs7.getString(2);
@@ -505,103 +508,76 @@ public class PatientJDBC {
         String city =City;
         String state=State;
         String street=Street;
-        System.out.print(height);
+        System.out.println("height "+height);
 
-            String query = "UPDATE personal_information"
-                            +"SET height = ?"
-                            +"WHERE patient_ID = ?";
+            String query = "UPDATE personal_information SET height = ? WHERE patient_ID = ?";
             ps3 = con.prepareStatement(query);
             ps3.setString(1, height);
             ps3.setInt(2, id);
-            int rowAffected = ps3.executeUpdate();
-            System.out.println(String.format("Row affected %d", rowAffected));
+            ps3.executeUpdate();
 
-        if(weight != null){
-            String query1 = "UPDATE personal_information"
-                    + "SET weight = ?"
-                    +"WHERE patient_ID = ?";
+            String query1 = "UPDATE personal_information SET weight = ? WHERE patient_ID = ?";
             ps3 = con.prepareStatement(query1);
             ps3.setString(1, weight);
             ps3.setInt(2, id);
-            int rowAffected1 = ps3.executeUpdate();
-            System.out.println(String.format("Row affected %d", rowAffected1));
-        }
+            ps3.executeUpdate();
 
-        if(bloodGroup != null){
-            String query2 = "UPDATE personal_information"
-                    +"SET blood_group = ?"
-                    +" WHERE patient_ID = ?";
+
+
+
+            String query2 = "UPDATE personal_information SET blood_group = ? WHERE patient_ID = ?";
             ps3 = con.prepareStatement(query2);
             ps3.setString(1, bloodGroup);
             ps3.setInt(2, id);
-            int rowAffected2 = ps3.executeUpdate();
-            System.out.println(String.format("Row affected %d", rowAffected2));
-        }
+            ps3.executeUpdate();
 
-        if(gender!=  null){
-            String query4 = "UPDATE personal_information"
-                    +"SET gender = ?"
-                    +" WHERE patient_ID = ?";
+
+
+
+            String query4 = "UPDATE personal_information SET gender = ?  WHERE patient_ID = ?";
             ps3 = con.prepareStatement(query4);
             ps3.setString(1, gender);
             ps3.setInt(2, id);
-            int rowAffected3 = ps3.executeUpdate();
-            System.out.println(String.format("Row affected %d", rowAffected3));
-        }
-        if(d_o_b!=  null){
-            String query5 = "UPDATE personal_information"
-                    +" SET date_of_birth = ?"
-                    +"WHERE patient_ID = ?";
+            ps3.executeUpdate();
+
+
+            String query5 = "UPDATE personal_information SET date_of_birth = ? WHERE patient_ID = ?";
             ps3 = con.prepareStatement(query5);
             ps3.setString(1, d_o_b);
             ps3.setInt(2, id);
-            int rowAffected4 = ps3.executeUpdate();
-            System.out.println(String.format("Row affected %d", rowAffected4));
-        }
+            ps3.executeUpdate();
 
-        if(phone!=  null){
-            String query6 = "UPDATE contact_info"
-                    +" SET phone = ?"
-                    +" WHERE patient_ID = ?";
+
+
+            String query6 = "UPDATE contact_info SET phone = ? WHERE patient_ID = ?";
             ps3 = con.prepareStatement(query6);
             ps3.setString(1,phone );
             ps3.setInt(2, id);
-            int rowAffected5 = ps3.executeUpdate();
-            System.out.println(String.format("Row affected %d", rowAffected5));
-        }
+            ps3.executeUpdate();
 
-        if(street!=  null){
-            String query7 = "UPDATE address"
-                    +" SET street = ?"
-                    +"WHERE patient_ID = ?";
+
+
+            String query7 = "UPDATE address SET street = ? WHERE patient_ID = ?";
             ps3 = con.prepareStatement(query7);
             ps3.setString(1,street );
             ps3.setInt(2, id);
-            int rowAffected5 = ps3.executeUpdate();
-            System.out.println(String.format("Row affected %d", rowAffected5));
-        }
+            ps3.executeUpdate();
 
-        if(city!=  null){
-            String query8 = "UPDATE address"
-                    +" SET city = ?"
-                    +" WHERE patient_ID = ?";
+
+
+            String query8 = "UPDATE address SET city = ? WHERE patient_ID = ?";
             ps3 = con.prepareStatement(query8);
             ps3.setString(1,city );
             ps3.setInt(2, id);
-            int rowAffected6 = ps3.executeUpdate();
-            System.out.println(String.format("Row affected %d", rowAffected6));
-        }
+            ps3.executeUpdate();
 
-        if(state!=  null){
-            String query9 = "UPDATE address"
-                    +" SET state = ?"
-                    +" WHERE patient_ID = ?";
+
+
+            String query9 = "UPDATE address SET state = ? WHERE patient_ID = ?";
             ps3 = con.prepareStatement(query9);
             ps3.setString(1,state );
             ps3.setInt(2, id);
-            int rowAffected7 = ps3.executeUpdate();
-            System.out.println(String.format("Row affected %d", rowAffected7));
-        }
+            ps3.executeUpdate();
 
         con.close();
 

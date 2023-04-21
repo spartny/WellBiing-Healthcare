@@ -21,6 +21,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class PatientController implements Initializable {
@@ -161,14 +162,20 @@ public class PatientController implements Initializable {
         closeAndDisablePanes();
         profilePane.setStyle("-fx-opacity : 1.0");
         profilePane.setDisable(false);
-        updatePhone.setPromptText(p.phone);
-        updateCity.setPromptText(p.city);
-        updateStreet.setPromptText(p.street);
-        updateHeight.setPromptText(p.Height);
-        updateBloodGroup.setPromptText(p.Blood_group);
-        updateWeight.setPromptText(p.Weight);
-        UpdateDOB.setPromptText(p.dob);
-        updateState.setPromptText(p.state);
+        updatePhone.setText(p.phone);
+        updateCity.setText(p.city);
+        updateStreet.setText(p.street);
+        updateHeight.setText(p.userHeight);
+        updateBloodGroup.setText(p.Blood_group);
+        updateWeight.setText(p.userWeight);
+        UpdateDOB.setValue(LocalDate.parse(p.dob));
+        updateState.setText(p.state);
+        if(p.gender.equals("M")){
+            maleRadioButton.setSelected(true);
+        }
+        else{
+            femaleRadioButton.setSelected(true);
+        }
 
         patientProfileHeight.setText(String.valueOf(p.Height));
 
@@ -194,7 +201,7 @@ public class PatientController implements Initializable {
         PatientJDBC p = new PatientJDBC();
         String city = updateCity.getText();
         String street = updateStreet.getText();
-        String DOB = UpdateDOB.getValue().toString();
+        String DOB = String.valueOf(UpdateDOB.getValue());
         String height = updateHeight.getText();
         String weight = updateWeight.getText();
         String state= updateState.getText();
@@ -211,6 +218,12 @@ public class PatientController implements Initializable {
             gender= p.gender;
         }
                 p.updateInfo(Username,height,weight,DOB,gender,bloodGroup,phone,state,street,city);
+        p.GetInfo(Username);
+        setAge(p);
+        SetHeight(p);
+        SetWeight(p);
+        SetBlood_Group(p);
+        SetGender(p);
         HomeOpen(actionEvent);
 
     }
@@ -568,12 +581,12 @@ public class PatientController implements Initializable {
         TableColumn<MedicationInfo, String> SDateColumn = new TableColumn<>("startDate");
         TableColumn<MedicationInfo, String> EDateColumn = new TableColumn<>("endDate");
 
-        codeColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentCode"));
-        costColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentCost"));
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentDesc"));
-        TypeColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentType"));
-        SDateColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentSDate"));
-        EDateColumn.setCellValueFactory(new PropertyValueFactory<>("treatmentEDate"));
+        codeColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationCode"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationCost"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationDesc"));
+        TypeColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationType"));
+        SDateColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationSDate"));
+        EDateColumn.setCellValueFactory(new PropertyValueFactory<>("MedicationEDate"));
 
 
 

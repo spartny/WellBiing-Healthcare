@@ -216,7 +216,7 @@
                         </image>
                     </ImageView>
                 </Pane>
-                <Pane fx:id="overviewPane" disable="true" layoutX="380.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: #009999; -fx-background-radius: 50;">
+                <Pane fx:id="overviewPane" layoutX="380.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                     <children>
                         <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                             <children>
@@ -291,7 +291,7 @@
                                         <Font name="Leelawadee UI Bold" size="26.0" />
                                     </font>
                                 </Text>
-                                <TableView fx:id="recentLabTest" layoutY="129.0" prefHeight="25.0" prefWidth="550.0" />
+                                <TableView fx:id="recentLabTest" layoutY="129.0" prefHeight="100.0" prefWidth="550.0" />
                                 <Separator layoutX="11.0" layoutY="240.0" prefHeight="3.0" prefWidth="525.0" />
                                 <Text fill="#075d5d" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Past Records" textAlignment="CENTER" wrappingWidth="550.0">
                                     <font>
@@ -400,7 +400,7 @@
                         </Pane>
                     </children>
                 </Pane>
-                <Pane fx:id="profilePane" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="655.0" prefWidth="550.0" style="-fx-background-color: #009999; -fx-background-radius: 50;">
+                <Pane fx:id="profilePane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                     <children>
                         <Pane opacity="0.0" prefHeight="655.0" prefWidth="550.0" style="-fx-background-color: #009999; -fx-background-radius: 50;">
                             <children>
