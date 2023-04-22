@@ -803,10 +803,13 @@ public class DoctorController implements Initializable {
         Utility utility = new Utility();
 
         if (Objects.equals(deletePatientId.getText(), "")) {
+            deletePatientId.setStyle("-fx-border-color: #FF0000");
             utility.ErrorAlert("Empty Patient ID", "Please Enter a valid Patient ID");
         } else if (deleteTable.getSelectionModel().getSelectedItem() == null) {
+            deletePatientId.setStyle("-fx-border-color: default");
             utility.ErrorAlert("No Selection", "Please Select a Row to Delete");
         } else {
+            deletePatientId.setStyle("-fx-border-color: default");
             if (utility.ConfirmAlert("Confirmation", "Are you sure you want to delete the Row?")) {
                 int patientId = Integer.parseInt(deletePatientId.getText());
 
@@ -854,6 +857,10 @@ public class DoctorController implements Initializable {
                     deleteTable.getItems().remove(row);
                 }
                 utility.SuccessAlert("Success", "Deletion Success");
+
+            }
+            else{
+                deletePatientId.setStyle("-fx-border-color: default");
             }
         }
     }
