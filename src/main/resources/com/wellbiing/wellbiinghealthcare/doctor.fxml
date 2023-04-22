@@ -707,7 +707,7 @@
                         <Font name="Leelawadee UI" size="26.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="deletePateintId" layoutX="224.0" layoutY="98.0" promptText="Enter Id" />
+                  <TextField fx:id="deletePatientId" layoutX="224.0" layoutY="98.0" promptText="Enter Id" />
                   <Text layoutX="14.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Id" textAlignment="CENTER" wrappingWidth="199.469970703125">
                      <font>
                         <Font name="Leelawadee UI" size="19.0" />
@@ -720,7 +720,7 @@
                   </Text>
                   <Button fx:id="deletePatientConfirmButton" layoutX="131.0" layoutY="301.0" mnemonicParsing="false" onAction="#DeletePatient" opacity="0.93" prefHeight="58.0" prefWidth="131.0" style="-fx-background-radius: 50;" text="Confirm" />
                   <DatePicker fx:id="deletePatientDate" editable="false" layoutX="224.0" layoutY="138.0" prefHeight="21.0" prefWidth="150.0" promptText="Enter Date" />
-                  <RadioButton fx:id="deleteVitalsRadio" contentDisplay="CENTER" layoutX="15.0" layoutY="209.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="112.0" text="Vitals">
+                  <RadioButton fx:id="deleteVitalsRadio" contentDisplay="CENTER" layoutX="15.0" layoutY="209.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="112.0" selected="true" text="Vitals">
                      <font>
                         <Font name="Leelawadee UI Bold" size="18.0" />
                      </font>
