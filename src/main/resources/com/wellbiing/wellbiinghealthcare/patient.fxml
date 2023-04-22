@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -202,7 +203,7 @@
                      <Image url="@assets/ecg_FILL1_wght700_GRAD200_opsz48.png" />
                   </image>
                </ImageView>
-               <Button fx:id="operation1" alignment="BASELINE_LEFT" contentDisplay="CENTER" graphicTextGap="0.0" layoutY="102.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#OperationOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Vitals" textFill="#075d5d">
+               <Button fx:id="vitals" alignment="BASELINE_LEFT" contentDisplay="CENTER" graphicTextGap="0.0" layoutY="102.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#vitalsOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Vitals" textFill="#075d5d">
                   <font>
                      <Font name="Leelawadee UI Bold" size="26.0" />
                   </font>
@@ -216,7 +217,7 @@
                         </image>
                     </ImageView>
                 </Pane>
-                <Pane fx:id="overviewPane" layoutX="380.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+                <Pane fx:id="overviewPane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                     <children>
                         <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                             <children>
@@ -269,7 +270,7 @@
                         </Pane>
                     </children>
                 </Pane>
-                <Pane fx:id="labTestPane" disable="true" layoutX="380.0" layoutY="118.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: #009999; -fx-background-radius: 50;">
+                <Pane fx:id="labTestPane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: #009999; -fx-background-radius: 50;">
                     <children>
                         <Pane prefHeight="635.0" prefWidth="550.0" style="-fx-background-radius: 50; -fx-background-color: white;">
                             <children>
@@ -400,9 +401,9 @@
                         </Pane>
                     </children>
                 </Pane>
-                <Pane fx:id="profilePane" disable="true" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+                <Pane fx:id="profilePane" layoutX="380.0" layoutY="118.0" opacity="0.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                     <children>
-                        <Pane opacity="0.0" prefHeight="655.0" prefWidth="550.0" style="-fx-background-color: #009999; -fx-background-radius: 50;">
+                        <Pane prefHeight="655.0" prefWidth="550.0" style="-fx-background-color: #009999; -fx-background-radius: 50;">
                             <children>
                                 <Text fill="WHITE" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile" textAlignment="CENTER" wrappingWidth="550.0">
                                     <font>
@@ -464,8 +465,11 @@
                                     <font>
                                         <Font name="Leelawadee UI Bold" size="22.0" />
                                     </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="genderGroup" />
+                           </toggleGroup>
                                 </RadioButton>
-                                <RadioButton fx:id="femaleRadioButton" layoutX="400.0" layoutY="320.0" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" text="Female" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                                <RadioButton fx:id="femaleRadioButton" layoutX="400.0" layoutY="320.0" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" text="Female" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" toggleGroup="$genderGroup">
                                     <font>
                                         <Font name="Leelawadee UI Bold" size="22.0" />
                                     </font>
@@ -514,6 +518,20 @@
                         </Pane>
                     </children>
                 </Pane>
+            <Pane fx:id="vitalPane" disable="true" layoutX="390.0" layoutY="128.0" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: #009999; -fx-background-radius: 50;">
+               <children>
+                  <Pane onMouseMoved="#ButtonHoverStart" onMousePressed="#ButtonHoverEnd" prefHeight="635.0" prefWidth="550.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+                     <children>
+                        <Text layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vitals Record" textAlignment="CENTER" wrappingWidth="550.0">
+                           <font>
+                              <Font name="Leelawadee UI Bold" size="26.0" />
+                           </font>
+                        </Text>
+                        <TableView fx:id="vitalTable" layoutY="79.0" prefHeight="534.0" prefWidth="548.0" style="-fx-background-radius: 50;" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
             </children>
 
         </Pane>

@@ -57,6 +57,13 @@ public class PatientJDBC {
     static String userHeight;
     static  String userWeight;
 
+    float Temperature;
+    float BloodPressure;
+    float HeartRate;
+    float BreathingRate;
+    Date TestDate;
+    float SpO2;
+
     public void GetInfo(String username){
         try
         {
@@ -339,6 +346,45 @@ public class PatientJDBC {
 
     }
 
+    public void GetVitalsDetails(String username,TableView vitalTable) throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        // query for getId
+        String query3 ="Select ID from authentication where username= ?";
+        PreparedStatement ps3=con.prepareStatement(query3);
+        ps3.setString(1, username);
+        ResultSet rs3=ps3.executeQuery();
+        if (rs3.next()) {
+            id = rs3.getInt(1);
+
+        }
+        String query6 = "Select * from vitals where patient_ID= ?";
+        PreparedStatement ps6 = con.prepareStatement(query6);
+        ps6.setInt(1,id);
+
+        ResultSet rs6 =ps6.executeQuery();
+
+
+        while (rs6.next()){
+            Temperature =rs6.getFloat(2);
+            BloodPressure =rs6.getFloat(3);
+            HeartRate =rs6.getFloat(4);
+            BreathingRate=rs6.getFloat(5);
+            TestDate=rs6.getDate(6);
+            SpO2=rs6.getFloat(7);
+
+            vitalTable.getItems().add(new VitalsInfo(Temperature,BloodPressure,HeartRate,BreathingRate,TestDate,SpO2));
+
+
+        }
+
+        con.close();
+
+
+
+    }
+
     public void GetRecentLabDetail(String username,TableView recentLabtable) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
@@ -487,6 +533,7 @@ public class PatientJDBC {
 
 
     }
+
 
     public void updateInfo(String username,String Height,String Weight,String D_O_B,String Gender,String BloodGroup, String contact_num,String State,String Street,String City) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");

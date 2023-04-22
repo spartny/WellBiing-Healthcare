@@ -1,6 +1,6 @@
 package com.wellbiing.wellbiinghealthcare;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class VitalsInfo {
     String patientName;
@@ -73,6 +73,15 @@ public class VitalsInfo {
     }
 
     public void setSpO2(float spO2) {
+        this.spO2 = spO2;
+    }
+
+    public VitalsInfo(float temperature, float bloodPressure, float heartRate, float breathingRate, Date testDate, float spO2) {
+        this.temperature = temperature;
+        this.bloodPressure = bloodPressure;
+        this.heartRate = heartRate;
+        this.breathingRate = breathingRate;
+        this.testDate = testDate;
         this.spO2 = spO2;
     }
 

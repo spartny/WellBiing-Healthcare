@@ -102,6 +102,10 @@ public class PatientController implements Initializable {
     private RadioButton maleRadioButton;
     @FXML
     private RadioButton femaleRadioButton;
+    @FXML
+    private Pane vitalPane;
+    @FXML
+    private TableView<VitalsInfo> vitalTable;
 
 
     public void closeAndDisablePanes(){
@@ -117,6 +121,9 @@ public class PatientController implements Initializable {
         operationPane.setDisable(true);
         profilePane.setStyle("-fx-opacity : 0.0");
         profilePane.setDisable(true);
+        vitalPane.setStyle("-fx-opacity : 0.0");
+        vitalPane.setDisable(true);
+
 
     }
 
@@ -155,6 +162,12 @@ public class PatientController implements Initializable {
         operationPane.setDisable(false);
 
     }
+    public void vitalsOpen(ActionEvent actionEvent) {
+        closeAndDisablePanes();
+        vitalPane.setStyle("-fx-opacity : 1.0");
+        vitalPane.setDisable(false);
+
+    }
 
     @FXML
     public void ProfileOpen(ActionEvent actionEvent) {
@@ -177,7 +190,7 @@ public class PatientController implements Initializable {
             femaleRadioButton.setSelected(true);
         }
 
-        patientProfileHeight.setText(String.valueOf(jdbc.Height));
+        patientProfileHeight.setText(String.valueOf(p.Height));
 
 
     }
@@ -621,6 +634,56 @@ public class PatientController implements Initializable {
 
     }
 
+
+    public  void SetVitalData(PatientJDBC p){
+        TableColumn<VitalsInfo, String> Temperature = new TableColumn<>("Temperature");
+        TableColumn<VitalsInfo, String> Blood_Pressure = new TableColumn<>("Blood Pressure");
+        TableColumn<VitalsInfo, String> Heart_Rate = new TableColumn<>("Heart Rate");
+        TableColumn<VitalsInfo, String> Breathing_Rate = new TableColumn<>("Breathing Rate");
+        TableColumn<VitalsInfo, String> Test_date = new TableColumn<>("Test date");
+        TableColumn<VitalsInfo, String> SpO2 = new TableColumn<>("SpO2");
+
+        Temperature.setCellValueFactory(new PropertyValueFactory<>("Temperature"));
+        Blood_Pressure.setCellValueFactory(new PropertyValueFactory<>("BloodPressure"));
+        Heart_Rate.setCellValueFactory(new PropertyValueFactory<>("HeartRate"));
+        Breathing_Rate.setCellValueFactory(new PropertyValueFactory<>("BreathingRate"));
+        Test_date.setCellValueFactory(new PropertyValueFactory<>("TestDate"));
+        SpO2.setCellValueFactory(new PropertyValueFactory<>("SpO2"));
+
+
+
+
+
+        try {
+            InsertVitalDetailRow(vitalTable,p);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        vitalTable.getColumns().add(Temperature);
+        vitalTable.getColumns().add(Blood_Pressure);
+        vitalTable.getColumns().add(Heart_Rate);
+        vitalTable.getColumns().add(Breathing_Rate);
+        vitalTable.getColumns().add(Test_date);
+        vitalTable.getColumns().add(SpO2);
+        Temperature.setMinWidth(50);
+        Blood_Pressure.setMinWidth(50);
+        Heart_Rate.setMinWidth(120);
+        Breathing_Rate.setMinWidth(120);
+        Test_date.setMinWidth(100);
+        SpO2.setMinWidth(99);
+
+
+
+
+    }
+    private void InsertVitalDetailRow(TableView vitalTable,PatientJDBC p ) throws SQLException, ClassNotFoundException {
+
+        p.GetVitalsDetails(Username,vitalTable);
+
+
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         PatientJDBC p = new PatientJDBC();
@@ -645,10 +708,12 @@ public class PatientController implements Initializable {
         SetRecentOperationData(p);
         SetRecentTreatmentData(p);
         SetRecentMedicationData(p);
+        SetVitalData(p);
 
 
 
     }
+
 
 
 }
