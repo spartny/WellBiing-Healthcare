@@ -605,6 +605,8 @@ public class DoctorController implements Initializable {
             column.setReorderable(false);
         }
 
+        int patientId = Integer.parseInt(updatePatientId.getText());
+
         Toggle selectedToggle = updatePatientGroup.getSelectedToggle();
         CreateTables createTables = new CreateTables();
         DoctorJDBC jdbc = new DoctorJDBC();
@@ -623,7 +625,7 @@ public class DoctorController implements Initializable {
 
                     System.out.println(position.getTableColumn());
                     try {
-                        jdbc.UpdateVitals(position, updateTable, newValue);
+                        jdbc.UpdateVitals(position, updateTable, newValue, patientId);
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     } catch (SQLException e) {
@@ -647,7 +649,7 @@ public class DoctorController implements Initializable {
 
                     System.out.println(position.getTableColumn());
                     try {
-                        jdbc.UpdateMedication(position, updateTable, newValue);
+                        jdbc.UpdateMedication(position, updateTable, newValue, patientId);
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     } catch (SQLException e) {
@@ -671,7 +673,7 @@ public class DoctorController implements Initializable {
 
                     System.out.println(position.getTableColumn());
                     try {
-                        jdbc.UpdateTreatment(position, updateTable, newValue);
+                        jdbc.UpdateTreatment(position, updateTable, newValue, patientId);
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     } catch (SQLException e) {
@@ -694,7 +696,7 @@ public class DoctorController implements Initializable {
 
                     System.out.println(position.getTableColumn());
                     try {
-                        jdbc.UpdateAllergies(position, updateTable, newValue);
+                        jdbc.UpdateAllergies(position, updateTable, newValue, patientId);
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     } catch (SQLException e) {
@@ -712,16 +714,13 @@ public class DoctorController implements Initializable {
                 System.out.println(column.isEditable());
                 column.setOnEditCommit(event -> {
 
-                    VitalsInfo vitalsInfo = (VitalsInfo) event.getRowValue();
-                    float newValue = (float) event.getNewValue();
+                    String newValue = (String) event.getNewValue();
                     TablePosition position = updateTable.getEditingCell();
 
                     System.out.println(position.getTableColumn());
                     try {
-                        jdbc.UpdateVitals(position, updateTable, newValue);
-                    } catch (ClassNotFoundException e) {
-                        throw new RuntimeException(e);
-                    } catch (SQLException e) {
+                        jdbc.UpdateOperations(position, updateTable, newValue, patientId);
+                    } catch (ClassNotFoundException | SQLException e) {
                         throw new RuntimeException(e);
                     }
                 });
@@ -740,7 +739,7 @@ public class DoctorController implements Initializable {
 
                     System.out.println(position.getTableColumn());
                     try {
-                        jdbc.UpdateAllergies(position, updateTable, newValue);
+                        jdbc.UpdateTests(position, updateTable, newValue, patientId);
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     } catch (SQLException e) {

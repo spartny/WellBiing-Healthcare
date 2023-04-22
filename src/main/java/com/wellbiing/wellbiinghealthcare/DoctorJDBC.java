@@ -351,7 +351,7 @@ public class DoctorJDBC {
         return resultSet;
     }
 
-    public void UpdateVitals(TablePosition position, TableView<?> updateTable, float newValue) throws ClassNotFoundException, SQLException {
+    public void UpdateVitals(TablePosition position, TableView<?> updateTable, float newValue, int patientId) throws ClassNotFoundException, SQLException {
         int column = position.getColumn();
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
@@ -367,35 +367,41 @@ public class DoctorJDBC {
 
         switch (column) {
             case (1):
-                query = "UPDATE vitals SET Temperature = ? WHERE Test_date = ?";
+                query = "UPDATE vitals SET Temperature = ? WHERE Test_date = ? AND patient_ID = ?";
                 ps = con.prepareStatement(query);
                 ps.setFloat(1, newValue);
                 ps.setDate(2, testDate);
+                ps.setInt(3, patientId);
                 break;
             case (2):
-                query = "UPDATE vitals SET Blood_Pressure = ? WHERE Test_date = ?";
+                query = "UPDATE vitals SET Blood_Pressure = ? WHERE Test_date = ? AND patient_ID = ?";
                 ps = con.prepareStatement(query);
                 ps.setFloat(1, newValue);
                 ps.setDate(2, testDate);
+                ps.setInt(3, patientId);
                 break;
             case (3):
-                query = "UPDATE vitals SET Heart_Rate = ? WHERE Test_date = ?";
+                query = "UPDATE vitals SET Heart_Rate = ? WHERE Test_date = ? AND patient_ID = ?";
                 ps = con.prepareStatement(query);
                 ps.setFloat(1, newValue);
                 ps.setDate(2, testDate);
+                ps.setInt(3, patientId);
                 break;
             case (4):
-                query = "UPDATE vitals SET Breathing_Rate = ? WHERE Test_date = ?";
+                query = "UPDATE vitals SET Breathing_Rate = ? WHERE Test_date = ? AND patient_ID = ?";
                 ps = con.prepareStatement(query);
                 ps.setFloat(1, newValue);
                 ps.setDate(2, testDate);
+                ps.setInt(3, patientId);
                 break;
             case (5):
-                query = "UPDATE vitals SET SpO2 = ? WHERE Test_date = ?";
+                query = "UPDATE vitals SET SpO2 = ? WHERE Test_date = ? AND patient_ID = ?";
                 ps = con.prepareStatement(query);
                 ps.setFloat(1, newValue);
                 ps.setDate(2, testDate);
+                ps.setInt(3, patientId);
                 System.out.println("wow");
+
                 break;
             }
 
@@ -404,7 +410,7 @@ public class DoctorJDBC {
 
     }
 
-    public void UpdateMedication(TablePosition position, TableView<?> updateTable, String newValue) throws SQLException, ClassNotFoundException {
+    public void UpdateMedication(TablePosition position, TableView<?> updateTable, String newValue, int patientId) throws SQLException, ClassNotFoundException {
         int column = position.getColumn();
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
@@ -420,23 +426,26 @@ public class DoctorJDBC {
 
         switch (column) {
             case(2):
-                query = "UPDATE medication SET Medication_cost = ? WHERE Medication_code = ?";
+                query = "UPDATE medication SET Medication_cost = ? WHERE Medication_code = ? AND patient_ID = ?";
                 ps = con.prepareStatement(query);
                 ps.setInt(1, Integer.parseInt(newValue));
                 ps.setInt(2, medCode);
+                ps.setInt(3, patientId);
                 break;
             case(3):
-                query = "UPDATE medication SET Medication_description = ? WHERE Medication_code = ?";
+                query = "UPDATE medication SET Medication_description = ? WHERE Medication_code = ? AND patient_ID = ?";
                 ps = con.prepareStatement(query);
                 ps.setString(1, String.valueOf(Integer.parseInt(newValue)));
                 ps.setInt(2, medCode);
+                ps.setInt(3, patientId);
                 break;
 
             case(4):
-                query = "UPDATE medication SET Medication_type = ? WHERE Medication_code = ?";
+                query = "UPDATE medication SET Medication_type = ? WHERE Medication_code = ?  AND patient_ID = ?";
                 ps = con.prepareStatement(query);
                 ps.setString(1, newValue);
                 ps.setInt(2, medCode);
+                ps.setInt(3, patientId);
                 break;
         }
 
@@ -444,7 +453,7 @@ public class DoctorJDBC {
         System.out.println("wowie");
     }
 
-    public void UpdateTreatment(TablePosition position, TableView<?> updateTable, String newValue) throws ClassNotFoundException, SQLException {
+    public void UpdateTreatment(TablePosition position, TableView<?> updateTable, String newValue, int patientId) throws ClassNotFoundException, SQLException {
         int column = position.getColumn();
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
@@ -460,22 +469,25 @@ public class DoctorJDBC {
 
         switch (column) {
             case (2):
-                query = "UPDATE treatments SET Treatment_cost = ? WHERE Treatment_code = ?";
+                query = "UPDATE treatments SET Treatment_cost = ? WHERE Treatment_code = ?  AND patient_ID = ?";
                 ps = con.prepareStatement(query);
                 ps.setString(1, newValue);
                 ps.setInt(2, treatmentCode);
+                ps.setInt(3, patientId);
                 break;
             case (3):
-                query = "UPDATE treatments SET Treatment_description = ? WHERE Treatment_code = ?";
+                query = "UPDATE treatments SET Treatment_description = ? WHERE Treatment_code = ?  AND patient_ID = ?";
                 ps = con.prepareStatement(query);
                 ps.setString(1, newValue);
                 ps.setInt(2, treatmentCode);
+                ps.setInt(3, patientId);
                 break;
             case (4):
-                query = "UPDATE treatments SET Treatment_type = ? WHERE Treatment_code = ?";
+                query = "UPDATE treatments SET Treatment_type = ? WHERE Treatment_code = ?  AND patient_ID = ?";
                 ps = con.prepareStatement(query);
                 ps.setString(1, newValue);
                 ps.setInt(2, treatmentCode);
+                ps.setInt(3, patientId);
                 break;
 
         }
@@ -484,7 +496,7 @@ public class DoctorJDBC {
         System.out.println("wowie");
     }
 
-    public void UpdateAllergies(TablePosition position, TableView<?> updateTable, String newValue) throws ClassNotFoundException, SQLException {
+    public void UpdateAllergies(TablePosition position, TableView<?> updateTable, String newValue, int patientId) throws ClassNotFoundException, SQLException {
         int column = position.getColumn();
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
@@ -500,22 +512,111 @@ public class DoctorJDBC {
 
         switch (column) {
             case (2):
-                query = "UPDATE allergy SET Allergy_Name = ? WHERE Allergy_code = ?";
+                query = "UPDATE allergy SET Allergy_Name = ? WHERE Allergy_code = ?  AND patient_ID = ?";
                 ps = con.prepareStatement(query);
                 ps.setString(1, newValue);
                 ps.setInt(2, allergyCode);
+                ps.setInt(3, patientId);
                 break;
             case (3):
-                query = "UPDATE allergy SET Allergy_description = ? WHERE Allergy_code = ?";
+                query = "UPDATE allergy SET Allergy_description = ? WHERE Allergy_code = ?  AND patient_ID = ?";
                 ps = con.prepareStatement(query);
                 ps.setString(1, newValue);
                 ps.setInt(2, allergyCode);
+                ps.setInt(3, patientId);
                 break;
 
         }
 
         ps.executeUpdate();
         System.out.println("wowie");
+    }
+
+    public void UpdateOperations(TablePosition position, TableView<?> updateTable, String newValue, int patientId) throws ClassNotFoundException, SQLException {
+        int column = position.getColumn();
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        int row = position.getRow();
+        TableColumn col = updateTable.getColumns().get(1);
+        int treatmentCode = (Integer) col.getCellData(row);
+
+        System.out.println(newValue);
+        String query;
+        PreparedStatement ps = null;
+        System.out.println(column);
+
+        switch (column) {
+            case (2):
+                query = "UPDATE operation SET operation_cost = ? WHERE Operation_code = ? AND patient_ID = ?";
+                ps = con.prepareStatement(query);
+                ps.setString(1, newValue);
+                ps.setInt(2, treatmentCode);
+                ps.setInt(3, patientId);
+                break;
+            case (3):
+                query = "UPDATE operation SET operation_description = ? WHERE Operation_code = ? AND patient_ID = ?";
+                ps = con.prepareStatement(query);
+                ps.setString(1, newValue);
+                ps.setInt(2, treatmentCode);
+                ps.setInt(3, patientId);
+                break;
+            case (4):
+                query = "UPDATE operation SET operation_type = ? WHERE Operation_code = ? AND patient_ID = ?";
+                ps = con.prepareStatement(query);
+                ps.setString(1, newValue);
+                ps.setInt(2, treatmentCode);
+                ps.setInt(3, patientId);
+                break;
+
+        }
+
+        ps.executeUpdate();
+        System.out.println("wowie");
+    }
+
+    public void UpdateTests(TablePosition position, TableView<?> updateTable, String newValue, int patientId) throws SQLException, ClassNotFoundException {
+        int column = position.getColumn();
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+
+        int row = position.getRow();
+        TableColumn col = updateTable.getColumns().get(1);
+        int treatmentCode = (Integer) col.getCellData(row);
+
+        System.out.println(newValue);
+        String query;
+        PreparedStatement ps = null;
+        System.out.println(column);
+
+        switch (column) {
+            case (2):
+                query = "UPDATE lab SET LabTest_cost = ? WHERE LabTest_code = ? AND patient_ID = ?";
+                ps = con.prepareStatement(query);
+                ps.setString(1, newValue);
+                ps.setInt(2, treatmentCode);
+                ps.setInt(3, patientId);
+                break;
+            case (3):
+                query = "UPDATE lab SET LabTest_description = ? WHERE LabTest_code = ? AND patient_ID = ?";
+                ps = con.prepareStatement(query);
+                ps.setString(1, newValue);
+                ps.setInt(2, treatmentCode);
+                ps.setInt(3, patientId);
+                break;
+            case (4):
+                query = "UPDATE lab SET LabTest_type = ? WHERE LabTest_code = ? AND patient_ID = ?";
+                ps = con.prepareStatement(query);
+                ps.setString(1, newValue);
+                ps.setInt(2, treatmentCode);
+                ps.setInt(3, patientId);
+                break;
+
+        }
+
+        ps.executeUpdate();
+        System.out.println("wowie");
+
     }
 
     public void DeleteVitals(VitalsInfo row, int patientId) throws SQLException, ClassNotFoundException {
@@ -619,6 +720,8 @@ public class DoctorJDBC {
         ps.execute();
         System.out.println("wowie");
     }
+
+
 
 }
 
