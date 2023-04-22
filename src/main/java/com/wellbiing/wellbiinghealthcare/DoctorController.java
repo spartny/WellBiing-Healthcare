@@ -14,6 +14,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DoctorController implements Initializable {
@@ -68,7 +69,19 @@ public class DoctorController implements Initializable {
     private Button delPatientButton;
 
     @FXML
-    private TextField deletePateintId;
+    private RadioButton deleteAllergiesRadio;
+
+    @FXML
+    private RadioButton deleteLabTestRadio;
+
+    @FXML
+    private RadioButton deleteMedicationRadio;
+
+    @FXML
+    private RadioButton deleteOperationRadio;
+
+    @FXML
+    private TextField deletePatientId;
 
     @FXML
     private Button deletePatientConfirmButton1;
@@ -77,7 +90,22 @@ public class DoctorController implements Initializable {
     private DatePicker deletePatientDate;
 
     @FXML
+    private ToggleGroup deletePatientGroup;
+
+    @FXML
     private AnchorPane deletePatientPane;
+
+    @FXML
+    private Button deleteRowConfirm;
+
+    @FXML
+    private TableView<?> deleteTable;
+
+    @FXML
+    private RadioButton deleteTreatmentRadio;
+
+    @FXML
+    private RadioButton deleteVitalsRadio;
 
     @FXML
     private Button entrySelectButton;
@@ -578,6 +606,8 @@ public class DoctorController implements Initializable {
             column.setReorderable(false);
         }
 
+        int patientId = Integer.parseInt(updatePatientId.getText());
+
         Toggle selectedToggle = updatePatientGroup.getSelectedToggle();
         CreateTables createTables = new CreateTables();
         DoctorJDBC jdbc = new DoctorJDBC();
@@ -596,7 +626,7 @@ public class DoctorController implements Initializable {
 
                     System.out.println(position.getTableColumn());
                     try {
-                        jdbc.UpdateVitals(position, updateTable, newValue);
+                        jdbc.UpdateVitals(position, updateTable, newValue, patientId);
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     } catch (SQLException e) {
@@ -620,7 +650,7 @@ public class DoctorController implements Initializable {
 
                     System.out.println(position.getTableColumn());
                     try {
-                        jdbc.UpdateMedication(position, updateTable, newValue);
+                        jdbc.UpdateMedication(position, updateTable, newValue, patientId);
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     } catch (SQLException e) {
@@ -644,7 +674,7 @@ public class DoctorController implements Initializable {
 
                     System.out.println(position.getTableColumn());
                     try {
-                        jdbc.UpdateTreatment(position, updateTable, newValue);
+                        jdbc.UpdateTreatment(position, updateTable, newValue, patientId);
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     } catch (SQLException e) {
@@ -667,7 +697,7 @@ public class DoctorController implements Initializable {
 
                     System.out.println(position.getTableColumn());
                     try {
-                        jdbc.UpdateAllergies(position, updateTable, newValue);
+                        jdbc.UpdateAllergies(position, updateTable, newValue, patientId);
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     } catch (SQLException e) {
@@ -685,16 +715,13 @@ public class DoctorController implements Initializable {
                 System.out.println(column.isEditable());
                 column.setOnEditCommit(event -> {
 
-                    VitalsInfo vitalsInfo = (VitalsInfo) event.getRowValue();
-                    float newValue = (float) event.getNewValue();
+                    String newValue = (String) event.getNewValue();
                     TablePosition position = updateTable.getEditingCell();
 
                     System.out.println(position.getTableColumn());
                     try {
-                        jdbc.UpdateVitals(position, updateTable, newValue);
-                    } catch (ClassNotFoundException e) {
-                        throw new RuntimeException(e);
-                    } catch (SQLException e) {
+                        jdbc.UpdateOperations(position, updateTable, newValue, patientId);
+                    } catch (ClassNotFoundException | SQLException e) {
                         throw new RuntimeException(e);
                     }
                 });
@@ -713,13 +740,127 @@ public class DoctorController implements Initializable {
 
                     System.out.println(position.getTableColumn());
                     try {
-                        jdbc.UpdateAllergies(position, updateTable, newValue);
-                    } catch (ClassNotFoundException e) {
-                        throw new RuntimeException(e);
-                    } catch (SQLException e) {
+                        jdbc.UpdateTests(position, updateTable, newValue, patientId);
+                    } catch (ClassNotFoundException | SQLException e) {
                         throw new RuntimeException(e);
                     }
                 });
+            }
+        }
+    }
+
+
+    public void DeletePatient(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        deleteTable.getColumns().clear();
+        deleteTable.getItems().clear();
+        Utility utility = new Utility();
+
+        if (Objects.equals(deletePatientId.getText(), "") || !utility.CheckInteger(deletePatientId.getText())) {
+            utility.ErrorAlert("PatientId Error", "Please Enter a valid Patient ID");
+        }
+        else {
+            Toggle selectedToggle = deletePatientGroup.getSelectedToggle();
+            CreateTables createTables = new CreateTables();
+            DoctorJDBC jdbc = new DoctorJDBC();
+            TableView table = deleteTable;
+
+            if (selectedToggle == deleteVitalsRadio) {
+                createTables.VitalsTable(table);
+                createTables.AddVitals(table, deletePatientId);
+            }
+
+            if (selectedToggle == deleteMedicationRadio) {
+                createTables.MedicationTable(table);
+                createTables.AddMedication(table, deletePatientId);
+            }
+
+            if (selectedToggle == deleteTreatmentRadio) {
+                createTables.TreatmentTable(table);
+                createTables.AddTreatment(table, deletePatientId);
+            }
+
+            if (selectedToggle == deleteAllergiesRadio) {
+                createTables.AllergyTable(table);
+                createTables.AddAllergy(table, deletePatientId);
+            }
+
+            if (selectedToggle == deleteOperationRadio) {
+                createTables.OperationTable(table);
+                createTables.AddOperation(table, deletePatientId);
+            }
+
+            if (selectedToggle == deleteLabTestRadio) {
+                createTables.TestTable(table);
+                createTables.AddTest(table, deletePatientId);
+            }
+        }
+    }
+
+    public void DeleteRow(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        Toggle selectedToggle = deletePatientGroup.getSelectedToggle();
+        DoctorJDBC jdbc = new DoctorJDBC();
+
+        Utility utility = new Utility();
+
+        if (Objects.equals(deletePatientId.getText(), "")) {
+            deletePatientId.setStyle("-fx-border-color: #FF0000");
+            utility.ErrorAlert("Empty Patient ID", "Please Enter a valid Patient ID");
+        } else if (deleteTable.getSelectionModel().getSelectedItem() == null) {
+            deletePatientId.setStyle("-fx-border-color: default");
+            utility.ErrorAlert("No Selection", "Please Select a Row to Delete");
+        } else {
+            deletePatientId.setStyle("-fx-border-color: default");
+            if (utility.ConfirmAlert("Confirmation", "Are you sure you want to delete the Row?")) {
+                int patientId = Integer.parseInt(deletePatientId.getText());
+
+                if (selectedToggle == deleteVitalsRadio) {
+                    VitalsInfo row = (VitalsInfo) deleteTable.getSelectionModel().getSelectedItem();
+                    System.out.println(row.getPatientName());
+                    jdbc.DeleteVitals(row, patientId);
+                    deleteTable.getItems().remove(row);
+                }
+
+                if (selectedToggle == deleteMedicationRadio) {
+                    MedicationInfo row = (MedicationInfo) deleteTable.getSelectionModel().getSelectedItem();
+                    System.out.println(row.getPatientName());
+                    jdbc.DeleteMedication(row, patientId);
+                    deleteTable.getItems().remove(row);
+                }
+
+                if (selectedToggle == deleteTreatmentRadio) {
+                    TreatmentInfo row = (TreatmentInfo) deleteTable.getSelectionModel().getSelectedItem();
+                    System.out.println(row.getPatientName());
+                    jdbc.DeleteTreatments(row, patientId);
+                    deleteTable.getItems().remove(row);
+
+                }
+
+                if (selectedToggle == deleteAllergiesRadio) {
+                    AllergyInfo row = (AllergyInfo) deleteTable.getSelectionModel().getSelectedItem();
+                    System.out.println(row.getPatientName());
+                    jdbc.DeleteAllergies(row, patientId);
+                    deleteTable.getItems().remove(row);
+
+                }
+
+                if (selectedToggle == deleteOperationRadio) {
+                    OperationInfo row = (OperationInfo) deleteTable.getSelectionModel().getSelectedItem();
+                    System.out.println(row.getPatientName());
+                    jdbc.DeleteOperations(row, patientId);
+                    deleteTable.getItems().remove(row);
+                }
+
+                if (selectedToggle == deleteLabTestRadio) {
+                    LabInfo row = (LabInfo) deleteTable.getSelectionModel().getSelectedItem();
+                    System.out.println(row.getPatientName());
+                    jdbc.DeleteTests(row, patientId);
+                    deleteTable.getItems().remove(row);
+                }
+                utility.SuccessAlert("Success", "Deletion Success");
+
+            }
+            else{
+                deletePatientId.setStyle("-fx-border-color: default");
             }
         }
     }
