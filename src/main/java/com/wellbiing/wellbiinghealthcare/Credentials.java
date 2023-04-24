@@ -4,6 +4,7 @@ import org.mindrot.jbcrypt.BCrypt;
     String createHash(String password){
         return BCrypt.hashpw(password, BCrypt.gensalt(12));
     }
+
     Boolean checkHash(String candidate, String hashed) {
         if (BCrypt.checkpw(candidate, hashed)) {
             System.out.println("It matches");

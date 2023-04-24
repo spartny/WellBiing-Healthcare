@@ -510,10 +510,11 @@ public class DoctorController implements Initializable {
             gender = "F";
         }
         Date dob = Date.valueOf(patientDOB.getValue());
+        String password = patientPasswordField.getText();
 
         jdbc.EnterNewPatient(patientId, patientNameField.getText(), dob, gender, patientHeightField.getText(), patientWeightField.getText(),
                 patientBloodGroupField.getText(), patientContactField.getText(), patientStateField.getText(), patientCityField.getText(),
-                patientStreetField.getText());
+                patientStreetField.getText(), password);
 
     }
 

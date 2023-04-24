@@ -127,17 +127,23 @@ public class DoctorJDBC {
     }
 
     public void EnterNewPatient(String patientId, String name, Date dob, String gender, String height, String weight, String bloodGroup, String contact,
-                                String state, String city, String street) throws ClassNotFoundException, SQLException {
+                                String state, String city, String street, String password) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whc", "pass123");
+        Credentials credentials = new Credentials();
+        String hashedPassword = credentials.createHash(password);
+
+        System.out.println(hashedPassword);
 
         String piQuery = "INSERT INTO personal_information VALUES(?, ?, ?, ?, ?, ?, ?)";
         String contactQuery = "INSERT INTO contact_info VALUES(?, ?)";
         String addressQuery = "INSERT INTO address VALUES(?, ?, ?, ?)";
+        String authenticationQuery = "INSERT INTO authentication (username, password) VALUES(?, ?)";
 
         PreparedStatement piPs = con.prepareStatement(piQuery);
         PreparedStatement contactPs = con.prepareStatement(contactQuery);
         PreparedStatement addressPs = con.prepareStatement(addressQuery);
+        PreparedStatement authenticationPs = con.prepareStatement(authenticationQuery);
 
         piPs.setInt(1, Integer.parseInt(patientId));
         piPs.setString(2, name);
@@ -155,9 +161,14 @@ public class DoctorJDBC {
         addressPs.setString(3, city);
         addressPs.setString(4, state);
 
+
+        authenticationPs.setString(1, name);
+        authenticationPs.setString(2, hashedPassword);
+
         piPs.execute();
         contactPs.execute();
         addressPs.execute();
+        authenticationPs.execute();
 
     }
 
@@ -623,7 +634,7 @@ public class DoctorJDBC {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whcd", "pass123");
 
-        Date testDate = row.getTestDate();
+        Date testDate = (Date) row.getTestDate();
 
         String query = "DELETE FROM vitals WHERE patient_ID = ? And Test_date = ?";
 
