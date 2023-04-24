@@ -205,13 +205,13 @@ public class PatientController implements Initializable {
     @FXML
     void ButtonHoverStart(MouseEvent event) {
         Button b = (Button) event.getSource();
-
         b.setStyle("-fx-background-color: #a4adb7");
     }
 
     @FXML
     void updateInfo(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         PatientJDBC p = new PatientJDBC();
+        Utility utility = new Utility();
         String city = updateCity.getText();
         String street = updateStreet.getText();
         String DOB = String.valueOf(UpdateDOB.getValue());
@@ -230,14 +230,22 @@ public class PatientController implements Initializable {
         else{
             gender= p.gender;
         }
-                p.updateInfo(Username,height,weight,DOB,gender,bloodGroup,phone,state,street,city);
-        p.GetInfo(Username);
-        setAge(p);
-        SetHeight(p);
-        SetWeight(p);
-        SetBlood_Group(p);
-        SetGender(p);
-        HomeOpen(actionEvent);
+        if(city.isEmpty() || state.isEmpty()||street.isEmpty()||DOB.isEmpty()||height.isEmpty()||weight.isEmpty()||bloodGroup.isEmpty()||phone.isEmpty()||gender.isEmpty()){
+            utility.ErrorAlert("Empty Data", "Please Enter Data to Update");
+        }
+
+        else if (utility.ConfirmAlert("Confirmation", "Are you sure you want to update the Record?")){
+            p.updateInfo(Username,height,weight,DOB,gender,bloodGroup,phone,state,street,city);
+            p.GetInfo(Username);
+            setAge(p);
+            SetHeight(p);
+            SetWeight(p);
+            SetBlood_Group(p);
+            SetGender(p);
+            HomeOpen(actionEvent);
+        }
+
+
 
     }
 
@@ -672,7 +680,7 @@ public class PatientController implements Initializable {
         Blood_Pressure.setMinWidth(50);
         Heart_Rate.setMinWidth(50);
         Breathing_Rate.setMinWidth(50);
-        SpO2.setMinWidth(80);
+        SpO2.setMinWidth(95);
         Test_date.setMinWidth(100);
 
 
