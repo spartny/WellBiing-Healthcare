@@ -190,7 +190,7 @@ public class PatientController implements Initializable {
             femaleRadioButton.setSelected(true);
         }
 
-        patientProfileHeight.setText(String.valueOf(p.Height));
+        //updateHeight.setText(String.valueOf(p.Height));
 
 
     }
@@ -640,15 +640,17 @@ public class PatientController implements Initializable {
         TableColumn<VitalsInfo, String> Blood_Pressure = new TableColumn<>("Blood Pressure");
         TableColumn<VitalsInfo, String> Heart_Rate = new TableColumn<>("Heart Rate");
         TableColumn<VitalsInfo, String> Breathing_Rate = new TableColumn<>("Breathing Rate");
-        TableColumn<VitalsInfo, String> Test_date = new TableColumn<>("Test date");
         TableColumn<VitalsInfo, String> SpO2 = new TableColumn<>("SpO2");
+        TableColumn<VitalsInfo, String> Test_date = new TableColumn<>("Test date");
+
 
         Temperature.setCellValueFactory(new PropertyValueFactory<>("Temperature"));
         Blood_Pressure.setCellValueFactory(new PropertyValueFactory<>("BloodPressure"));
         Heart_Rate.setCellValueFactory(new PropertyValueFactory<>("HeartRate"));
         Breathing_Rate.setCellValueFactory(new PropertyValueFactory<>("BreathingRate"));
-        Test_date.setCellValueFactory(new PropertyValueFactory<>("TestDate"));
         SpO2.setCellValueFactory(new PropertyValueFactory<>("SpO2"));
+        Test_date.setCellValueFactory(new PropertyValueFactory<>("TestDate"));
+        ;
 
 
 
@@ -663,14 +665,16 @@ public class PatientController implements Initializable {
         vitalTable.getColumns().add(Blood_Pressure);
         vitalTable.getColumns().add(Heart_Rate);
         vitalTable.getColumns().add(Breathing_Rate);
-        vitalTable.getColumns().add(Test_date);
         vitalTable.getColumns().add(SpO2);
+        vitalTable.getColumns().add(Test_date);
+
         Temperature.setMinWidth(50);
         Blood_Pressure.setMinWidth(50);
-        Heart_Rate.setMinWidth(120);
-        Breathing_Rate.setMinWidth(120);
+        Heart_Rate.setMinWidth(50);
+        Breathing_Rate.setMinWidth(50);
+        SpO2.setMinWidth(80);
         Test_date.setMinWidth(100);
-        SpO2.setMinWidth(99);
+
 
 
 

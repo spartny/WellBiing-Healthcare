@@ -623,7 +623,7 @@ public class DoctorJDBC {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://172.19.19.197:3306/wellbiinghealthcare", "whcd", "pass123");
 
-        Date testDate = row.getTestDate();
+        Date testDate = (Date) row.getTestDate();
 
         String query = "DELETE FROM vitals WHERE patient_ID = ? And Test_date = ?";
 
