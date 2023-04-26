@@ -28,41 +28,6 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#075d5d" height="110.0" layoutX="-10.0" layoutY="-22.0" stroke="BLACK" strokeType="INSIDE" width="1930.0" />
       <AnchorPane layoutY="87.0" minHeight="0.0" minWidth="0.0" prefHeight="888.0" prefWidth="330.0" style="-fx-background-color: #ffff;">
          <children>
-            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/round_home_black_48dp.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="32.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/round_person_add_black_48dp.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/round_post_add_black_48dp.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="48.0" fitWidth="40.0" layoutX="39.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/round_backspace_black_48dp.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/round_sync_alt_black_48dp.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/round_search_black_48dp.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="646.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/round_logout_black_48dp.png" />
-               </image>
-            </ImageView>
             <Separator layoutX="20.0" layoutY="624.0" prefWidth="290.0" />
             <Button fx:id="homeButton" alignment="BASELINE_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#HomeOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="330.0" style="-fx-background-color: transparent;" text="Home" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                <font>
@@ -141,6 +106,41 @@
                   <Insets left="100.0" />
                </padding>
             </Button>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_home_black_48dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="32.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_person_add_black_48dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_post_add_black_48dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="40.0" layoutX="39.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_backspace_black_48dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_sync_alt_black_48dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_search_black_48dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="646.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/round_logout_black_48dp.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <Text fill="WHITE" layoutX="587.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WellBiing Healthcare" textAlignment="CENTER" wrappingWidth="374.1368408203125">
