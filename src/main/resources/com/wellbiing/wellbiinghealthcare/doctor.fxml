@@ -28,83 +28,6 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#075d5d" height="110.0" layoutX="-10.0" layoutY="-22.0" stroke="BLACK" strokeType="INSIDE" width="1930.0" />
       <AnchorPane layoutY="87.0" minHeight="0.0" minWidth="0.0" prefHeight="888.0" prefWidth="330.0" style="-fx-background-color: #ffff;">
          <children>
-            <Button fx:id="homeButton" alignment="BASELINE_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#HomeOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="330.0" style="-fx-background-image: url('assets\home.png'); -fx-background-color: transparent; ba: ;" text="Home" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
-               <font>
-                  <Font name="Leelawadee UI Bold" size="26.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <padding>
-                  <Insets left="100.0" />
-               </padding>
-            </Button>
-            <Button fx:id="newPatientButton" alignment="BASELINE_LEFT" layoutY="98.0" mnemonicParsing="false" onAction="#NewPatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-color: #ffff;" text="New Patient" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="102.0">
-               <font>
-                  <Font name="Leelawadee UI Bold" size="26.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <padding>
-                  <Insets left="100.0" />
-               </padding>
-            </Button>
-            <Button fx:id="patientEntryButton" alignment="BASELINE_LEFT" layoutY="168.0" mnemonicParsing="false" onAction="#PatientEntryOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-color: #ffff;" text="Patient Entry" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="174.0">
-               <font>
-                  <Font name="Leelawadee UI Bold" size="26.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <padding>
-                  <Insets left="100.0" />
-               </padding>
-            </Button>
-            <Button fx:id="delPatientButton" alignment="BASELINE_LEFT" layoutY="237.0" mnemonicParsing="false" onAction="#DeletePatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="162.0" style="-fx-background-color: #ffff;" text="Delete Record" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="246.0">
-               <font>
-                  <Font name="Leelawadee UI Bold" size="26.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <padding>
-                  <Insets left="100.0" />
-               </padding>
-            </Button>
-            <Button fx:id="logOutButton" alignment="BASELINE_LEFT" layoutY="634.0" mnemonicParsing="false" onAction="#LogOut" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="419.0" style="-fx-background-color: #ffff;" text="Log Out" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="634.0">
-               <font>
-                  <Font name="Leelawadee UI Bold" size="26.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <padding>
-                  <Insets left="100.0" />
-               </padding>
-            </Button>
-            <Button fx:id="updPatientButton" alignment="BASELINE_LEFT" layoutY="307.0" mnemonicParsing="false" onAction="#UpdatePatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-color: #ffff;" text="Update Record" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="318.0">
-               <font>
-                  <Font name="Leelawadee UI Bold" size="26.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <padding>
-                  <Insets left="100.0" />
-               </padding>
-            </Button>
-            <Button fx:id="updPatientButton1" alignment="BASELINE_LEFT" layoutY="382.0" mnemonicParsing="false" onAction="#SearchPatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="330.0" style="-fx-background-color: #ffff;" text="Search" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="390.0">
-               <font>
-                  <Font name="Leelawadee UI Bold" size="26.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <padding>
-                  <Insets left="100.0" />
-               </padding>
-            </Button>
             <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="35.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@assets/round_home_black_48dp.png" />
@@ -141,6 +64,83 @@
                </image>
             </ImageView>
             <Separator layoutX="20.0" layoutY="624.0" prefWidth="290.0" />
+            <Button fx:id="homeButton" alignment="BASELINE_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#HomeOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="330.0" style="-fx-background-color: transparent;" text="Home" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="26.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+            </Button>
+            <Button fx:id="newPatientButton" alignment="BASELINE_LEFT" layoutY="98.0" mnemonicParsing="false" onAction="#NewPatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-color: transparent;" text="New Patient" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="102.0">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="26.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+            </Button>
+            <Button fx:id="patientEntryButton" alignment="BASELINE_LEFT" layoutY="168.0" mnemonicParsing="false" onAction="#PatientEntryOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-color: transparent;" text="Patient Entry" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="174.0">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="26.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+            </Button>
+            <Button fx:id="delPatientButton" alignment="BASELINE_LEFT" layoutY="237.0" mnemonicParsing="false" onAction="#DeletePatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="162.0" style="-fx-background-color: transparent;" text="Delete Record" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="246.0">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="26.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+            </Button>
+            <Button fx:id="logOutButton" alignment="BASELINE_LEFT" layoutY="634.0" mnemonicParsing="false" onAction="#LogOut" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="419.0" style="-fx-background-color: transparent;" text="Log Out" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="634.0">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="26.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+            </Button>
+            <Button fx:id="updPatientButton" alignment="BASELINE_LEFT" layoutY="307.0" mnemonicParsing="false" onAction="#UpdatePatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="375.0" style="-fx-background-color: transparent;" text="Update Record" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="318.0">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="26.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+            </Button>
+            <Button fx:id="updPatientButton1" alignment="BASELINE_LEFT" layoutY="382.0" mnemonicParsing="false" onAction="#SearchPatientOpen" onMouseEntered="#ButtonHoverStart" onMouseExited="#ButtonHoverEnd" prefHeight="72.0" prefWidth="330.0" style="-fx-background-color: transparent;" text="Search" textAlignment="CENTER" textFill="#075d5d" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="390.0">
+               <font>
+                  <Font name="Leelawadee UI Bold" size="26.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+            </Button>
          </children>
       </AnchorPane>
       <Text fill="WHITE" layoutX="587.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WellBiing Healthcare" textAlignment="CENTER" wrappingWidth="374.1368408203125">
