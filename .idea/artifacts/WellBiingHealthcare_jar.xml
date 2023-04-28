@@ -24,6 +24,9 @@
       <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:win:20-ea+4" />
       <element id="library" level="project" name="mindrot.jbcrypt" />
       <element id="library" level="project" name="mysql.connector.j" />
+      <element id="library" level="project" name="Maven: org.mindrot:jbcrypt:0.4" />
+      <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.21.9" />
+      <element id="library" level="project" name="Maven: com.mysql:mysql-connector-j:8.0.32" />
     </root>
   </artifact>
 </component>

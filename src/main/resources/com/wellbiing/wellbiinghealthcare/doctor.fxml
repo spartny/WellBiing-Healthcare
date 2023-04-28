@@ -741,7 +741,7 @@
             </AnchorPane>
             <AnchorPane layoutX="763.0" layoutY="150.0" prefHeight="271.0" prefWidth="274.0" style="-fx-background-color: #009999; -fx-background-radius: 50;">
                <children>
-                  <Text fill="WHITE" layoutX="5.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Total Patients" textAlignment="CENTER" wrappingWidth="265.8699340820313">
+                  <Text fill="WHITE" layoutX="5.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Total Patients" textAlignment="CENTER" wrappingWidth="265.8699340820313">
                      <font>
                         <Font name="Leelawadee UI" size="26.0" />
                      </font>

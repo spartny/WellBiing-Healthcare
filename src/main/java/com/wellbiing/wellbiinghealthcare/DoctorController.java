@@ -363,7 +363,7 @@ public class DoctorController implements Initializable {
         newPatientPane.setOpacity(0);
         newPatientPane.setDisable(true);
         patientEntryPane.setOpacity(0);
-        homePane.setDisable(true);
+        patientEntryPane.setDisable(true);
         updatePatientPane.setOpacity(0);
         updatePatientPane.setDisable(true);
         searchPatientPane.setOpacity(0);
