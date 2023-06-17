@@ -9,12 +9,14 @@ The UI is built leveraging the JavaFX framework of the Java programming language
 
 ## The Login page upon launching the application - 
 ![image](https://github.com/spartny/WellBiing-Healthcare/assets/105193713/8c675ff1-0da9-438a-a149-b44f84b9979c)
+
 BCrypt is used to hash the password before storing in MySQL, so upon logging in user is authenticated using the password entered, which is hashed and compared to the stored hash, if it matches the based on the authorization either doctor or patient, the user proceeds to their respective dashboard.
 
 ## The Doctor's Dashboard with various pages in the side navigation -
 ![image](https://github.com/spartny/WellBiing-Healthcare/assets/105193713/d549cdc2-88d4-428b-b4c0-44b6fc0531a6)
 ![image](https://github.com/spartny/WellBiing-Healthcare/assets/105193713/aa5431f9-c417-4246-b9d5-6493088a8e55)
 ![image](https://github.com/spartny/WellBiing-Healthcare/assets/105193713/5f668795-b41e-4599-9142-16f2bcf637ee)
+
 
 ## The Patient's Dashboard - 
 ![image](https://github.com/spartny/WellBiing-Healthcare/assets/105193713/7bcd6f5e-b7e9-4a45-9cfd-b61d5559095a)
