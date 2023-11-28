@@ -1,3 +1,10 @@
 Manifest-Version: 1.0
 Main-Class: com.wellbiing.wellbiinghealthcare.SuperMain
+Class-Path: mysql-connector-j-8.0.32.jar javafx-base-20-ea+4-win.jar jav
+ afx-graphics-20-ea+4-win.jar javafx-swt.jar javafx.web.jar javafx.base.
+ jar javafx.fxml.jar javafx.media.jar javafx.swing.jar javafx.controls.j
+ ar javafx.graphics.jar javafx-controls-20-ea+4-win.jar jbcrypt-0.4.jar 
+ javafx-controls-20-ea+4.jar javafx-base-20-ea+4.jar protobuf-java-3.21.
+ 9.jar javafx-graphics-20-ea+4.jar javafx-fxml-20-ea+4.jar javafx-fxml-2
+ 0-ea+4-win.jar
 

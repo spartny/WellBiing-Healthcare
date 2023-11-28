@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact name="whc">
+    <output-path>$PROJECT_DIR$/out/artifacts/whc</output-path>
+    <root id="root">
+      <element id="archive" name="WellBiingHealthcare.jar">
+        <element id="module-output" name="WellBiingHealthcare" />
+      </element>
+      <element id="library" level="project" name="Maven: com.mysql:mysql-connector-j:8.0.32" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:20-ea+4" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:win:20-ea+4" />
+      <element id="library" level="project" name="lib" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:win:20-ea+4" />
+      <element id="library" level="project" name="Maven: org.mindrot:jbcrypt:0.4" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:20-ea+4" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:20-ea+4" />
+      <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.21.9" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:20-ea+4" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:20-ea+4" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:win:20-ea+4" />
+    </root>
+  </artifact>
+</component>
